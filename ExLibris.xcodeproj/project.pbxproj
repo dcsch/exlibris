@@ -10,14 +10,74 @@
 		63582A8C1334A581008AF599 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63582A8B1334A581008AF599 /* Cocoa.framework */; };
 		63582A961334A581008AF599 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63582A941334A581008AF599 /* InfoPlist.strings */; };
 		63582A991334A581008AF599 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582A981334A581008AF599 /* main.m */; };
-		63582A9C1334A581008AF599 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 63582A9A1334A581008AF599 /* Credits.rtf */; };
-		63582A9F1334A581008AF599 /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582A9E1334A581008AF599 /* Story.m */; };
-		63582AA21334A581008AF599 /* Story.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63582AA01334A581008AF599 /* Story.xib */; };
-		63582AA51334A582008AF599 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63582AA31334A582008AF599 /* MainMenu.xib */; };
 		63582AAC1334A582008AF599 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63582A8B1334A581008AF599 /* Cocoa.framework */; };
 		63582AB41334A582008AF599 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63582AB21334A582008AF599 /* InfoPlist.strings */; };
 		63582AB71334A582008AF599 /* ExLibrisTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 63582AB61334A582008AF599 /* ExLibrisTests.h */; };
 		63582AB91334A582008AF599 /* ExLibrisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AB81334A582008AF599 /* ExLibrisTests.m */; };
+		63582B281334A822008AF599 /* PDDirectoryBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582ACF1334A822008AF599 /* PDDirectoryBlock.m */; };
+		63582B291334A822008AF599 /* PDEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AD11334A822008AF599 /* PDEntry.m */; };
+		63582B2A1334A822008AF599 /* PDFileEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AD31334A822008AF599 /* PDFileEntry.m */; };
+		63582B2B1334A822008AF599 /* PDDirectoryHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AD51334A822008AF599 /* PDDirectoryHeader.m */; };
+		63582B2C1334A822008AF599 /* DiskImageHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AD71334A822008AF599 /* DiskImageHeader.m */; };
+		63582B2D1334A822008AF599 /* ProDOSInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AD91334A822008AF599 /* ProDOSInfoWindowController.m */; };
+		63582B2E1334A822008AF599 /* FileBrowseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582ADB1334A822008AF599 /* FileBrowseController.m */; };
+		63582B2F1334A822008AF599 /* Applesoft.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582ADD1334A822008AF599 /* Applesoft.m */; };
+		63582B301334A822008AF599 /* Disassembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582ADF1334A822008AF599 /* Disassembler.m */; };
+		63582B311334A823008AF599 /* ResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AE11334A822008AF599 /* ResourceManager.m */; };
+		63582B321334A823008AF599 /* BinaryII.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AE31334A822008AF599 /* BinaryII.m */; };
+		63582B331334A823008AF599 /* PDVolume.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AE51334A822008AF599 /* PDVolume.m */; };
+		63582B341334A823008AF599 /* PDFileType.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AE71334A822008AF599 /* PDFileType.m */; };
+		63582B351334A823008AF599 /* SYHexFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AE91334A822008AF599 /* SYHexFormatter.m */; };
+		63582B361334A823008AF599 /* NSString+SynchromaKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AEB1334A822008AF599 /* NSString+SynchromaKit.m */; };
+		63582B371334A823008AF599 /* PDFileNameFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AED1334A822008AF599 /* PDFileNameFormatter.m */; };
+		63582B381334A823008AF599 /* PDFileTypeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AEF1334A822008AF599 /* PDFileTypeFormatter.m */; };
+		63582B391334A823008AF599 /* PDAccessFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AF11334A822008AF599 /* PDAccessFormatter.m */; };
+		63582B3A1334A823008AF599 /* PDEntry+DiskII.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AF31334A822008AF599 /* PDEntry+DiskII.m */; };
+		63582B3B1334A823008AF599 /* PDFileEntry+DiskII.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AF51334A822008AF599 /* PDFileEntry+DiskII.m */; };
+		63582B3C1334A823008AF599 /* D3Volume.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AF71334A822008AF599 /* D3Volume.m */; };
+		63582B3D1334A823008AF599 /* D3VTOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AF91334A822008AF599 /* D3VTOC.m */; };
+		63582B3E1334A823008AF599 /* D3Catalog.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AFB1334A822008AF599 /* D3Catalog.m */; };
+		63582B3F1334A823008AF599 /* D3FileEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AFD1334A822008AF599 /* D3FileEntry.m */; };
+		63582B401334A823008AF599 /* DOS3xWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AFF1334A822008AF599 /* DOS3xWindowController.m */; };
+		63582B411334A823008AF599 /* D3FileTypeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B011334A822008AF599 /* D3FileTypeFormatter.m */; };
+		63582B421334A823008AF599 /* D3TrackSector.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B031334A822008AF599 /* D3TrackSector.m */; };
+		63582B431334A823008AF599 /* DOS3xInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B051334A822008AF599 /* DOS3xInfoWindowController.m */; };
+		63582B441334A823008AF599 /* D3FileNameFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B071334A822008AF599 /* D3FileNameFormatter.m */; };
+		63582B451334A823008AF599 /* DiskIITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B091334A822008AF599 /* DiskIITableView.m */; };
+		63582B461334A823008AF599 /* DiskIIOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B0B1334A822008AF599 /* DiskIIOutlineView.m */; };
+		63582B471334A823008AF599 /* GraphicsBrowseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B0D1334A822008AF599 /* GraphicsBrowseController.m */; };
+		63582B481334A823008AF599 /* MediaMenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B0F1334A822008AF599 /* MediaMenuDelegate.m */; };
+		63582B491334A823008AF599 /* MediaDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B111334A822008AF599 /* MediaDevice.m */; };
+		63582B4A1334A823008AF599 /* BlockStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B131334A822008AF599 /* BlockStorage.m */; };
+		63582B4B1334A823008AF599 /* MediaPartitionMenuDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B151334A822008AF599 /* MediaPartitionMenuDelegate.m */; };
+		63582B4C1334A823008AF599 /* Volume.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B171334A822008AF599 /* Volume.m */; };
+		63582B4D1334A823008AF599 /* PDAsD3BlockMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B191334A822008AF599 /* PDAsD3BlockMapping.m */; };
+		63582B4E1334A823008AF599 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B1B1334A822008AF599 /* PreferencesWindowController.m */; };
+		63582B4F1334A823008AF599 /* Error.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B1D1334A822008AF599 /* Error.m */; };
+		63582B501334A823008AF599 /* DiskImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B1F1334A822008AF599 /* DiskImageController.m */; };
+		63582B511334A823008AF599 /* NewDiskImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B211334A822008AF599 /* NewDiskImageController.m */; };
+		63582B6B1334B2DB008AF599 /* prodos.boot in Resources */ = {isa = PBXBuildFile; fileRef = 63582B591334B2DA008AF599 /* prodos.boot */; };
+		63582B751334B2DB008AF599 /* disk.icns in Resources */ = {isa = PBXBuildFile; fileRef = 63582B661334B2DB008AF599 /* disk.icns */; };
+		63582B761334B2DB008AF599 /* drive.icns in Resources */ = {isa = PBXBuildFile; fileRef = 63582B671334B2DB008AF599 /* drive.icns */; };
+		63582B7A1334B471008AF599 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63582B791334B471008AF599 /* IOKit.framework */; };
+		63582B891334BA46008AF599 /* DiskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B801334BA26008AF599 /* DiskImage.m */; };
+		63582B8A1334BA46008AF599 /* ProDOSWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B821334BA2C008AF599 /* ProDOSWindowController.m */; };
+		63582B8B1334BA46008AF599 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B841334BA35008AF599 /* AppDelegate.m */; };
+		63582B8C1334BA46008AF599 /* PDDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B861334BA40008AF599 /* PDDirectory.m */; };
+		636A54901334BB31009C4AE1 /* DOS3xImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 636A548D1334BB31009C4AE1 /* DOS3xImage.m */; };
+		636A54911334BB31009C4AE1 /* ProDOSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 636A548F1334BB31009C4AE1 /* ProDOSImage.m */; };
+		636A54971334BD59009C4AE1 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 636A54961334BD59009C4AE1 /* README.markdown */; };
+		636A54981334BE16009C4AE1 /* DOS3xWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636A549A1334BE16009C4AE1 /* DOS3xWindow.xib */; };
+		636A549B1334BE34009C4AE1 /* ProDOSWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636A549D1334BE34009C4AE1 /* ProDOSWindow.xib */; };
+		636A549E1334BE4A009C4AE1 /* NewDiskImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636A54A01334BE4A009C4AE1 /* NewDiskImage.xib */; };
+		636A54A11334BE68009C4AE1 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636A54A31334BE68009C4AE1 /* PreferencesWindow.xib */; };
+		636A54A41334BE71009C4AE1 /* FileBrowse.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636A54A61334BE71009C4AE1 /* FileBrowse.xib */; };
+		636A54A71334BE7E009C4AE1 /* ProDOSInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636A54A91334BE7E009C4AE1 /* ProDOSInfoWindow.xib */; };
+		636A54AA1334BE86009C4AE1 /* DOS3xInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636A54AC1334BE86009C4AE1 /* DOS3xInfoWindow.xib */; };
+		636A54AD1334BE8F009C4AE1 /* GraphicsBrowse.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636A54AF1334BE8F009C4AE1 /* GraphicsBrowse.xib */; };
+		636A54B01334BE97009C4AE1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636A54B21334BE97009C4AE1 /* MainMenu.xib */; };
+		636A54B31334BEA8009C4AE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 636A54B51334BEA8009C4AE1 /* Localizable.strings */; };
+		636A54C21334C566009C4AE1 /* Ex Libris Help in Resources */ = {isa = PBXBuildFile; fileRef = 636A54C11334C566009C4AE1 /* Ex Libris Help */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,21 +96,130 @@
 		63582A8E1334A581008AF599 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		63582A8F1334A581008AF599 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		63582A901334A581008AF599 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		63582A931334A581008AF599 /* ExLibris-Info.plist */ = {isa = PBXFileReference; path = "ExLibris-Info.plist"; sourceTree = "<group>"; };
+		63582A931334A581008AF599 /* ExLibris-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExLibris-Info.plist"; sourceTree = "<group>"; };
 		63582A951334A581008AF599 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		63582A971334A581008AF599 /* ExLibris-Prefix.pch */ = {isa = PBXFileReference; path = "ExLibris-Prefix.pch"; sourceTree = "<group>"; };
+		63582A971334A581008AF599 /* ExLibris-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExLibris-Prefix.pch"; sourceTree = "<group>"; };
 		63582A981334A581008AF599 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		63582A9B1334A581008AF599 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		63582A9D1334A581008AF599 /* Story.h */ = {isa = PBXFileReference; path = Story.h; sourceTree = "<group>"; };
-		63582A9E1334A581008AF599 /* Story.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Story.m; sourceTree = "<group>"; };
-		63582AA11334A581008AF599 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Story.xib; sourceTree = "<group>"; };
-		63582AA41334A582008AF599 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		63582AAB1334A582008AF599 /* ExLibrisTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExLibrisTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		63582AB11334A582008AF599 /* ExLibrisTests-Info.plist */ = {isa = PBXFileReference; path = "ExLibrisTests-Info.plist"; sourceTree = "<group>"; };
+		63582AB11334A582008AF599 /* ExLibrisTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExLibrisTests-Info.plist"; sourceTree = "<group>"; };
 		63582AB31334A582008AF599 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		63582AB51334A582008AF599 /* ExLibrisTests-Prefix.pch */ = {isa = PBXFileReference; path = "ExLibrisTests-Prefix.pch"; sourceTree = "<group>"; };
+		63582AB51334A582008AF599 /* ExLibrisTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExLibrisTests-Prefix.pch"; sourceTree = "<group>"; };
 		63582AB61334A582008AF599 /* ExLibrisTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExLibrisTests.h; sourceTree = "<group>"; };
 		63582AB81334A582008AF599 /* ExLibrisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExLibrisTests.m; sourceTree = "<group>"; };
+		63582ACE1334A822008AF599 /* PDDirectoryBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDirectoryBlock.h; sourceTree = "<group>"; };
+		63582ACF1334A822008AF599 /* PDDirectoryBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDirectoryBlock.m; sourceTree = "<group>"; };
+		63582AD01334A822008AF599 /* PDEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDEntry.h; sourceTree = "<group>"; };
+		63582AD11334A822008AF599 /* PDEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDEntry.m; sourceTree = "<group>"; };
+		63582AD21334A822008AF599 /* PDFileEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFileEntry.h; sourceTree = "<group>"; };
+		63582AD31334A822008AF599 /* PDFileEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFileEntry.m; sourceTree = "<group>"; };
+		63582AD41334A822008AF599 /* PDDirectoryHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDirectoryHeader.h; sourceTree = "<group>"; };
+		63582AD51334A822008AF599 /* PDDirectoryHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDirectoryHeader.m; sourceTree = "<group>"; };
+		63582AD61334A822008AF599 /* DiskImageHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskImageHeader.h; sourceTree = "<group>"; };
+		63582AD71334A822008AF599 /* DiskImageHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiskImageHeader.m; sourceTree = "<group>"; };
+		63582AD81334A822008AF599 /* ProDOSInfoWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProDOSInfoWindowController.h; sourceTree = "<group>"; };
+		63582AD91334A822008AF599 /* ProDOSInfoWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProDOSInfoWindowController.m; sourceTree = "<group>"; };
+		63582ADA1334A822008AF599 /* FileBrowseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileBrowseController.h; sourceTree = "<group>"; };
+		63582ADB1334A822008AF599 /* FileBrowseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileBrowseController.m; sourceTree = "<group>"; };
+		63582ADC1334A822008AF599 /* Applesoft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Applesoft.h; sourceTree = "<group>"; };
+		63582ADD1334A822008AF599 /* Applesoft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Applesoft.m; sourceTree = "<group>"; };
+		63582ADE1334A822008AF599 /* Disassembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Disassembler.h; sourceTree = "<group>"; };
+		63582ADF1334A822008AF599 /* Disassembler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Disassembler.m; sourceTree = "<group>"; };
+		63582AE01334A822008AF599 /* ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceManager.h; sourceTree = "<group>"; };
+		63582AE11334A822008AF599 /* ResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceManager.m; sourceTree = "<group>"; };
+		63582AE21334A822008AF599 /* BinaryII.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryII.h; sourceTree = "<group>"; };
+		63582AE31334A822008AF599 /* BinaryII.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinaryII.m; sourceTree = "<group>"; };
+		63582AE41334A822008AF599 /* PDVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDVolume.h; sourceTree = "<group>"; };
+		63582AE51334A822008AF599 /* PDVolume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDVolume.m; sourceTree = "<group>"; };
+		63582AE61334A822008AF599 /* PDFileType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFileType.h; sourceTree = "<group>"; };
+		63582AE71334A822008AF599 /* PDFileType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFileType.m; sourceTree = "<group>"; };
+		63582AE81334A822008AF599 /* SYHexFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHexFormatter.h; sourceTree = "<group>"; };
+		63582AE91334A822008AF599 /* SYHexFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHexFormatter.m; sourceTree = "<group>"; };
+		63582AEA1334A822008AF599 /* NSString+SynchromaKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SynchromaKit.h"; sourceTree = "<group>"; };
+		63582AEB1334A822008AF599 /* NSString+SynchromaKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SynchromaKit.m"; sourceTree = "<group>"; };
+		63582AEC1334A822008AF599 /* PDFileNameFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFileNameFormatter.h; sourceTree = "<group>"; };
+		63582AED1334A822008AF599 /* PDFileNameFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFileNameFormatter.m; sourceTree = "<group>"; };
+		63582AEE1334A822008AF599 /* PDFileTypeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFileTypeFormatter.h; sourceTree = "<group>"; };
+		63582AEF1334A822008AF599 /* PDFileTypeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFileTypeFormatter.m; sourceTree = "<group>"; };
+		63582AF01334A822008AF599 /* PDAccessFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDAccessFormatter.h; sourceTree = "<group>"; };
+		63582AF11334A822008AF599 /* PDAccessFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDAccessFormatter.m; sourceTree = "<group>"; };
+		63582AF21334A822008AF599 /* PDEntry+DiskII.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PDEntry+DiskII.h"; sourceTree = "<group>"; };
+		63582AF31334A822008AF599 /* PDEntry+DiskII.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PDEntry+DiskII.m"; sourceTree = "<group>"; };
+		63582AF41334A822008AF599 /* PDFileEntry+DiskII.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PDFileEntry+DiskII.h"; sourceTree = "<group>"; };
+		63582AF51334A822008AF599 /* PDFileEntry+DiskII.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PDFileEntry+DiskII.m"; sourceTree = "<group>"; };
+		63582AF61334A822008AF599 /* D3Volume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = D3Volume.h; sourceTree = "<group>"; };
+		63582AF71334A822008AF599 /* D3Volume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = D3Volume.m; sourceTree = "<group>"; };
+		63582AF81334A822008AF599 /* D3VTOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = D3VTOC.h; sourceTree = "<group>"; };
+		63582AF91334A822008AF599 /* D3VTOC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = D3VTOC.m; sourceTree = "<group>"; };
+		63582AFA1334A822008AF599 /* D3Catalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = D3Catalog.h; sourceTree = "<group>"; };
+		63582AFB1334A822008AF599 /* D3Catalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = D3Catalog.m; sourceTree = "<group>"; };
+		63582AFC1334A822008AF599 /* D3FileEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = D3FileEntry.h; sourceTree = "<group>"; };
+		63582AFD1334A822008AF599 /* D3FileEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = D3FileEntry.m; sourceTree = "<group>"; };
+		63582AFE1334A822008AF599 /* DOS3xWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOS3xWindowController.h; sourceTree = "<group>"; };
+		63582AFF1334A822008AF599 /* DOS3xWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOS3xWindowController.m; sourceTree = "<group>"; };
+		63582B001334A822008AF599 /* D3FileTypeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = D3FileTypeFormatter.h; sourceTree = "<group>"; };
+		63582B011334A822008AF599 /* D3FileTypeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = D3FileTypeFormatter.m; sourceTree = "<group>"; };
+		63582B021334A822008AF599 /* D3TrackSector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = D3TrackSector.h; sourceTree = "<group>"; };
+		63582B031334A822008AF599 /* D3TrackSector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = D3TrackSector.m; sourceTree = "<group>"; };
+		63582B041334A822008AF599 /* DOS3xInfoWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOS3xInfoWindowController.h; sourceTree = "<group>"; };
+		63582B051334A822008AF599 /* DOS3xInfoWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOS3xInfoWindowController.m; sourceTree = "<group>"; };
+		63582B061334A822008AF599 /* D3FileNameFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = D3FileNameFormatter.h; sourceTree = "<group>"; };
+		63582B071334A822008AF599 /* D3FileNameFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = D3FileNameFormatter.m; sourceTree = "<group>"; };
+		63582B081334A822008AF599 /* DiskIITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskIITableView.h; sourceTree = "<group>"; };
+		63582B091334A822008AF599 /* DiskIITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiskIITableView.m; sourceTree = "<group>"; };
+		63582B0A1334A822008AF599 /* DiskIIOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskIIOutlineView.h; sourceTree = "<group>"; };
+		63582B0B1334A822008AF599 /* DiskIIOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiskIIOutlineView.m; sourceTree = "<group>"; };
+		63582B0C1334A822008AF599 /* GraphicsBrowseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsBrowseController.h; sourceTree = "<group>"; };
+		63582B0D1334A822008AF599 /* GraphicsBrowseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicsBrowseController.m; sourceTree = "<group>"; };
+		63582B0E1334A822008AF599 /* MediaMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaMenuDelegate.h; sourceTree = "<group>"; };
+		63582B0F1334A822008AF599 /* MediaMenuDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaMenuDelegate.m; sourceTree = "<group>"; };
+		63582B101334A822008AF599 /* MediaDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaDevice.h; sourceTree = "<group>"; };
+		63582B111334A822008AF599 /* MediaDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaDevice.m; sourceTree = "<group>"; };
+		63582B121334A822008AF599 /* BlockStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockStorage.h; sourceTree = "<group>"; };
+		63582B131334A822008AF599 /* BlockStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockStorage.m; sourceTree = "<group>"; };
+		63582B141334A822008AF599 /* MediaPartitionMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaPartitionMenuDelegate.h; sourceTree = "<group>"; };
+		63582B151334A822008AF599 /* MediaPartitionMenuDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaPartitionMenuDelegate.m; sourceTree = "<group>"; };
+		63582B161334A822008AF599 /* Volume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Volume.h; sourceTree = "<group>"; };
+		63582B171334A822008AF599 /* Volume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Volume.m; sourceTree = "<group>"; };
+		63582B181334A822008AF599 /* PDAsD3BlockMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDAsD3BlockMapping.h; sourceTree = "<group>"; };
+		63582B191334A822008AF599 /* PDAsD3BlockMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDAsD3BlockMapping.m; sourceTree = "<group>"; };
+		63582B1A1334A822008AF599 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
+		63582B1B1334A822008AF599 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
+		63582B1C1334A822008AF599 /* Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
+		63582B1D1334A822008AF599 /* Error.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Error.m; sourceTree = "<group>"; };
+		63582B1E1334A822008AF599 /* DiskImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskImageController.h; sourceTree = "<group>"; };
+		63582B1F1334A822008AF599 /* DiskImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiskImageController.m; sourceTree = "<group>"; };
+		63582B201334A822008AF599 /* NewDiskImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDiskImageController.h; sourceTree = "<group>"; };
+		63582B211334A822008AF599 /* NewDiskImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDiskImageController.m; sourceTree = "<group>"; };
+		63582B521334B219008AF599 /* DiskII.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskII.h; sourceTree = "<group>"; };
+		63582B531334B219008AF599 /* ExLibrisErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExLibrisErrors.h; sourceTree = "<group>"; };
+		63582B591334B2DA008AF599 /* prodos.boot */ = {isa = PBXFileReference; lastKnownFileType = file; path = prodos.boot; sourceTree = "<group>"; };
+		63582B661334B2DB008AF599 /* disk.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = disk.icns; sourceTree = "<group>"; };
+		63582B671334B2DB008AF599 /* drive.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = drive.icns; sourceTree = "<group>"; };
+		63582B791334B471008AF599 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		63582B7F1334BA24008AF599 /* DiskImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskImage.h; sourceTree = "<group>"; };
+		63582B801334BA26008AF599 /* DiskImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiskImage.m; sourceTree = "<group>"; };
+		63582B811334BA29008AF599 /* ProDOSWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProDOSWindowController.h; sourceTree = "<group>"; };
+		63582B821334BA2C008AF599 /* ProDOSWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProDOSWindowController.m; sourceTree = "<group>"; };
+		63582B831334BA31008AF599 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		63582B841334BA35008AF599 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		63582B851334BA3B008AF599 /* PDDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDirectory.h; sourceTree = "<group>"; };
+		63582B861334BA40008AF599 /* PDDirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDirectory.m; sourceTree = "<group>"; };
+		636A548C1334BB31009C4AE1 /* DOS3xImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOS3xImage.h; sourceTree = "<group>"; };
+		636A548D1334BB31009C4AE1 /* DOS3xImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOS3xImage.m; sourceTree = "<group>"; };
+		636A548E1334BB31009C4AE1 /* ProDOSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProDOSImage.h; sourceTree = "<group>"; };
+		636A548F1334BB31009C4AE1 /* ProDOSImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProDOSImage.m; sourceTree = "<group>"; };
+		636A54961334BD59009C4AE1 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		636A54991334BE16009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DOS3xWindow.xib; sourceTree = "<group>"; };
+		636A549C1334BE34009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ProDOSWindow.xib; sourceTree = "<group>"; };
+		636A549F1334BE4A009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewDiskImage.xib; sourceTree = "<group>"; };
+		636A54A21334BE68009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
+		636A54A51334BE71009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FileBrowse.xib; sourceTree = "<group>"; };
+		636A54A81334BE7E009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ProDOSInfoWindow.xib; sourceTree = "<group>"; };
+		636A54AB1334BE86009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DOS3xInfoWindow.xib; sourceTree = "<group>"; };
+		636A54AE1334BE8F009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GraphicsBrowse.xib; sourceTree = "<group>"; };
+		636A54B11334BE97009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		636A54B41334BEA8009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		636A54C11334C566009C4AE1 /* Ex Libris Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Ex Libris Help"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63582A8C1334A581008AF599 /* Cocoa.framework in Frameworks */,
+				63582B7A1334B471008AF599 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +250,7 @@
 				63582AAF1334A582008AF599 /* ExLibrisTests */,
 				63582A8A1334A581008AF599 /* Frameworks */,
 				63582A881334A581008AF599 /* Products */,
+				636A54961334BD59009C4AE1 /* README.markdown */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				63582A8B1334A581008AF599 /* Cocoa.framework */,
+				63582B791334B471008AF599 /* IOKit.framework */,
 				63582A8D1334A581008AF599 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -114,10 +286,115 @@
 		63582A911334A581008AF599 /* ExLibris */ = {
 			isa = PBXGroup;
 			children = (
-				63582A9D1334A581008AF599 /* Story.h */,
-				63582A9E1334A581008AF599 /* Story.m */,
-				63582AA01334A581008AF599 /* Story.xib */,
-				63582AA31334A582008AF599 /* MainMenu.xib */,
+				636A54C11334C566009C4AE1 /* Ex Libris Help */,
+				636A548C1334BB31009C4AE1 /* DOS3xImage.h */,
+				636A548D1334BB31009C4AE1 /* DOS3xImage.m */,
+				636A548E1334BB31009C4AE1 /* ProDOSImage.h */,
+				636A548F1334BB31009C4AE1 /* ProDOSImage.m */,
+				63582B7F1334BA24008AF599 /* DiskImage.h */,
+				63582B801334BA26008AF599 /* DiskImage.m */,
+				63582B811334BA29008AF599 /* ProDOSWindowController.h */,
+				63582B821334BA2C008AF599 /* ProDOSWindowController.m */,
+				63582B831334BA31008AF599 /* AppDelegate.h */,
+				63582B841334BA35008AF599 /* AppDelegate.m */,
+				63582B851334BA3B008AF599 /* PDDirectory.h */,
+				63582B861334BA40008AF599 /* PDDirectory.m */,
+				636A549A1334BE16009C4AE1 /* DOS3xWindow.xib */,
+				636A549D1334BE34009C4AE1 /* ProDOSWindow.xib */,
+				636A54A01334BE4A009C4AE1 /* NewDiskImage.xib */,
+				63582B591334B2DA008AF599 /* prodos.boot */,
+				636A54A31334BE68009C4AE1 /* PreferencesWindow.xib */,
+				636A54A61334BE71009C4AE1 /* FileBrowse.xib */,
+				636A54A91334BE7E009C4AE1 /* ProDOSInfoWindow.xib */,
+				636A54AC1334BE86009C4AE1 /* DOS3xInfoWindow.xib */,
+				636A54AF1334BE8F009C4AE1 /* GraphicsBrowse.xib */,
+				636A54B21334BE97009C4AE1 /* MainMenu.xib */,
+				63582B661334B2DB008AF599 /* disk.icns */,
+				63582B671334B2DB008AF599 /* drive.icns */,
+				63582ACE1334A822008AF599 /* PDDirectoryBlock.h */,
+				63582ACF1334A822008AF599 /* PDDirectoryBlock.m */,
+				63582AD01334A822008AF599 /* PDEntry.h */,
+				63582AD11334A822008AF599 /* PDEntry.m */,
+				63582AD21334A822008AF599 /* PDFileEntry.h */,
+				63582AD31334A822008AF599 /* PDFileEntry.m */,
+				63582AD41334A822008AF599 /* PDDirectoryHeader.h */,
+				63582AD51334A822008AF599 /* PDDirectoryHeader.m */,
+				63582AD61334A822008AF599 /* DiskImageHeader.h */,
+				63582AD71334A822008AF599 /* DiskImageHeader.m */,
+				63582AD81334A822008AF599 /* ProDOSInfoWindowController.h */,
+				63582AD91334A822008AF599 /* ProDOSInfoWindowController.m */,
+				63582ADA1334A822008AF599 /* FileBrowseController.h */,
+				63582ADB1334A822008AF599 /* FileBrowseController.m */,
+				63582ADC1334A822008AF599 /* Applesoft.h */,
+				63582ADD1334A822008AF599 /* Applesoft.m */,
+				63582ADE1334A822008AF599 /* Disassembler.h */,
+				63582ADF1334A822008AF599 /* Disassembler.m */,
+				63582AE01334A822008AF599 /* ResourceManager.h */,
+				63582AE11334A822008AF599 /* ResourceManager.m */,
+				63582AE21334A822008AF599 /* BinaryII.h */,
+				63582AE31334A822008AF599 /* BinaryII.m */,
+				63582AE41334A822008AF599 /* PDVolume.h */,
+				63582AE51334A822008AF599 /* PDVolume.m */,
+				63582AE61334A822008AF599 /* PDFileType.h */,
+				63582AE71334A822008AF599 /* PDFileType.m */,
+				63582AE81334A822008AF599 /* SYHexFormatter.h */,
+				63582AE91334A822008AF599 /* SYHexFormatter.m */,
+				63582AEA1334A822008AF599 /* NSString+SynchromaKit.h */,
+				63582AEB1334A822008AF599 /* NSString+SynchromaKit.m */,
+				63582AEC1334A822008AF599 /* PDFileNameFormatter.h */,
+				63582AED1334A822008AF599 /* PDFileNameFormatter.m */,
+				63582AEE1334A822008AF599 /* PDFileTypeFormatter.h */,
+				63582AEF1334A822008AF599 /* PDFileTypeFormatter.m */,
+				63582AF01334A822008AF599 /* PDAccessFormatter.h */,
+				63582AF11334A822008AF599 /* PDAccessFormatter.m */,
+				63582AF21334A822008AF599 /* PDEntry+DiskII.h */,
+				63582AF31334A822008AF599 /* PDEntry+DiskII.m */,
+				63582AF41334A822008AF599 /* PDFileEntry+DiskII.h */,
+				63582AF51334A822008AF599 /* PDFileEntry+DiskII.m */,
+				63582AF61334A822008AF599 /* D3Volume.h */,
+				63582AF71334A822008AF599 /* D3Volume.m */,
+				63582AF81334A822008AF599 /* D3VTOC.h */,
+				63582AF91334A822008AF599 /* D3VTOC.m */,
+				63582AFA1334A822008AF599 /* D3Catalog.h */,
+				63582AFB1334A822008AF599 /* D3Catalog.m */,
+				63582AFC1334A822008AF599 /* D3FileEntry.h */,
+				63582AFD1334A822008AF599 /* D3FileEntry.m */,
+				63582AFE1334A822008AF599 /* DOS3xWindowController.h */,
+				63582AFF1334A822008AF599 /* DOS3xWindowController.m */,
+				63582B001334A822008AF599 /* D3FileTypeFormatter.h */,
+				63582B011334A822008AF599 /* D3FileTypeFormatter.m */,
+				63582B021334A822008AF599 /* D3TrackSector.h */,
+				63582B031334A822008AF599 /* D3TrackSector.m */,
+				63582B041334A822008AF599 /* DOS3xInfoWindowController.h */,
+				63582B051334A822008AF599 /* DOS3xInfoWindowController.m */,
+				63582B061334A822008AF599 /* D3FileNameFormatter.h */,
+				63582B071334A822008AF599 /* D3FileNameFormatter.m */,
+				63582B081334A822008AF599 /* DiskIITableView.h */,
+				63582B091334A822008AF599 /* DiskIITableView.m */,
+				63582B0A1334A822008AF599 /* DiskIIOutlineView.h */,
+				63582B0B1334A822008AF599 /* DiskIIOutlineView.m */,
+				63582B0C1334A822008AF599 /* GraphicsBrowseController.h */,
+				63582B0D1334A822008AF599 /* GraphicsBrowseController.m */,
+				63582B0E1334A822008AF599 /* MediaMenuDelegate.h */,
+				63582B0F1334A822008AF599 /* MediaMenuDelegate.m */,
+				63582B101334A822008AF599 /* MediaDevice.h */,
+				63582B111334A822008AF599 /* MediaDevice.m */,
+				63582B121334A822008AF599 /* BlockStorage.h */,
+				63582B131334A822008AF599 /* BlockStorage.m */,
+				63582B141334A822008AF599 /* MediaPartitionMenuDelegate.h */,
+				63582B151334A822008AF599 /* MediaPartitionMenuDelegate.m */,
+				63582B161334A822008AF599 /* Volume.h */,
+				63582B171334A822008AF599 /* Volume.m */,
+				63582B181334A822008AF599 /* PDAsD3BlockMapping.h */,
+				63582B191334A822008AF599 /* PDAsD3BlockMapping.m */,
+				63582B1A1334A822008AF599 /* PreferencesWindowController.h */,
+				63582B1B1334A822008AF599 /* PreferencesWindowController.m */,
+				63582B1C1334A822008AF599 /* Error.h */,
+				63582B1D1334A822008AF599 /* Error.m */,
+				63582B1E1334A822008AF599 /* DiskImageController.h */,
+				63582B1F1334A822008AF599 /* DiskImageController.m */,
+				63582B201334A822008AF599 /* NewDiskImageController.h */,
+				63582B211334A822008AF599 /* NewDiskImageController.m */,
 				63582A921334A581008AF599 /* Supporting Files */,
 			);
 			path = ExLibris;
@@ -126,11 +403,13 @@
 		63582A921334A581008AF599 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				636A54B51334BEA8009C4AE1 /* Localizable.strings */,
 				63582A931334A581008AF599 /* ExLibris-Info.plist */,
 				63582A941334A581008AF599 /* InfoPlist.strings */,
 				63582A971334A581008AF599 /* ExLibris-Prefix.pch */,
 				63582A981334A581008AF599 /* main.m */,
-				63582A9A1334A581008AF599 /* Credits.rtf */,
+				63582B521334B219008AF599 /* DiskII.h */,
+				63582B531334B219008AF599 /* ExLibrisErrors.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -226,9 +505,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				63582A961334A581008AF599 /* InfoPlist.strings in Resources */,
-				63582A9C1334A581008AF599 /* Credits.rtf in Resources */,
-				63582AA21334A581008AF599 /* Story.xib in Resources */,
-				63582AA51334A582008AF599 /* MainMenu.xib in Resources */,
+				636A54B31334BEA8009C4AE1 /* Localizable.strings in Resources */,
+				636A54981334BE16009C4AE1 /* DOS3xWindow.xib in Resources */,
+				636A549B1334BE34009C4AE1 /* ProDOSWindow.xib in Resources */,
+				636A549E1334BE4A009C4AE1 /* NewDiskImage.xib in Resources */,
+				63582B6B1334B2DB008AF599 /* prodos.boot in Resources */,
+				636A54A11334BE68009C4AE1 /* PreferencesWindow.xib in Resources */,
+				636A54A41334BE71009C4AE1 /* FileBrowse.xib in Resources */,
+				636A54A71334BE7E009C4AE1 /* ProDOSInfoWindow.xib in Resources */,
+				636A54AA1334BE86009C4AE1 /* DOS3xInfoWindow.xib in Resources */,
+				636A54B01334BE97009C4AE1 /* MainMenu.xib in Resources */,
+				63582B751334B2DB008AF599 /* disk.icns in Resources */,
+				63582B761334B2DB008AF599 /* drive.icns in Resources */,
+				636A54AD1334BE8F009C4AE1 /* GraphicsBrowse.xib in Resources */,
+				636A54971334BD59009C4AE1 /* README.markdown in Resources */,
+				636A54C21334C566009C4AE1 /* Ex Libris Help in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +556,54 @@
 			buildActionMask = 2147483647;
 			files = (
 				63582A991334A581008AF599 /* main.m in Sources */,
-				63582A9F1334A581008AF599 /* Story.m in Sources */,
+				63582B281334A822008AF599 /* PDDirectoryBlock.m in Sources */,
+				63582B291334A822008AF599 /* PDEntry.m in Sources */,
+				63582B2A1334A822008AF599 /* PDFileEntry.m in Sources */,
+				63582B2B1334A822008AF599 /* PDDirectoryHeader.m in Sources */,
+				63582B2C1334A822008AF599 /* DiskImageHeader.m in Sources */,
+				63582B2D1334A822008AF599 /* ProDOSInfoWindowController.m in Sources */,
+				63582B2E1334A822008AF599 /* FileBrowseController.m in Sources */,
+				63582B2F1334A822008AF599 /* Applesoft.m in Sources */,
+				63582B301334A822008AF599 /* Disassembler.m in Sources */,
+				63582B311334A823008AF599 /* ResourceManager.m in Sources */,
+				63582B321334A823008AF599 /* BinaryII.m in Sources */,
+				63582B331334A823008AF599 /* PDVolume.m in Sources */,
+				63582B341334A823008AF599 /* PDFileType.m in Sources */,
+				63582B351334A823008AF599 /* SYHexFormatter.m in Sources */,
+				63582B361334A823008AF599 /* NSString+SynchromaKit.m in Sources */,
+				63582B371334A823008AF599 /* PDFileNameFormatter.m in Sources */,
+				63582B381334A823008AF599 /* PDFileTypeFormatter.m in Sources */,
+				63582B391334A823008AF599 /* PDAccessFormatter.m in Sources */,
+				63582B3A1334A823008AF599 /* PDEntry+DiskII.m in Sources */,
+				63582B3B1334A823008AF599 /* PDFileEntry+DiskII.m in Sources */,
+				63582B3C1334A823008AF599 /* D3Volume.m in Sources */,
+				63582B3D1334A823008AF599 /* D3VTOC.m in Sources */,
+				63582B3E1334A823008AF599 /* D3Catalog.m in Sources */,
+				63582B3F1334A823008AF599 /* D3FileEntry.m in Sources */,
+				63582B401334A823008AF599 /* DOS3xWindowController.m in Sources */,
+				63582B411334A823008AF599 /* D3FileTypeFormatter.m in Sources */,
+				63582B421334A823008AF599 /* D3TrackSector.m in Sources */,
+				63582B431334A823008AF599 /* DOS3xInfoWindowController.m in Sources */,
+				63582B441334A823008AF599 /* D3FileNameFormatter.m in Sources */,
+				63582B451334A823008AF599 /* DiskIITableView.m in Sources */,
+				63582B461334A823008AF599 /* DiskIIOutlineView.m in Sources */,
+				63582B471334A823008AF599 /* GraphicsBrowseController.m in Sources */,
+				63582B481334A823008AF599 /* MediaMenuDelegate.m in Sources */,
+				63582B491334A823008AF599 /* MediaDevice.m in Sources */,
+				63582B4A1334A823008AF599 /* BlockStorage.m in Sources */,
+				63582B4B1334A823008AF599 /* MediaPartitionMenuDelegate.m in Sources */,
+				63582B4C1334A823008AF599 /* Volume.m in Sources */,
+				63582B4D1334A823008AF599 /* PDAsD3BlockMapping.m in Sources */,
+				63582B4E1334A823008AF599 /* PreferencesWindowController.m in Sources */,
+				63582B4F1334A823008AF599 /* Error.m in Sources */,
+				63582B501334A823008AF599 /* DiskImageController.m in Sources */,
+				63582B511334A823008AF599 /* NewDiskImageController.m in Sources */,
+				63582B891334BA46008AF599 /* DiskImage.m in Sources */,
+				63582B8A1334BA46008AF599 /* ProDOSWindowController.m in Sources */,
+				63582B8B1334BA46008AF599 /* AppDelegate.m in Sources */,
+				63582B8C1334BA46008AF599 /* PDDirectory.m in Sources */,
+				636A54901334BB31009C4AE1 /* DOS3xImage.m in Sources */,
+				636A54911334BB31009C4AE1 /* ProDOSImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,36 +634,92 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		63582A9A1334A581008AF599 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63582A9B1334A581008AF599 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		63582AA01334A581008AF599 /* Story.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63582AA11334A581008AF599 /* en */,
-			);
-			name = Story.xib;
-			sourceTree = "<group>";
-		};
-		63582AA31334A582008AF599 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63582AA41334A582008AF599 /* en */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		63582AB21334A582008AF599 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				63582AB31334A582008AF599 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		636A549A1334BE16009C4AE1 /* DOS3xWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636A54991334BE16009C4AE1 /* en */,
+			);
+			name = DOS3xWindow.xib;
+			sourceTree = "<group>";
+		};
+		636A549D1334BE34009C4AE1 /* ProDOSWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636A549C1334BE34009C4AE1 /* en */,
+			);
+			name = ProDOSWindow.xib;
+			sourceTree = "<group>";
+		};
+		636A54A01334BE4A009C4AE1 /* NewDiskImage.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636A549F1334BE4A009C4AE1 /* en */,
+			);
+			name = NewDiskImage.xib;
+			sourceTree = "<group>";
+		};
+		636A54A31334BE68009C4AE1 /* PreferencesWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636A54A21334BE68009C4AE1 /* en */,
+			);
+			name = PreferencesWindow.xib;
+			sourceTree = "<group>";
+		};
+		636A54A61334BE71009C4AE1 /* FileBrowse.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636A54A51334BE71009C4AE1 /* en */,
+			);
+			name = FileBrowse.xib;
+			sourceTree = "<group>";
+		};
+		636A54A91334BE7E009C4AE1 /* ProDOSInfoWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636A54A81334BE7E009C4AE1 /* en */,
+			);
+			name = ProDOSInfoWindow.xib;
+			sourceTree = "<group>";
+		};
+		636A54AC1334BE86009C4AE1 /* DOS3xInfoWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636A54AB1334BE86009C4AE1 /* en */,
+			);
+			name = DOS3xInfoWindow.xib;
+			sourceTree = "<group>";
+		};
+		636A54AF1334BE8F009C4AE1 /* GraphicsBrowse.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636A54AE1334BE8F009C4AE1 /* en */,
+			);
+			name = GraphicsBrowse.xib;
+			sourceTree = "<group>";
+		};
+		636A54B21334BE97009C4AE1 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636A54B11334BE97009C4AE1 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		636A54B51334BEA8009C4AE1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636A54B41334BEA8009C4AE1 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -456,6 +850,7 @@
 				63582ABE1334A582008AF599 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63582ABF1334A582008AF599 /* Build configuration list for PBXNativeTarget "ExLibrisTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +859,7 @@
 				63582AC11334A582008AF599 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
