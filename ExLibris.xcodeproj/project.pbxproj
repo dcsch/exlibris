@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		63582A8C1334A581008AF599 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63582A8B1334A581008AF599 /* Cocoa.framework */; };
+		63582A961334A581008AF599 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63582A941334A581008AF599 /* InfoPlist.strings */; };
+		63582A991334A581008AF599 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582A981334A581008AF599 /* main.m */; };
+		63582A9C1334A581008AF599 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 63582A9A1334A581008AF599 /* Credits.rtf */; };
+		63582A9F1334A581008AF599 /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582A9E1334A581008AF599 /* Story.m */; };
+		63582AA21334A581008AF599 /* Story.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63582AA01334A581008AF599 /* Story.xib */; };
+		63582AA51334A582008AF599 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63582AA31334A582008AF599 /* MainMenu.xib */; };
+		63582AAC1334A582008AF599 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63582A8B1334A581008AF599 /* Cocoa.framework */; };
+		63582AB41334A582008AF599 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63582AB21334A582008AF599 /* InfoPlist.strings */; };
+		63582AB71334A582008AF599 /* ExLibrisTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 63582AB61334A582008AF599 /* ExLibrisTests.h */; };
+		63582AB91334A582008AF599 /* ExLibrisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AB81334A582008AF599 /* ExLibrisTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		63582AAD1334A582008AF599 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63582A7E1334A581008AF599 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63582A861334A581008AF599;
+			remoteInfo = ExLibris;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		63582A871334A581008AF599 /* ExLibris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExLibris.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63582A8B1334A581008AF599 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		63582A8E1334A581008AF599 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		63582A8F1334A581008AF599 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		63582A901334A581008AF599 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		63582A931334A581008AF599 /* ExLibris-Info.plist */ = {isa = PBXFileReference; path = "ExLibris-Info.plist"; sourceTree = "<group>"; };
+		63582A951334A581008AF599 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		63582A971334A581008AF599 /* ExLibris-Prefix.pch */ = {isa = PBXFileReference; path = "ExLibris-Prefix.pch"; sourceTree = "<group>"; };
+		63582A981334A581008AF599 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		63582A9B1334A581008AF599 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		63582A9D1334A581008AF599 /* Story.h */ = {isa = PBXFileReference; path = Story.h; sourceTree = "<group>"; };
+		63582A9E1334A581008AF599 /* Story.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Story.m; sourceTree = "<group>"; };
+		63582AA11334A581008AF599 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Story.xib; sourceTree = "<group>"; };
+		63582AA41334A582008AF599 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		63582AAB1334A582008AF599 /* ExLibrisTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExLibrisTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63582AB11334A582008AF599 /* ExLibrisTests-Info.plist */ = {isa = PBXFileReference; path = "ExLibrisTests-Info.plist"; sourceTree = "<group>"; };
+		63582AB31334A582008AF599 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		63582AB51334A582008AF599 /* ExLibrisTests-Prefix.pch */ = {isa = PBXFileReference; path = "ExLibrisTests-Prefix.pch"; sourceTree = "<group>"; };
+		63582AB61334A582008AF599 /* ExLibrisTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExLibrisTests.h; sourceTree = "<group>"; };
+		63582AB81334A582008AF599 /* ExLibrisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExLibrisTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63582A841334A581008AF599 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63582A8C1334A581008AF599 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63582AA71334A582008AF599 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63582AAC1334A582008AF599 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		63582A7C1334A581008AF599 = {
+			isa = PBXGroup;
+			children = (
+				63582A911334A581008AF599 /* ExLibris */,
+				63582AAF1334A582008AF599 /* ExLibrisTests */,
+				63582A8A1334A581008AF599 /* Frameworks */,
+				63582A881334A581008AF599 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		63582A881334A581008AF599 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63582A871334A581008AF599 /* ExLibris.app */,
+				63582AAB1334A582008AF599 /* ExLibrisTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63582A8A1334A581008AF599 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				63582A8B1334A581008AF599 /* Cocoa.framework */,
+				63582A8D1334A581008AF599 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		63582A8D1334A581008AF599 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				63582A8E1334A581008AF599 /* AppKit.framework */,
+				63582A8F1334A581008AF599 /* CoreData.framework */,
+				63582A901334A581008AF599 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		63582A911334A581008AF599 /* ExLibris */ = {
+			isa = PBXGroup;
+			children = (
+				63582A9D1334A581008AF599 /* Story.h */,
+				63582A9E1334A581008AF599 /* Story.m */,
+				63582AA01334A581008AF599 /* Story.xib */,
+				63582AA31334A582008AF599 /* MainMenu.xib */,
+				63582A921334A581008AF599 /* Supporting Files */,
+			);
+			path = ExLibris;
+			sourceTree = "<group>";
+		};
+		63582A921334A581008AF599 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63582A931334A581008AF599 /* ExLibris-Info.plist */,
+				63582A941334A581008AF599 /* InfoPlist.strings */,
+				63582A971334A581008AF599 /* ExLibris-Prefix.pch */,
+				63582A981334A581008AF599 /* main.m */,
+				63582A9A1334A581008AF599 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63582AAF1334A582008AF599 /* ExLibrisTests */ = {
+			isa = PBXGroup;
+			children = (
+				63582AB61334A582008AF599 /* ExLibrisTests.h */,
+				63582AB81334A582008AF599 /* ExLibrisTests.m */,
+				63582AB01334A582008AF599 /* Supporting Files */,
+			);
+			path = ExLibrisTests;
+			sourceTree = "<group>";
+		};
+		63582AB01334A582008AF599 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63582AB11334A582008AF599 /* ExLibrisTests-Info.plist */,
+				63582AB21334A582008AF599 /* InfoPlist.strings */,
+				63582AB51334A582008AF599 /* ExLibrisTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63582A861334A581008AF599 /* ExLibris */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63582ABC1334A582008AF599 /* Build configuration list for PBXNativeTarget "ExLibris" */;
+			buildPhases = (
+				63582A831334A581008AF599 /* Sources */,
+				63582A841334A581008AF599 /* Frameworks */,
+				63582A851334A581008AF599 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExLibris;
+			productName = ExLibris;
+			productReference = 63582A871334A581008AF599 /* ExLibris.app */;
+			productType = "com.apple.product-type.application";
+		};
+		63582AAA1334A582008AF599 /* ExLibrisTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63582ABF1334A582008AF599 /* Build configuration list for PBXNativeTarget "ExLibrisTests" */;
+			buildPhases = (
+				63582AA61334A582008AF599 /* Sources */,
+				63582AA71334A582008AF599 /* Frameworks */,
+				63582AA81334A582008AF599 /* Resources */,
+				63582AA91334A582008AF599 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63582AAE1334A582008AF599 /* PBXTargetDependency */,
+			);
+			name = ExLibrisTests;
+			productName = ExLibrisTests;
+			productReference = 63582AAB1334A582008AF599 /* ExLibrisTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		63582A7E1334A581008AF599 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Synchroma Pty Ltd";
+			};
+			buildConfigurationList = 63582A811334A581008AF599 /* Build configuration list for PBXProject "ExLibris" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 63582A7C1334A581008AF599;
+			productRefGroup = 63582A881334A581008AF599 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63582A861334A581008AF599 /* ExLibris */,
+				63582AAA1334A582008AF599 /* ExLibrisTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		63582A851334A581008AF599 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63582A961334A581008AF599 /* InfoPlist.strings in Resources */,
+				63582A9C1334A581008AF599 /* Credits.rtf in Resources */,
+				63582AA21334A581008AF599 /* Story.xib in Resources */,
+				63582AA51334A582008AF599 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63582AA81334A582008AF599 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63582AB41334A582008AF599 /* InfoPlist.strings in Resources */,
+				63582AB71334A582008AF599 /* ExLibrisTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		63582AA91334A582008AF599 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		63582A831334A581008AF599 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63582A991334A581008AF599 /* main.m in Sources */,
+				63582A9F1334A581008AF599 /* Story.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63582AA61334A582008AF599 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63582AB91334A582008AF599 /* ExLibrisTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		63582AAE1334A582008AF599 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63582A861334A581008AF599 /* ExLibris */;
+			targetProxy = 63582AAD1334A582008AF599 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		63582A941334A581008AF599 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63582A951334A581008AF599 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		63582A9A1334A581008AF599 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63582A9B1334A581008AF599 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		63582AA01334A581008AF599 /* Story.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63582AA11334A581008AF599 /* en */,
+			);
+			name = Story.xib;
+			sourceTree = "<group>";
+		};
+		63582AA31334A582008AF599 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63582AA41334A582008AF599 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		63582AB21334A582008AF599 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63582AB31334A582008AF599 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		63582ABA1334A582008AF599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		63582ABB1334A582008AF599 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		63582ABD1334A582008AF599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExLibris/ExLibris-Prefix.pch";
+				INFOPLIST_FILE = "ExLibris/ExLibris-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		63582ABE1334A582008AF599 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExLibris/ExLibris-Prefix.pch";
+				INFOPLIST_FILE = "ExLibris/ExLibris-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		63582AC01334A582008AF599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ExLibris.app/Contents/MacOS/ExLibris";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExLibrisTests/ExLibrisTests-Prefix.pch";
+				INFOPLIST_FILE = "ExLibrisTests/ExLibrisTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		63582AC11334A582008AF599 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ExLibris.app/Contents/MacOS/ExLibris";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ExLibrisTests/ExLibrisTests-Prefix.pch";
+				INFOPLIST_FILE = "ExLibrisTests/ExLibrisTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63582A811334A581008AF599 /* Build configuration list for PBXProject "ExLibris" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63582ABA1334A582008AF599 /* Debug */,
+				63582ABB1334A582008AF599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63582ABC1334A582008AF599 /* Build configuration list for PBXNativeTarget "ExLibris" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63582ABD1334A582008AF599 /* Debug */,
+				63582ABE1334A582008AF599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		63582ABF1334A582008AF599 /* Build configuration list for PBXNativeTarget "ExLibrisTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63582AC01334A582008AF599 /* Debug */,
+				63582AC11334A582008AF599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 63582A7E1334A581008AF599 /* Project object */;
+}
