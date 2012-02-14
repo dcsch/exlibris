@@ -402,7 +402,7 @@ static void bitPos(NSUInteger blockNumber,
     NSData *blockData = [volumeBitmapBlocks objectAtIndex:blockIndex];
     const unsigned char *bytes = (const unsigned char *)blockData.bytes;
     unsigned char byte = bytes[byteIndex - kProDOSBlockSize * blockIndex];
-    return (byte >> bitIndex) & 1 == 1 ? YES : NO;
+    return ((byte >> bitIndex) & 1) == 1 ? YES : NO;
 }
 
 - (void)setBlockAvailable:(BOOL)available atIndex:(NSUInteger)blockNumber

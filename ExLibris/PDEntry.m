@@ -19,7 +19,7 @@ BOOL unpackDateAndTime(const unsigned char *data,
                        unsigned int *minute)
 {
     // ProDOS Tech Note 28 describes how to represent dates from 1940 to 2039
-    unsigned int y = data[1] >> 1;
+    int y = data[1] >> 1;
     if (40 <= y && y <= 99)
         *year = 1900 + y;
     else if (0 <= y && y <= 39)

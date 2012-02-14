@@ -10,7 +10,7 @@
 
 @class MediaDevice;
 
-@interface MediaPartitionMenuDelegate : NSObject
+@interface MediaPartitionMenuDelegate : NSObject <NSMenuDelegate>
 {
     MediaDevice *mediaDevice;
     NSUInteger partitionIndex;

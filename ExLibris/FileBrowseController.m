@@ -12,6 +12,8 @@
 #import "Disassembler.h"
 #import "ProDOSImage.h"
 #import "PDVolume.h"
+#import "PDEntry.h"
+#import "DiskII.h"
 
 @implementation FileBrowseController
 

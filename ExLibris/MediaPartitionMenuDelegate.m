@@ -28,6 +28,8 @@
     [super dealloc];
 }
 
+#pragma mark - NSMenuDelegate Methods
+
 - (int)numberOfItemsInMenu:(NSMenu *)menu
 {
     return mediaDevice.partitionCount;
@@ -44,6 +46,8 @@ shouldCancel:(BOOL)shouldCancel
     item.action = @selector(openPartition:);
     return YES;
 }
+
+#pragma mark - Actions
 
 - (IBAction)openPartition:(id)sender
 {

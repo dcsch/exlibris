@@ -246,13 +246,13 @@
             lseek(fd, pos, SEEK_SET);
             ssize_t bytesRead = read(fd, buf, sectorSize);
             
-            NSLog(@"Read block %d (sector %d) (%d bytes @ %d)", blockIndex, sector1, bytesRead, pos);
+            NSLog(@"Read block %d (sector %d) (%ld bytes @ %lld)", blockIndex, sector1, bytesRead, pos);
             
             pos = sectorSize * sector2 + partitionOffset;
             lseek(fd, pos, SEEK_SET);
             bytesRead = read(fd, buf + sectorSize, sectorSize);
             
-            NSLog(@"Read block %d (sector %d) (%d bytes @ %d)", blockIndex, sector2, bytesRead, pos);
+            NSLog(@"Read block %d (sector %d) (%ld bytes @ %lld)", blockIndex, sector2, bytesRead, pos);
         }
         else
         {
@@ -260,7 +260,7 @@
             lseek(fd, pos, SEEK_SET);
             ssize_t bytesRead = read(fd, buf, blockSize);
             
-            NSLog(@"Read block %d (%d bytes @ %d)", blockIndex, bytesRead, pos);
+            NSLog(@"Read block %d (%ld bytes @ %lld)", blockIndex, bytesRead, pos);
         }
 
         blockData = [NSMutableData dataWithBytes:buf length:blockSize];
@@ -315,7 +315,7 @@
         off_t pos = blockSize * blockIndex + partitionOffset;
         ssize_t bytesWritten = pwrite(fd, block.bytes, blockSize, pos);
         
-        NSLog(@"Write block %d (%d bytes @ %d)", blockIndex, bytesWritten, pos);
+        NSLog(@"Write block %d (%ld bytes @ %lld)", blockIndex, bytesWritten, pos);
     }
 
     [self close];

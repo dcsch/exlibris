@@ -479,6 +479,7 @@
 		63582A7E1334A581008AF599 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "Synchroma Pty Ltd";
 			};
 			buildConfigurationList = 63582A811334A581008AF599 /* Build configuration list for PBXProject "ExLibris" */;

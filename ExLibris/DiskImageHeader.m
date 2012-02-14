@@ -49,7 +49,7 @@
     return imageDataLength;
 }
 
-@synthesize imageDataLength;
-@synthesize imageDataOffset;
-@synthesize imageFormat;
+//@synthesize imageDataLength;
+//@synthesize imageDataOffset;
+//@synthesize imageFormat;
 @end

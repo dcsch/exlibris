@@ -320,8 +320,8 @@
     NSArray *blockIndicies = [volume allocateBlocks:blocksNeeded];
     NSLog(@"blockIndicies: %@", blockIndicies);
     
-    NSDictionary *fileInBlocks =
-        [PDDirectory createBlocks:blockIndicies forData:aData];
+//    NSDictionary *fileInBlocks =
+//        [PDDirectory createBlocks:blockIndicies forData:aData];
     
     return YES;
 }

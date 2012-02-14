@@ -21,7 +21,7 @@
 - (unsigned int)imageDataOffset;
 - (unsigned int)imageDataLength;
 
-@property (getter=imageDataLength) unsigned int imageDataLength;
-@property (getter=imageDataOffset) unsigned int imageDataOffset;
-@property (getter=imageFormat) unsigned int imageFormat;
+//@property (getter=imageDataLength) unsigned int imageDataLength;
+//@property (getter=imageDataOffset) unsigned int imageDataOffset;
+//@property (getter=imageFormat) unsigned int imageFormat;
 @end

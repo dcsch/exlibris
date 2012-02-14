@@ -10,6 +10,7 @@
 #import "PDDirectory.h"
 #import "PDDirectoryBlock.h"
 #import "PDFileType.h"
+#import "PDEntry.h"
 
 @implementation PDFileEntry
 

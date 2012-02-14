@@ -15,6 +15,13 @@ BOOL unpackDateAndTime(const unsigned char *data,
                        unsigned int *hour,
                        unsigned int *minute);
 
+BOOL packDateAndTime(unsigned char *data,
+                     int year,
+                     unsigned int month,
+                     unsigned int day,
+                     unsigned int hour,
+                     unsigned int minute);
+
 @class PDVolume;
 @class PDDirectory;
 
