@@ -290,18 +290,19 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
 
         if (directory)
         {
-//            // PDFileEntry needs to be backed by mutable data long enough for it
-//            // to be copied by the 'createFileWithEntry' method
-//            NSMutableData *mutableMetadata = [NSMutableData dataWithData:metadata];
-//            PDFileEntry *fileEntry = [[PDFileEntry alloc] initWithVolume:volume
-//                                                         parentDirectory:directory
-//                                                                   bytes:mutableMetadata.mutableBytes
-//                                                                  length:mutableMetadata.length];
-//            
-//            // Do the business
-//            [directory createFileWithEntry:fileEntry data:fileData];
-//
-//            [fileEntry release];
+            // PDFileEntry needs to be backed by mutable data long enough for it
+            // to be copied by the 'createFileWithEntry' method
+            NSMutableData *mutableMetadata = [NSMutableData dataWithData:metadata];
+            PDFileEntry *fileEntry = [[PDFileEntry alloc] initWithVolume:volume
+                                                         parentDirectory:directory
+                                                             parentEntry:nil
+                                                                   bytes:mutableMetadata.mutableBytes
+                                                                  length:mutableMetadata.length];
+            
+            // Do the business
+            [directory createFileWithEntry:fileEntry data:fileData];
+
+            [fileEntry release];
         }
     }
 }

@@ -278,11 +278,23 @@
     BOOL directorySpace = NO;
     for (PDDirectoryBlock *block in blocks)
     {
-        if (block.entries.count < block.entriesPerBlock)
+//        if (block.entries.count < block.entriesPerBlock)
+//        {
+//            directorySpace = YES;
+//            break;
+//        }
+        
+        for (PDEntry *entry in [block entries])
         {
-            directorySpace = YES;
-            break;
+            if ([entry storageType] == 0)
+            {
+                directorySpace = YES;
+                break;
+            }
         }
+        
+        if (directorySpace)
+            break;
     }
     
     if (!directorySpace)
@@ -320,8 +332,8 @@
     NSArray *blockIndicies = [volume allocateBlocks:blocksNeeded];
     NSLog(@"blockIndicies: %@", blockIndicies);
     
-//    NSDictionary *fileInBlocks =
-//        [PDDirectory createBlocks:blockIndicies forData:aData];
+    NSDictionary *fileInBlocks =
+        [PDDirectory createBlocks:blockIndicies forData:aData];
     
     return YES;
 }
