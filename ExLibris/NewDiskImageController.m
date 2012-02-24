@@ -12,9 +12,9 @@
 
 @interface NewDiskImageController (Private)
 
-- (void)openPanelDidEnd:(NSOpenPanel *)panel
-             returnCode:(int)returnCode
-            contextInfo:(void *)contextInfo;
+//- (void)openPanelDidEnd:(NSOpenPanel *)panel
+//             returnCode:(int)returnCode
+//            contextInfo:(void *)contextInfo;
 
 - (void)selectProDOS;
 
@@ -55,12 +55,18 @@
     openPanel.canChooseDirectories = YES;
     openPanel.canCreateDirectories = YES;
     openPanel.prompt = @"Choose";
-    [openPanel beginSheetForDirectory:nil
-                                 file:nil
-                       modalForWindow:self.window
-                        modalDelegate:self
-                       didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:)
-                          contextInfo:NULL];
+//    [openPanel beginSheetForDirectory:nil
+//                                 file:nil
+//                       modalForWindow:self.window
+//                        modalDelegate:self
+//                       didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:)
+//                          contextInfo:NULL];
+    
+    [openPanel beginSheetModalForWindow:[self window]
+                      completionHandler:^(NSInteger result) {
+        NSURL *dirName = [openPanel.URLs objectAtIndex:0];
+        locationComboBox.stringValue = [[dirName path] stringByAbbreviatingWithTildeInPath];
+    }];
 }
 
 - (IBAction)selectFileSystem:(id)sender
@@ -124,13 +130,13 @@
     [self.window performClose:self];
 }
 
-- (void)openPanelDidEnd:(NSOpenPanel *)panel
-             returnCode:(int)returnCode
-            contextInfo:(void *)contextInfo
-{
-    NSString *dirName = [openPanel.filenames objectAtIndex:0];
-    locationComboBox.stringValue = [dirName stringByAbbreviatingWithTildeInPath];
-}
+//- (void)openPanelDidEnd:(NSOpenPanel *)panel
+//             returnCode:(int)returnCode
+//            contextInfo:(void *)contextInfo
+//{
+//    NSURL *dirName = [openPanel.URLs objectAtIndex:0];
+//    locationComboBox.stringValue = [[dirName path] stringByAbbreviatingWithTildeInPath];
+//}
 
 - (void)selectProDOS
 {

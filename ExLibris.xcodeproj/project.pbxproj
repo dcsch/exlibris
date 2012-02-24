@@ -243,6 +243,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		634C30CA14F746380035FE82 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				636A549A1334BE16009C4AE1 /* DOS3xWindow.xib */,
+				636A549D1334BE34009C4AE1 /* ProDOSWindow.xib */,
+				636A54A01334BE4A009C4AE1 /* NewDiskImage.xib */,
+				636A54A31334BE68009C4AE1 /* PreferencesWindow.xib */,
+				636A54A61334BE71009C4AE1 /* FileBrowse.xib */,
+				636A54A91334BE7E009C4AE1 /* ProDOSInfoWindow.xib */,
+				636A54AC1334BE86009C4AE1 /* DOS3xInfoWindow.xib */,
+				636A54AF1334BE8F009C4AE1 /* GraphicsBrowse.xib */,
+				636A54B21334BE97009C4AE1 /* MainMenu.xib */,
+			);
+			name = XIBs;
+			sourceTree = "<group>";
+		};
+		634C30CB14F746590035FE82 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				63582B591334B2DA008AF599 /* prodos.boot */,
+				63582B661334B2DB008AF599 /* disk.icns */,
+				63582B671334B2DB008AF599 /* drive.icns */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		63582A7C1334A581008AF599 = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +312,8 @@
 		63582A911334A581008AF599 /* ExLibris */ = {
 			isa = PBXGroup;
 			children = (
+				634C30CA14F746380035FE82 /* XIBs */,
+				634C30CB14F746590035FE82 /* Resources */,
 				636A54C11334C566009C4AE1 /* Ex Libris Help */,
 				636A548C1334BB31009C4AE1 /* DOS3xImage.h */,
 				636A548D1334BB31009C4AE1 /* DOS3xImage.m */,
@@ -299,18 +327,6 @@
 				63582B841334BA35008AF599 /* AppDelegate.m */,
 				63582B851334BA3B008AF599 /* PDDirectory.h */,
 				63582B861334BA40008AF599 /* PDDirectory.m */,
-				636A549A1334BE16009C4AE1 /* DOS3xWindow.xib */,
-				636A549D1334BE34009C4AE1 /* ProDOSWindow.xib */,
-				636A54A01334BE4A009C4AE1 /* NewDiskImage.xib */,
-				63582B591334B2DA008AF599 /* prodos.boot */,
-				636A54A31334BE68009C4AE1 /* PreferencesWindow.xib */,
-				636A54A61334BE71009C4AE1 /* FileBrowse.xib */,
-				636A54A91334BE7E009C4AE1 /* ProDOSInfoWindow.xib */,
-				636A54AC1334BE86009C4AE1 /* DOS3xInfoWindow.xib */,
-				636A54AF1334BE8F009C4AE1 /* GraphicsBrowse.xib */,
-				636A54B21334BE97009C4AE1 /* MainMenu.xib */,
-				63582B661334B2DB008AF599 /* disk.icns */,
-				63582B671334B2DB008AF599 /* drive.icns */,
 				63582ACE1334A822008AF599 /* PDDirectoryBlock.h */,
 				63582ACF1334A822008AF599 /* PDDirectoryBlock.m */,
 				63582AD01334A822008AF599 /* PDEntry.h */,
@@ -479,7 +495,7 @@
 		63582A7E1334A581008AF599 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Synchroma Pty Ltd";
 			};
 			buildConfigurationList = 63582A811334A581008AF599 /* Build configuration list for PBXProject "ExLibris" */;

@@ -335,6 +335,13 @@
     NSDictionary *fileInBlocks =
         [PDDirectory createBlocks:blockIndicies forData:aData];
     
+    // Write the data to the volume's block storage
+    for (NSNumber *index in blockIndicies)
+    {
+        NSData *data = [fileInBlocks objectForKey:index];
+        [[volume blockStorage] setData:data forBlock:[index integerValue]];
+    }
+    
     return YES;
 }
 
