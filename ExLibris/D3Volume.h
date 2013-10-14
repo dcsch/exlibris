@@ -22,9 +22,9 @@
 
 @property(readonly) NSUInteger number;
 
-@property(retain, readonly) D3VTOC *vtoc;
+@property(strong, readonly) D3VTOC *vtoc;
 
-@property(retain, readonly) D3Catalog *catalog;
+@property(strong, readonly) D3Catalog *catalog;
 
 - (id)initWithContainer:(NSObject *)aContainer
            blockStorage:(BlockStorage *)aBlockStorage;

@@ -29,11 +29,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [path release];
-    [super dealloc];
-}
 
 //- (NSData *)partitionAtIndex:(NSUInteger)index
 //{
@@ -86,10 +81,10 @@
         IORegistryEntryCreateCFProperty(obj, CFSTR("BSD Name"), kCFAllocatorDefault, 0);
         CFNumberRef sizeRef =
         IORegistryEntryCreateCFProperty(obj, CFSTR("Size"), kCFAllocatorDefault, 0);
-        NSString *path = [NSString stringWithFormat:@"/dev/%@", (NSString *)nameRef];
+        NSString *path = [NSString stringWithFormat:@"/dev/%@", (__bridge NSString *)nameRef];
         [mediaDevices addObject:[[MediaDevice alloc] initWithDevicePath:path
-                                                                   size:[(NSNumber *)sizeRef unsignedIntegerValue]]];
-        NSLog(@"Found: %@", (NSString *)nameRef);
+                                                                   size:[(__bridge NSNumber *)sizeRef unsignedIntegerValue]]];
+        NSLog(@"Found: %@", (__bridge NSString *)nameRef);
         CFRelease(nameRef);
         CFRelease(sizeRef);
         

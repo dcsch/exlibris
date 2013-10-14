@@ -18,13 +18,13 @@
     PDFileType *fileType;
 }
 
-@property(retain) PDFileType *fileType;
+@property(strong) PDFileType *fileType;
 @property NSUInteger keyPointer;
 @property NSUInteger blocksUsed;
 @property NSUInteger eof;
 @property NSUInteger auxType;
-@property(retain) NSCalendarDate *lastMod;
+@property(strong) NSCalendarDate *lastMod;
 @property NSUInteger headerPointer;
-@property(retain, readonly) PDDirectory *directory;
+@property(strong, readonly) PDDirectory *directory;
 
 @end

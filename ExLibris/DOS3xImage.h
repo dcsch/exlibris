@@ -19,7 +19,7 @@
     BlockStorage *blockStorage;
 }
 
-@property(retain, readonly) D3Volume *volume;
+@property(strong, readonly) D3Volume *volume;
 
 //- (void)insertEntry:(PDEntry *)entry;
 //

@@ -54,23 +54,22 @@
         {
             PDDirectoryBlock *block;
             if (keyBlock)
-                block = [[[PDDirectoryBlock alloc] initWithVolume:volume
+                block = [[PDDirectoryBlock alloc] initWithVolume:volume
                                                         directory:self
                                                       blockNumber:blockNumber
                                                   entriesPerBlock:[keyBlock entriesPerBlock]
-                                                      entryLength:[keyBlock entryLength]] autorelease];
+                                                      entryLength:[keyBlock entryLength]];
             else
             {
-                block = [[[PDDirectoryBlock alloc] initWithVolume:volume
+                block = [[PDDirectoryBlock alloc] initWithVolume:volume
                                                         directory:self
-                                                      blockNumber:blockNumber] autorelease];
+                                                      blockNumber:blockNumber];
                 keyBlock = block;
             }
 
             if (block == nil)
             {
                 // Not a valid directory block (not a ProDOS volume?)
-                [self release];
                 return nil;
             }
             [blocks addObject:block];
@@ -89,19 +88,13 @@
                     blockNumber:fileEntry.keyPointer];
 }
 
-- (void)dealloc
-{
-    [entries release];
-    [blocks release];
-    [super dealloc];
-}
 
 - (NSString *)name
 {
-    PDDirectoryBlock *block = [blocks objectAtIndex:0];
+    PDDirectoryBlock *block = blocks[0];
     if (block)
     {
-        PDDirectoryHeader *dirHead = [block.entries objectAtIndex:0];
+        PDDirectoryHeader *dirHead = (block.entries)[0];
         if (dirHead)
             return dirHead.fileName;
     }
@@ -110,10 +103,10 @@
 
 - (void)setName:(NSString *)aName
 {
-    PDDirectoryBlock *block = [blocks objectAtIndex:0];
+    PDDirectoryBlock *block = blocks[0];
     if (block)
     {
-        PDDirectoryHeader *dirHead = [block.entries objectAtIndex:0];
+        PDDirectoryHeader *dirHead = (block.entries)[0];
         if (dirHead)
             dirHead.fileName = aName;
     }
@@ -207,7 +200,7 @@
             // Create the first index block
             currentIndexBlockNumber = blockNumber;
             currentIndexBlock = [NSMutableData dataWithLength:kProDOSBlockSize];
-            [dict setObject:currentIndexBlock forKey:blockNumber];
+            dict[blockNumber] = currentIndexBlock;
 
             // Add the first data block to it
             [PDDirectory addBlockNumber:currentBlockNumber
@@ -224,7 +217,7 @@
             {
                 // Create the first master index block
                 masterIndexBlock = [NSMutableData dataWithLength:kProDOSBlockSize];
-                [dict setObject:masterIndexBlock forKey:blockNumber];
+                dict[blockNumber] = masterIndexBlock;
                 
                 // Add the first index block to it
                 [PDDirectory addBlockNumber:currentIndexBlockNumber
@@ -240,7 +233,7 @@
             currentIndexBlockNumber = blockNumber;
             currentIndexBlock = [NSMutableData dataWithLength:kProDOSBlockSize];
             currentIndexOffset = 0;
-            [dict setObject:currentIndexBlock forKey:blockNumber];
+            dict[blockNumber] = currentIndexBlock;
             
             // Add this to the master index block
             [PDDirectory addBlockNumber:currentIndexBlockNumber
@@ -254,7 +247,7 @@
         // Add the data block
         currentBlockNumber = blockNumber;
         NSRange range = NSMakeRange(kProDOSBlockSize * dataBlockCount, kProDOSBlockSize);
-        [dict setObject:[aData subdataWithRange:range] forKey:blockNumber];
+        dict[blockNumber] = [aData subdataWithRange:range];
         ++dataBlockCount;
 
         // Add the index reference
@@ -301,8 +294,8 @@
     {
         // Add a new directory block
         // NOTE that this can only go ahead if this isn't the volume directory
-        PDDirectoryBlock *lastDirBlock = [blocks objectAtIndex:blocks.count - 1];
-        NSUInteger dirBlockNumber = [[[volume allocateBlocks:1] objectAtIndex:0] unsignedIntegerValue];
+        PDDirectoryBlock *lastDirBlock = blocks[blocks.count - 1];
+        NSUInteger dirBlockNumber = [[volume allocateBlocks:1][0] unsignedIntegerValue];
         
         // Clear out any old data in the block
         [volume.blockStorage zeroBlock:dirBlockNumber];
@@ -338,7 +331,7 @@
     // Write the data to the volume's block storage
     for (NSNumber *index in blockIndicies)
     {
-        NSData *data = [fileInBlocks objectForKey:index];
+        NSData *data = fileInBlocks[index];
         [[volume blockStorage] setData:data forBlock:[index integerValue]];
     }
     
@@ -398,7 +391,7 @@
         index = [block findInactiveEntryIndex];
         if (index > -1)
         {
-            dirEntry = [block.entries objectAtIndex:index];
+            dirEntry = (block.entries)[index];
             absoluteEntryIndex += index;
             parentDirBlockNumber = block.blockNumber;
             break;
@@ -434,7 +427,7 @@
             return NO;
         }
 
-        NSUInteger dirBlockNumber = [[allocatedBlocks objectAtIndex:0] unsignedIntegerValue];
+        NSUInteger dirBlockNumber = [allocatedBlocks[0] unsignedIntegerValue];
         [volume.blockStorage zeroBlock:dirBlockNumber];
         PDDirectoryBlock *dirBlock =
         [[PDDirectoryBlock alloc] initWithVolume:volume
@@ -450,7 +443,7 @@
         parentDirBlockNumber = lastDirectoryBlock.blockNumber;
         
         [blocks addObject:dirBlock];
-        dirEntry = [dirBlock.entries objectAtIndex:0];
+        dirEntry = (dirBlock.entries)[0];
 
         fileEntry.eof += kProDOSBlockSize;
 
@@ -461,7 +454,6 @@
             for (PDEntry *entry in dirBlock.entries)
                 [entriesProxy addObject:entry];
         }
-        [dirBlock release];
     }
     else
     {
@@ -476,7 +468,7 @@
     }
     
     NSUInteger dirBlockNumber =
-        [[allocatedBlocks objectAtIndex:allocatedBlocks.count - 1] unsignedIntegerValue];
+        [allocatedBlocks[allocatedBlocks.count - 1] unsignedIntegerValue];
     [volume.blockStorage zeroBlock:dirBlockNumber];
     PDDirectoryBlock *dirBlock =
     [[PDDirectoryBlock alloc] initWithVolume:volume
@@ -506,7 +498,7 @@
     dirEntry.headerPointer = keyDirectoryBlock.blockNumber;
     
     // Increment the file count in the directory header
-    PDDirectoryHeader *dirHeader = [keyDirectoryBlock.entries objectAtIndex:0];
+    PDDirectoryHeader *dirHeader = (keyDirectoryBlock.entries)[0];
     dirHeader.fileCount++;
     
     // Inform block storage of the changes we've made
@@ -523,9 +515,8 @@
 
     // Release these -- they will be rebuilt when the PDDirectory for this
     // new entry is initialized
-    [dirBlock release];
     
-    NSLog(@"Added new subdirectory (at %d)", absoluteEntryIndex);
+    NSLog(@"Added new subdirectory (at %lu)", (unsigned long)absoluteEntryIndex);
     
     return YES;
 }

@@ -30,22 +30,15 @@
         typeId = aTypeId;
         header = aHeader;
         data = aData;
-        [data retain];
         startAddress = aStartAddress;
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [name release];
-    [data release];
-    [super dealloc];
-}
 
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
 {
-    NSMutableString *ms = [[[NSMutableString alloc] initWithString:name] autorelease];
+    NSMutableString *ms = [[NSMutableString alloc] initWithString:name];
     [ms appendFormat:@" (%@)", displayName];
     return ms;
 }
@@ -233,7 +226,6 @@
     if (storageType == 15)
         [catString appendString:@"/"];
     [catString appendFormat:@"%@\n\n", dirName];
-    [dirName release];
 
     [catString appendString:@" NAME           TYPE  BLOCKS  MODIFIED         CREATED          ENDFILE SUBTYPE\n\n"];
     
@@ -258,7 +250,6 @@
             BOOL locked = (ptr[0x1e] & 0x02) ? NO : YES;
             char *spc = "               ";
             [catString appendFormat:@"%c%@%s ", locked ? '*' : ' ', dirName, spc + nameLen];
-            [dirName release];
             
             // File type
             PDFileType *fileType = [PDFileType fileTypeWithId:ptr[0x10]];
@@ -361,7 +352,6 @@
                                              length:data.length
                                            encoding:[NSString defaultCStringEncoding]];
     [textView setString:str];
-    [str release];
 }
 
 - (IBAction)displayCatalog:(id)sender

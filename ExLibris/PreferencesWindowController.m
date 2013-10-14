@@ -26,7 +26,7 @@
 - (void)setShowAllDirectoryEntries:(BOOL)flag
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithBool:flag]
+    [defaults setObject:@(flag)
                  forKey:ShowAllDirectoryEntriesKey];
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];

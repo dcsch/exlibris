@@ -22,21 +22,17 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
 {
-    NSMutableString *ms = [[[NSMutableString alloc] init] autorelease];
+    NSMutableString *ms = [[NSMutableString alloc] init];
     [ms appendFormat:@"%@ Info", entry.fileName];
     return ms;
 }
 
 - (void)windowDidLoad
 {
-    fileNameTextField.formatter = [[[D3FileNameFormatter alloc] init] autorelease];
+    fileNameTextField.formatter = [[D3FileNameFormatter alloc] init];
 //    auxTextField.formatter = [[[SYHexFormatter alloc] init] autorelease];
 //    auxTextField.needsDisplay = YES;
 }

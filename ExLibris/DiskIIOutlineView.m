@@ -33,7 +33,7 @@
         int i;
         for (i = 0; i < tableViewMenu.numberOfItems; ++i)
             [[tableViewMenu itemAtIndex:i] setEnabled:NO];
-        return [tableViewMenu autorelease];
+        return tableViewMenu;
     }
     else
         return self.menu;

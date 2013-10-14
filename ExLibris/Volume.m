@@ -7,6 +7,7 @@
 //
 
 #import "Volume.h"
+#import "BlockStorage.h"
 
 @implementation Volume
 
@@ -18,16 +19,10 @@
     {
         container = aContainer;
         blockStorage = aBlockStorage;
-        [blockStorage retain];
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [blockStorage release];
-    [super dealloc];
-}
 
 - (NSScriptObjectSpecifier *)objectSpecifier
 {

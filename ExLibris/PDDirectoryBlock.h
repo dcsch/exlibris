@@ -29,8 +29,8 @@
 @property NSUInteger nextBlockNumber;
 @property(readonly) NSUInteger entriesPerBlock;
 @property(readonly) NSUInteger entryLength;
-@property(retain, readonly) NSArray *entries;
-@property(retain, readonly) NSData *data;
+@property(strong, readonly) NSArray *entries;
+@property(strong, readonly) NSData *data;
 
 - (id)initWithVolume:(PDVolume *)aVolume
            directory:(PDDirectory *)aDirectory

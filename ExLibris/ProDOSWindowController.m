@@ -60,15 +60,13 @@
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc removeObserver:self];
 
-    [windowControllers release];
-    [super dealloc];
 }
 
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
 {
     ProDOSImage *image = self.document;
     PDVolume *volume = (PDVolume *)image.volume;
-    NSMutableString *ms = [[[NSMutableString alloc] init] autorelease];
+    NSMutableString *ms = [[NSMutableString alloc] init];
     [ms appendFormat:@"%@ (%@)", volume.name, displayName];
     return ms;
 }
@@ -78,18 +76,18 @@
     [super windowDidLoad];
 
     // Attach some custom formatters to the outline view
-    NSTableColumn *column = [catalogOutlineView.tableColumns objectAtIndex:0];
-    [column.dataCell setFormatter:[[[PDFileNameFormatter alloc] init] autorelease]];
-    column = [catalogOutlineView.tableColumns objectAtIndex:1];
-    [column.dataCell setFormatter:[[[PDFileTypeFormatter alloc] init] autorelease]];
-    column = [catalogOutlineView.tableColumns objectAtIndex:6];
-    [column.dataCell setFormatter:[[[SYHexFormatter alloc] init] autorelease]];
-    column = [catalogOutlineView.tableColumns objectAtIndex:7];
-    [column.dataCell setFormatter:[[[PDAccessFormatter alloc] init] autorelease]];
+    NSTableColumn *column = (catalogOutlineView.tableColumns)[0];
+    [column.dataCell setFormatter:[[PDFileNameFormatter alloc] init]];
+    column = (catalogOutlineView.tableColumns)[1];
+    [column.dataCell setFormatter:[[PDFileTypeFormatter alloc] init]];
+    column = (catalogOutlineView.tableColumns)[6];
+    [column.dataCell setFormatter:[[SYHexFormatter alloc] init]];
+    column = (catalogOutlineView.tableColumns)[7];
+    [column.dataCell setFormatter:[[PDAccessFormatter alloc] init]];
 
     // Arrange the ability to drag files around
     [catalogOutlineView registerForDraggedTypes:
-        [NSArray arrayWithObject:NSFilesPromisePboardType]];
+        @[NSFilesPromisePboardType]];
     [catalogOutlineView setDraggingSourceOperationMask:NSDragOperationCopy
                                               forLocal:NO];
 }
@@ -139,8 +137,8 @@
        toPasteboard:(NSPasteboard *)pboard
 {
     // What file type can we specify here?
-    NSArray *fileTypeList = [NSArray arrayWithObject:@""];
-    [pboard declareTypes:[NSArray arrayWithObject:NSFilesPromisePboardType]
+    NSArray *fileTypeList = @[@""];
+    [pboard declareTypes:@[NSFilesPromisePboardType]
                    owner:self];
     [pboard setPropertyList:fileTypeList
                     forType:NSFilesPromisePboardType];
@@ -172,7 +170,6 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
             // Store the ProDOS metadata in the resource fork
             ResourceManager *rm = [[ResourceManager alloc] initWithURL:url];
             
-            [rm release];
         
             [fileNames addObject:fileEntry.fileName];
             
@@ -200,7 +197,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
         NSArray *selectedObjects = catalogTreeController.selectedObjects;
         if (selectedObjects.count > 0)
         {
-            PDFileEntry *fileEntry = [selectedObjects objectAtIndex:0];
+            PDFileEntry *fileEntry = selectedObjects[0];
             if (fileEntry.fileType.typeId == BINARY_FILE_TYPE_ID
                 && (fileEntry.auxType == 0x2000 || fileEntry.auxType == 0x4000))
                 return YES;
@@ -212,7 +209,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
         
         // Is there data of interest on the pasteboard?
         // (for the moment we're just going to handle ProDOS files)
-        NSString *type = [pb availableTypeFromArray:[NSArray arrayWithObject:ProDOSFilePboardType]];
+        NSString *type = [pb availableTypeFromArray:@[ProDOSFilePboardType]];
         if ([type isEqualToString:ProDOSFilePboardType])
             return YES;
     }
@@ -226,7 +223,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
 {
     NSPasteboard *pb = [NSPasteboard generalPasteboard];
 
-    [pb declareTypes:[NSArray arrayWithObject:ProDOSFilePboardType]
+    [pb declareTypes:@[ProDOSFilePboardType]
                owner:self];
 
     PDEntry *entry = self.selectedEntry;
@@ -247,7 +244,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
     
     // Is there data of interest on the pasteboard?
     // (for the moment we're just going to handle ProDOS files)
-    NSString *type = [pb availableTypeFromArray:[NSArray arrayWithObject:ProDOSFilePboardType]];
+    NSString *type = [pb availableTypeFromArray:@[ProDOSFilePboardType]];
     if ([type isEqualToString:ProDOSFilePboardType])
     {
         NSLog(@"Pasting ProDOS file from pasteboard");
@@ -302,7 +299,6 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
             // Do the business
             [directory createFileWithEntry:fileEntry data:fileData];
 
-            [fileEntry release];
         }
     }
 }
@@ -344,7 +340,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
     {
         // Is window already being shown?
         NSString *key = [NSString stringWithFormat:@"%@ Graphics", entry.description];
-        NSWindowController *windowController = [windowControllers objectForKey:key];
+        NSWindowController *windowController = windowControllers[key];
         if (!windowController)
         {
             ProDOSImage *di = self.document;
@@ -353,7 +349,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
             windowController = [[GraphicsBrowseController alloc] initWithData:data
                                                                          name:entry.fileName
                                                                     hasHeader:NO];
-            [windowControllers setObject:windowController forKey:key];
+            windowControllers[key] = windowController;
             [self.document addWindowController:windowController];
         }
         [windowController showWindow:self];
@@ -367,11 +363,11 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
     {
         // Is info already being shown?
         NSString *key = [NSString stringWithFormat:@"%@ Info", entry.description];
-        NSWindowController *windowController = [windowControllers objectForKey:key];
+        NSWindowController *windowController = windowControllers[key];
         if (!windowController)
         {
             windowController = [[ProDOSInfoWindowController alloc] initWithEntry:entry];
-            [windowControllers setObject:windowController forKey:key];
+            windowControllers[key] = windowController;
             [self.document addWindowController:windowController];
         }
         [windowController showWindow:self];
@@ -426,7 +422,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
 {
     PDEntry *entry = self.selectedEntry;
     if (entry)
-        [self showFileBrowse:[NSArray arrayWithObject:entry]];
+        [self showFileBrowse:@[entry]];
 }
 
 - (IBAction)enterSearchQuery:(id)sender
@@ -443,13 +439,13 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
 
 - (void)showFileBrowse:(NSArray *)entries
 {
-    PDEntry *entry = [entries objectAtIndex:0];
+    PDEntry *entry = entries[0];
     if (entry)
     {
         // Is this file already being browsed?  If so, it will appear in our
         // list of fileBrowseControllers.
         NSString *key = [NSString stringWithFormat:@"%@ File", entry.description];
-        NSWindowController *windowController = [windowControllers objectForKey:key];
+        NSWindowController *windowController = windowControllers[key];
         if (!windowController)
         {
             // NOTE: The following alert code does nothing at this stage, since the
@@ -483,7 +479,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
             
             if (windowController)
             {
-                [windowControllers setObject:windowController forKey:key];
+                windowControllers[key] = windowController;
                 [self.document addWindowController:windowController];
             }
             else
@@ -511,7 +507,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
 {
     NSArray *selectedObjects = catalogTreeController.selectedObjects;
     if (selectedObjects.count > 0)
-        return [selectedObjects objectAtIndex:0];
+        return selectedObjects[0];
     return nil;
 }
 

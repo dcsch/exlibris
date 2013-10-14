@@ -41,18 +41,13 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [windowControllers release];
-    [super dealloc];
-}
 
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
 {
     DOS3xImage *image = self.document;
     D3Volume *volume = (D3Volume *)image.volume;
-    NSMutableString *ms = [[[NSMutableString alloc] init] autorelease];
-    [ms appendFormat:@"Volume %d (%@)", volume.number, displayName];
+    NSMutableString *ms = [[NSMutableString alloc] init];
+    [ms appendFormat:@"Volume %lu (%@)", (unsigned long)volume.number, displayName];
     return ms;
 }
 
@@ -61,8 +56,8 @@
     [super windowDidLoad];
 
     // Attach some custom formatters to the outline view
-    NSTableColumn *column = [catalogTableView.tableColumns objectAtIndex:1];
-    [column.dataCell setFormatter:[[[D3FileTypeFormatter alloc] init] autorelease]];
+    NSTableColumn *column = (catalogTableView.tableColumns)[1];
+    [column.dataCell setFormatter:[[D3FileTypeFormatter alloc] init]];
     [catalogTableView setNeedsDisplay:YES];
 }
 
@@ -73,7 +68,7 @@
     {
         // Is window already being shown?
         NSString *key = [NSString stringWithFormat:@"%@ Graphics", entry.description];
-        NSWindowController *windowController = [windowControllers objectForKey:key];
+        NSWindowController *windowController = windowControllers[key];
         if (!windowController)
         {
             DOS3xImage *di = self.document;
@@ -82,7 +77,7 @@
             windowController = [[GraphicsBrowseController alloc] initWithData:data
                                                                          name:entry.fileName
                                                                     hasHeader:YES];
-            [windowControllers setObject:windowController forKey:key];
+            windowControllers[key] = windowController;
             [self.document addWindowController:windowController];
         }
         [windowController showWindow:self];
@@ -96,11 +91,11 @@
     {
         // Is info already being shown?
         NSString *key = [NSString stringWithFormat:@"%@ Info", entry.description];
-        NSWindowController *windowController = [windowControllers objectForKey:key];
+        NSWindowController *windowController = windowControllers[key];
         if (!windowController)
         {
             windowController = [[DOS3xInfoWindowController alloc] initWithEntry:entry];
-            [windowControllers setObject:windowController forKey:key];
+            windowControllers[key] = windowController;
             [self.document addWindowController:windowController];
         }
         [windowController showWindow:self];
@@ -109,7 +104,7 @@
 
 - (void)showFileBrowse:(NSArray *)entries
 {
-    D3FileEntry *entry = [entries objectAtIndex:0];
+    D3FileEntry *entry = entries[0];
     if (entry)
     {
         DOS3xImage *di = self.document;
@@ -119,7 +114,7 @@
         // Is this file already being browsed?  If so, it will appear in our
         // list of fileBrowseControllers.
         NSString *key = [NSString stringWithFormat:@"%@ File", entry.description];
-        NSWindowController *windowController = [windowControllers objectForKey:key];
+        NSWindowController *windowController = windowControllers[key];
         if (!windowController)
         {
             // NOTE: The following alert code does nothing at this stage, since the
@@ -158,7 +153,7 @@
                                                                 hasHeader:YES];
             if (windowController)
             {
-                [windowControllers setObject:windowController forKey:key];
+                windowControllers[key] = windowController;
                 [self.document addWindowController:windowController];
             }
             else
@@ -178,7 +173,7 @@
 {
     NSArray *selectedObjects = catalogArrayController.selectedObjects;
     if (selectedObjects.count > 0)
-        return [selectedObjects objectAtIndex:0];
+        return selectedObjects[0];
     return nil;
 }
 

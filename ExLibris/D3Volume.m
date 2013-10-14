@@ -30,23 +30,16 @@
         else
         {
             // If there is no valid VTOC, then this isn't a DOS 3.x volume
-            [self release];
             self = nil;
         }
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [catalog release];
-    [vtoc release];
-    [super dealloc];
-}
 
 - (NSString *)name
 {
-    return [NSString stringWithFormat:@"Volume %d", self.number];
+    return [NSString stringWithFormat:@"Volume %lu", (unsigned long)self.number];
 }
 
 - (NSUInteger)number

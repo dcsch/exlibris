@@ -64,7 +64,7 @@
     
     [openPanel beginSheetModalForWindow:[self window]
                       completionHandler:^(NSInteger result) {
-        NSURL *dirName = [openPanel.URLs objectAtIndex:0];
+        NSURL *dirName = (openPanel.URLs)[0];
         locationComboBox.stringValue = [[dirName path] stringByAbbreviatingWithTildeInPath];
     }];
 }

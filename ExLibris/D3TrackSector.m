@@ -13,7 +13,7 @@
 
 + (id)track:(NSUInteger)aTrack sector:(NSUInteger)aSector
 {
-    return [[[D3TrackSector alloc] initWithTrack:aTrack sector:aSector] autorelease];
+    return [[D3TrackSector alloc] initWithTrack:aTrack sector:aSector];
 }
 
 - (id)initWithTrack:(NSUInteger)aTrack sector:(NSUInteger)aSector

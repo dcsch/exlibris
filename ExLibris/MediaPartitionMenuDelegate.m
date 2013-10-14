@@ -17,16 +17,10 @@
     if (self)
     {
         mediaDevice = aMediaDevice;
-        [mediaDevice retain];
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [mediaDevice release];
-    [super dealloc];
-}
 
 #pragma mark - NSMenuDelegate Methods
 
@@ -52,7 +46,7 @@ shouldCancel:(BOOL)shouldCancel
 - (IBAction)openPartition:(id)sender
 {
     NSMenuItem *item = sender;
-    NSString *pathWithPartition = [NSString stringWithFormat:@"%@/%d", mediaDevice.path, item.tag];
+    NSString *pathWithPartition = [NSString stringWithFormat:@"%@/%ld", mediaDevice.path, (long)item.tag];
     NSURL *url = [NSURL fileURLWithPath:pathWithPartition];
     NSDocumentController *dc = [NSDocumentController sharedDocumentController];
     NSError *error;

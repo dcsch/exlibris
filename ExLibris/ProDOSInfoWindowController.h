@@ -18,8 +18,8 @@
     PDEntry *entry;
 }
 
-@property(retain, readonly) PDEntry *entry;
-@property(retain, readonly) NSArray *fileTypes;
+@property(strong, readonly) PDEntry *entry;
+@property(strong, readonly) NSArray *fileTypes;
 
 - (id)initWithEntry:(PDEntry *)anEntry;
 

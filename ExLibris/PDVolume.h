@@ -30,9 +30,9 @@
     NSUInteger volumeBitmapPointer;
 }
 
-@property(retain, readonly) PDDirectory *directory;
+@property(strong, readonly) PDDirectory *directory;
 
-@property(retain, readonly) NSArray *allEntries;
+@property(strong, readonly) NSArray *allEntries;
 
 @property(readonly) NSUInteger availableBlockCount;
 

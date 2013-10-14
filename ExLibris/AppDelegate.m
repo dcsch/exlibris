@@ -18,19 +18,12 @@
     NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
     
     // Set defaults
-    [defaultValues setObject:[NSNumber numberWithBool:NO]
-                      forKey:ShowAllDirectoryEntriesKey];
+    defaultValues[ShowAllDirectoryEntriesKey] = @NO;
     
     // Register the defaults
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 }
 
-- (void)dealloc
-{
-    [preferenceController release];
-    [diskImageController release];
-    [super dealloc];
-}
 
 - (IBAction)showPreferencePanel:(id)sender
 {

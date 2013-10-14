@@ -16,11 +16,6 @@
 
 @implementation DiskImageController
 
-- (void)dealloc
-{
-    [newDiskImageController release];
-    [super dealloc];
-}
 
 - (NSString *)typeForContentsOfURL:(NSURL *)inAbsoluteURL error:(NSError **)outError
 {
@@ -39,9 +34,7 @@
         if (header)
         {
             offset = header.imageDataOffset;
-            [header release];
         }
-        [blockStorage release];
         sniff = YES;
     }
                 
@@ -69,8 +62,6 @@
                 if (volume)
                     docType = ELAppleDOS33DiskImageDocumentType;
             }
-            [volume release];
-            [blockStorage release];
         }
         
         return docType;

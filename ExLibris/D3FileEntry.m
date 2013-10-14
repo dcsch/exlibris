@@ -22,12 +22,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [firstTrackSectorList release];
-    [fileName release];
-    [super dealloc];
-}
 
 - (BOOL)deleted
 {

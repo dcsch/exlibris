@@ -95,7 +95,6 @@ static void bitPos(NSUInteger blockNumber,
     dirHead.fileCount = 0;
     dirHead.bitMapPointer = 6;
     dirHead.totalBlocks = blockCount;
-    [dirHead release];
     
     [blockStorage markModifiedBlockAtIndex:2];
     [blockStorage markModifiedBlockAtIndex:3];
@@ -160,7 +159,6 @@ static void bitPos(NSUInteger blockNumber,
         if (!directory)
         {
             blockStorage.dosToProdosSectorMapping = NO;
-            [self release];
             return nil;
         }
 
@@ -176,9 +174,9 @@ static void bitPos(NSUInteger blockNumber,
         for (i = 0; i < bitmapBlockCount; ++i)
             [volumeBitmapBlocks addObject:[blockStorage mutableDataForBlock:dirHead.bitMapPointer + i]];
         
-        NSLog(@"Available blocks: %d, Total blocks: %d",
-              self.availableBlockCount,
-              self.totalBlockCount);
+        NSLog(@"Available blocks: %lu, Total blocks: %lu",
+              (unsigned long)self.availableBlockCount,
+              (unsigned long)self.totalBlockCount);
         
         // Set up some values from user defaults
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -187,17 +185,11 @@ static void bitPos(NSUInteger blockNumber,
     return self;
 }
 
-- (void)dealloc
-{
-    [directory release];
-    [volumeBitmapBlocks release];
-    [super dealloc];
-}
 
 - (PDDirectoryHeader *)volumeDirectoryHeader
 {
-    PDDirectoryBlock *dirBlock = [directory.blocks objectAtIndex:0];
-    return [dirBlock.entries objectAtIndex:0];
+    PDDirectoryBlock *dirBlock = (directory.blocks)[0];
+    return (dirBlock.entries)[0];
 }
 
 - (NSString *)name
@@ -399,7 +391,7 @@ static void bitPos(NSUInteger blockNumber,
     NSUInteger byteIndex = blockNumber / 8;
     NSUInteger bitIndex = 7 - blockNumber % 8;
     NSUInteger blockIndex = byteIndex / kProDOSBlockSize;
-    NSData *blockData = [volumeBitmapBlocks objectAtIndex:blockIndex];
+    NSData *blockData = volumeBitmapBlocks[blockIndex];
     const unsigned char *bytes = (const unsigned char *)blockData.bytes;
     unsigned char byte = bytes[byteIndex - kProDOSBlockSize * blockIndex];
     return ((byte >> bitIndex) & 1) == 1 ? YES : NO;
@@ -410,7 +402,7 @@ static void bitPos(NSUInteger blockNumber,
     NSUInteger byteIndex = blockNumber / 8;
     NSUInteger bitIndex = 7 - blockNumber % 8;
     NSUInteger blockIndex = byteIndex / kProDOSBlockSize;
-    NSMutableData *blockData = [volumeBitmapBlocks objectAtIndex:blockIndex];
+    NSMutableData *blockData = volumeBitmapBlocks[blockIndex];
     unsigned char *bytes = (unsigned char *)blockData.bytes;
     unsigned char *byte = bytes + byteIndex - kProDOSBlockSize * blockIndex;
     if (available)
@@ -435,17 +427,17 @@ static void bitPos(NSUInteger blockNumber,
         if ([self blockAvailableAtIndex:i])
         {
             [self setBlockAvailable:NO atIndex:i];
-            [array addObject:[NSNumber numberWithUnsignedInteger:i]];
+            [array addObject:@(i)];
             if (array.count == aBlockCount)
                 break;
         }
 
     NSLog(@"Allocated: %@", array);
     
-    NSLog(@"Allocated %d blocks, Available blocks: %d, Total blocks: %d",
-          aBlockCount,
-          self.availableBlockCount,
-          self.totalBlockCount);
+    NSLog(@"Allocated %lu blocks, Available blocks: %lu, Total blocks: %lu",
+          (unsigned long)aBlockCount,
+          (unsigned long)self.availableBlockCount,
+          (unsigned long)self.totalBlockCount);
 
     return array;
 }

@@ -18,7 +18,7 @@
     self = [super init];
     if (self)
     {
-        sectorData = [[volume dataForTrackSector:[D3TrackSector track:17 sector:0]] retain];
+        sectorData = [volume dataForTrackSector:[D3TrackSector track:17 sector:0]];
         
         const unsigned char *ptr = [sectorData bytes];
         catalogFirstTrackNumber = ptr[1];
@@ -39,18 +39,12 @@
             || sectorsPerTrackCount > 32
             || bytesPerSectorCount > 256)
         {
-            [self release];
             self = nil;
         }
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [sectorData release];
-    [super dealloc];
-}
 
 @synthesize volumeNumber;
 

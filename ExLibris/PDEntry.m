@@ -84,12 +84,6 @@ BOOL packDateAndTime(unsigned char *data,
     return self;
 }
 
-- (void)dealloc
-{
-    [parentDirectory release];
-    [fileName release];
-    [super dealloc];
-}
 
 - (void)clear
 {
@@ -152,7 +146,6 @@ BOOL packDateAndTime(unsigned char *data,
                   range:range
          remainingRange:NULL];
     
-    [fileName release];
     fileName = [aFileName copy];
 }
 
@@ -174,7 +167,7 @@ BOOL packDateAndTime(unsigned char *data,
     int i;
     for (i = dirArray.count - 1; i >= 0; --i)
     {
-        dir = [dirArray objectAtIndex:i];
+        dir = dirArray[i];
         [path appendFormat:@"/%@", dir.name];
     }
 

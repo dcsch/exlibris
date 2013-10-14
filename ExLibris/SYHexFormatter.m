@@ -23,16 +23,10 @@
     if (self)
     {
         hexDigitCharSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789abcdefABCDEF"];
-        [hexDigitCharSet retain];
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [hexDigitCharSet release];
-    [super dealloc];
-}
 
 - (NSString *)stringForObjectValue:(id)obj
 {

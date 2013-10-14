@@ -37,7 +37,7 @@
 {
     // TODO: This should be able to intepret the letters used above
     NSInteger access = string.integerValue;
-    *obj = [NSNumber numberWithInteger:access];
+    *obj = @(access);
     return YES;
 }
 

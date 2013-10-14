@@ -42,7 +42,6 @@
         }
 
         // We're good to continue, so start making some commitments
-        [blockData retain];
         entries = [[NSMutableArray alloc] init];
             
         unsigned char *ptr = blockData.mutableBytes;
@@ -55,33 +54,33 @@
             if (storageType == 15 || storageType == 14)
             {
                 PDDirectoryHeader *dirHead =
-                    [[[PDDirectoryHeader alloc] initWithVolume:aVolume
+                    [[PDDirectoryHeader alloc] initWithVolume:aVolume
                                                parentDirectory:aDirectory
                                                    parentEntry:directory.fileEntry
                                                          bytes:ptr
-                                                        length:0] autorelease];
+                                                        length:0];
                 entriesPerBlock = dirHead.entriesPerBlock;
                 entryLength = dirHead.entryLength;
                 entry = dirHead;
             }
             else
-                entry = [[[PDFileEntry alloc] initWithVolume:aVolume
+                entry = [[PDFileEntry alloc] initWithVolume:aVolume
                                              parentDirectory:aDirectory
                                                  parentEntry:directory.fileEntry
                                                        bytes:ptr
-                                                      length:entryLength] autorelease];
+                                                      length:entryLength];
             [entries addObject:entry];
 
-            NSLog(@"Entry - storageType: %d, fileName: %@",
-                  entry.storageType,
+            NSLog(@"Entry - storageType: %lu, fileName: %@",
+                  (unsigned long)entry.storageType,
                   entry.fileName);
             ptr += entryLength;
         }
         while (++i < entriesPerBlock);
 
-        NSLog(@"Block - prev: %d, next: %d",
-              self.previousBlockNumber,
-              self.nextBlockNumber);
+        NSLog(@"Block - prev: %lu, next: %lu",
+              (unsigned long)self.previousBlockNumber,
+              (unsigned long)self.nextBlockNumber);
     }
     return self;
 }
@@ -143,7 +142,6 @@
         
         // Release this header object, as everything is stored in the backing
         // block data, and it will be recreated in the following init.
-        [dirHead release];
     }
     [aVolume.blockStorage markModifiedBlockAtIndex:aBlockNumber];
     
@@ -152,12 +150,6 @@
                     blockNumber:aBlockNumber];
 }
 
-- (void)dealloc
-{
-    [entries release];
-    [blockData release];
-    [super dealloc];
-}
 
 - (NSUInteger)previousBlockNumber
 {

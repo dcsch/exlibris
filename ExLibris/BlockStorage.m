@@ -42,9 +42,7 @@
             NSInteger partition = partitionString.integerValue;
             NSString *devicePath = path.stringByDeletingLastPathComponent;
             
-            [path release];
             path = devicePath;
-            [path retain];
             
             // We've been passed a device name, so find it in our
             // collection of devices
@@ -59,7 +57,6 @@
             
             if (!device)
             {
-                [self release];
                 self = nil;
             }
             
@@ -123,11 +120,6 @@
 - (void)dealloc
 {
     [self close];
-    [path release];
-    [blocks release];
-    [modifiedIndicies release];
-    [headerData release];
-    [super dealloc];
 }
 
 - (NSString *)path
@@ -137,7 +129,6 @@
 
 - (void)setPath:(NSString *)aPath
 {
-    [path release];
     path = [aPath copy];
 }
 
@@ -214,7 +205,7 @@
 {
     // Is it cached?
     NSMutableData *blockData =
-        [blocks objectForKey:[NSNumber numberWithUnsignedInteger:blockIndex]];
+        blocks[@(blockIndex)];
     if (blockData)
         return blockData;
 
@@ -264,7 +255,7 @@
         }
 
         blockData = [NSMutableData dataWithBytes:buf length:blockSize];
-        [blocks setObject:blockData forKey:[NSNumber numberWithUnsignedInteger:blockIndex]];
+        blocks[@(blockIndex)] = blockData;
     }
 
     return blockData;
@@ -287,7 +278,7 @@
 {
     // Create a block full of zeros, and put it into the cache
     NSMutableData *blockData = [NSMutableData dataWithLength:kProDOSBlockSize];
-    [blocks setObject:blockData forKey:[NSNumber numberWithUnsignedInteger:blockIndex]];
+    blocks[@(blockIndex)] = blockData;
 }
 
 - (void)markModifiedBlockAtIndex:(NSUInteger)blockIndex
@@ -310,12 +301,12 @@
     // Iterate through the modified blocks, writing each one out
     for (NSNumber *blockNumber in modifiedIndicies)
     {
-        NSData *block = [blocks objectForKey:blockNumber];
+        NSData *block = blocks[blockNumber];
         NSUInteger blockIndex = blockNumber.unsignedIntegerValue;
         off_t pos = blockSize * blockIndex + partitionOffset;
         ssize_t bytesWritten = pwrite(fd, block.bytes, blockSize, pos);
         
-        NSLog(@"Write block %d (%ld bytes @ %lld)", blockIndex, bytesWritten, pos);
+        NSLog(@"Write block %lu (%ld bytes @ %lld)", (unsigned long)blockIndex, bytesWritten, pos);
     }
 
     [self close];

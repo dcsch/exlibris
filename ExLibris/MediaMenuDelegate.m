@@ -12,16 +12,10 @@
 
 @implementation MediaMenuDelegate
 
-- (void)dealloc
-{
-    [mediaDeviceArray release];
-    [super dealloc];
-}
 
 - (int)numberOfItemsInMenu:(NSMenu *)menu
 {
-    [mediaDeviceArray release];
-    mediaDeviceArray = [[MediaDevice devices] retain];
+    mediaDeviceArray = [MediaDevice devices];
     return (mediaDeviceArray.count > 0) ? mediaDeviceArray.count : 1;
 }
 
@@ -36,7 +30,7 @@ shouldCancel:(BOOL)shouldCancel
         return NO;
     }
 
-    MediaDevice *md = [mediaDeviceArray objectAtIndex:x];
+    MediaDevice *md = mediaDeviceArray[x];
     
     // Set up the menu item
     item.title = md.path;
@@ -46,7 +40,6 @@ shouldCancel:(BOOL)shouldCancel
     MediaPartitionMenuDelegate *delegate = [[MediaPartitionMenuDelegate alloc] initWithMediaDevice:md];
     submenu.delegate = delegate;
     item.submenu = submenu;
-    [submenu release];
     
     return YES;
 }

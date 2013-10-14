@@ -20,10 +20,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 - (NSString *)stringForObjectValue:(id)obj
 {

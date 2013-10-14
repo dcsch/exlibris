@@ -32,7 +32,6 @@
 - (void)dealloc
 {
     CloseResFile(refNum);
-    [super dealloc];
 }
 
 @synthesize refNum;

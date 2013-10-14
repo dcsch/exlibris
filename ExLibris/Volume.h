@@ -16,7 +16,7 @@
     BlockStorage *blockStorage;
 }
 
-@property(retain, readonly) BlockStorage *blockStorage;
+@property(strong, readonly) BlockStorage *blockStorage;
 
 @property(copy, readonly) NSString *name;
 

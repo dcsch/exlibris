@@ -66,7 +66,6 @@
 		63582B8C1334BA46008AF599 /* PDDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B861334BA40008AF599 /* PDDirectory.m */; };
 		636A54901334BB31009C4AE1 /* DOS3xImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 636A548D1334BB31009C4AE1 /* DOS3xImage.m */; };
 		636A54911334BB31009C4AE1 /* ProDOSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 636A548F1334BB31009C4AE1 /* ProDOSImage.m */; };
-		636A54971334BD59009C4AE1 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 636A54961334BD59009C4AE1 /* README.markdown */; };
 		636A54981334BE16009C4AE1 /* DOS3xWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636A549A1334BE16009C4AE1 /* DOS3xWindow.xib */; };
 		636A549B1334BE34009C4AE1 /* ProDOSWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636A549D1334BE34009C4AE1 /* ProDOSWindow.xib */; };
 		636A549E1334BE4A009C4AE1 /* NewDiskImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636A54A01334BE4A009C4AE1 /* NewDiskImage.xib */; };
@@ -100,7 +99,7 @@
 		63582A951334A581008AF599 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		63582A971334A581008AF599 /* ExLibris-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExLibris-Prefix.pch"; sourceTree = "<group>"; };
 		63582A981334A581008AF599 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		63582AAB1334A582008AF599 /* ExLibrisTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExLibrisTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63582AAB1334A582008AF599 /* ExLibrisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExLibrisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63582AB11334A582008AF599 /* ExLibrisTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ExLibrisTests-Info.plist"; sourceTree = "<group>"; };
 		63582AB31334A582008AF599 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		63582AB51334A582008AF599 /* ExLibrisTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ExLibrisTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -208,7 +207,6 @@
 		636A548D1334BB31009C4AE1 /* DOS3xImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOS3xImage.m; sourceTree = "<group>"; };
 		636A548E1334BB31009C4AE1 /* ProDOSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProDOSImage.h; sourceTree = "<group>"; };
 		636A548F1334BB31009C4AE1 /* ProDOSImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProDOSImage.m; sourceTree = "<group>"; };
-		636A54961334BD59009C4AE1 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		636A54991334BE16009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DOS3xWindow.xib; sourceTree = "<group>"; };
 		636A549C1334BE34009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ProDOSWindow.xib; sourceTree = "<group>"; };
 		636A549F1334BE4A009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewDiskImage.xib; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 				63582AAF1334A582008AF599 /* ExLibrisTests */,
 				63582A8A1334A581008AF599 /* Frameworks */,
 				63582A881334A581008AF599 /* Products */,
-				636A54961334BD59009C4AE1 /* README.markdown */,
 			);
 			sourceTree = "<group>";
 		};
@@ -284,7 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				63582A871334A581008AF599 /* ExLibris.app */,
-				63582AAB1334A582008AF599 /* ExLibrisTests.octest */,
+				63582AAB1334A582008AF599 /* ExLibrisTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -486,8 +483,8 @@
 			);
 			name = ExLibrisTests;
 			productName = ExLibrisTests;
-			productReference = 63582AAB1334A582008AF599 /* ExLibrisTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 63582AAB1334A582008AF599 /* ExLibrisTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -495,8 +492,8 @@
 		63582A7E1334A581008AF599 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
-				ORGANIZATIONNAME = "Synchroma Pty Ltd";
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "David Schweinsberg";
 			};
 			buildConfigurationList = 63582A811334A581008AF599 /* Build configuration list for PBXProject "ExLibris" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -535,7 +532,6 @@
 				63582B751334B2DB008AF599 /* disk.icns in Resources */,
 				63582B761334B2DB008AF599 /* drive.icns in Resources */,
 				636A54AD1334BE8F009C4AE1 /* GraphicsBrowse.xib in Resources */,
-				636A54971334BD59009C4AE1 /* README.markdown in Resources */,
 				636A54C21334C566009C4AE1 /* Ex Libris Help in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -745,7 +741,12 @@
 		63582ABA1334A582008AF599 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -753,8 +754,11 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -763,13 +767,21 @@
 		63582ABB1334A582008AF599 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -778,6 +790,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -793,6 +807,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -809,20 +825,16 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ExLibris.app/Contents/MacOS/ExLibris";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExLibrisTests/ExLibrisTests-Prefix.pch";
 				INFOPLIST_FILE = "ExLibrisTests/ExLibrisTests-Info.plist";
-				OTHER_LDFLAGS = (
-					"-framework",
-					SenTestingKit,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -831,20 +843,16 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ExLibris.app/Contents/MacOS/ExLibris";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExLibrisTests/ExLibrisTests-Prefix.pch";
 				INFOPLIST_FILE = "ExLibrisTests/ExLibrisTests-Info.plist";
-				OTHER_LDFLAGS = (
-					"-framework",
-					SenTestingKit,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

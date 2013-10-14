@@ -24,14 +24,13 @@
             descrip = NSLocalizedString(@"There is not enough space on the volume.", @"");
             break;
     }
-    NSDictionary *errDict = [NSDictionary dictionaryWithObject:descrip
-                                                        forKey:NSLocalizedDescriptionKey];
+    NSDictionary *errDict = @{NSLocalizedDescriptionKey: descrip};
     return [super initWithDomain:ELErrorDomain code:code userInfo:errDict];
 }
 
 + (id)errorWithCode:(NSInteger)code
 {
-    return [[[Error alloc] initWithCode:code] autorelease];
+    return [[Error alloc] initWithCode:code];
 }
 
 @end

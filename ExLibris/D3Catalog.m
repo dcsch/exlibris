@@ -52,12 +52,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [entries release];
-    [sectors release];
-    [super dealloc];
-}
 
 @synthesize entries;
 

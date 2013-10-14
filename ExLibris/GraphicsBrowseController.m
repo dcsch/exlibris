@@ -107,20 +107,14 @@
         
         image = [[NSImage alloc] initWithSize:NSMakeSize(0, 0)];
         [image addRepresentation:bir];
-        [bir release];
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [image release];
-    [super dealloc];
-}
 
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
 {
-    NSMutableString *ms = [[[NSMutableString alloc] initWithString:name] autorelease];
+    NSMutableString *ms = [[NSMutableString alloc] initWithString:name];
     [ms appendFormat:@" (%@)", displayName];
     return ms;
 }

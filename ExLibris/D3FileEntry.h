@@ -28,7 +28,7 @@
 
 @property(readonly) BOOL deleted;
 
-@property(readonly)  D3TrackSector *firstTrackSectorList;
+@property(weak, readonly)  D3TrackSector *firstTrackSectorList;
 
 @property(readonly) BOOL locked;
 

@@ -21,9 +21,9 @@
     BOOL allEntriesVisible;
 }
 
-@property(retain, readonly) PDFileEntry *fileEntry;
-@property(retain, readonly) NSArray *blocks;
-@property(retain, readonly) NSArray *entries;
+@property(strong, readonly) PDFileEntry *fileEntry;
+@property(strong, readonly) NSArray *blocks;
+@property(strong, readonly) NSArray *entries;
 @property(copy) NSString *name;
 @property BOOL allEntriesVisible;
 

@@ -35,18 +35,18 @@ BOOL packDateAndTime(unsigned char *data,
     NSString *fileName;
 }
 
-@property(retain, readonly) PDVolume *volume;
-@property(retain) PDDirectory *parentDirectory;
-@property(retain, readonly) PDEntry *parentEntry;
+@property(strong, readonly) PDVolume *volume;
+@property(strong) PDDirectory *parentDirectory;
+@property(strong, readonly) PDEntry *parentEntry;
 
 @property NSUInteger storageType;
-@property(retain) NSString *fileName;
+@property(strong) NSString *fileName;
 @property(readonly, copy) NSString *pathName;
-@property(retain) NSCalendarDate *creationDateAndTime;
+@property(strong) NSCalendarDate *creationDateAndTime;
 @property NSUInteger version;
 @property NSUInteger minVersion;
 @property NSUInteger access;
-@property(readonly) NSData *entryData;
+@property(weak, readonly) NSData *entryData;
 
 - (id)initWithVolume:(PDVolume *)aVolume
      parentDirectory:(PDDirectory *)aDirectory

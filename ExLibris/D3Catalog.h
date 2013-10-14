@@ -16,7 +16,7 @@
     NSMutableArray *entries;
 }
 
-@property(retain, readonly) NSArray *entries;
+@property(strong, readonly) NSArray *entries;
 
 - (id)initWithVolume:(D3Volume *)volume;
 

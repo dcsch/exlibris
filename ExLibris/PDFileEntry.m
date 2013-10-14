@@ -31,12 +31,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [directory release];
-    [fileType release];
-    [super dealloc];
-}
 
 //- (NSString *)description
 //{
@@ -47,21 +41,17 @@
     NSUInteger typeId = entryBytes[0x10];
     if (fileType && (fileType.typeId != typeId))
     {
-        [fileType release];
         fileType = nil;
     }
     if (!fileType)
     {
         fileType = [PDFileType fileTypeWithId:entryBytes[0x10]];
-        [fileType retain];
     }
     return fileType;
 }
 
 - (void)setFileType:(PDFileType *)aFileType
 {
-    [aFileType retain];
-    [fileType release];
     fileType = aFileType;
     entryBytes[0x10] = (unsigned char)fileType.typeId;
 }

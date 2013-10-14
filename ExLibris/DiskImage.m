@@ -19,10 +19,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 @synthesize blockCount;
 

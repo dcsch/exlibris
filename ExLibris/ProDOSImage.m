@@ -28,18 +28,11 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [volume release];
-    [blockStorage release];
-    [super dealloc];
-}
 
 - (void)makeWindowControllers
 {
     NSWindowController *controller = [[ProDOSWindowController alloc] init];
     [self addWindowController:controller];
-    [controller release];
 }
 
 - (BOOL)saveToURL:(NSURL *)absoluteURL
@@ -81,7 +74,6 @@
         DiskImageHeader *header = [[DiskImageHeader alloc] initWithData:headerData];
         if (header)
             blockStorage.partitionOffset = header.imageDataOffset;
-        [header release];
     }
     
     // Try handling this as a ProDOS image
@@ -91,8 +83,7 @@
     
     // TODO Work out why this information doesn't appear in the error alert
     NSMutableDictionary *errDict = [NSMutableDictionary dictionary];
-    [errDict setObject:NSLocalizedString(@"UnrecognisedDiskImage", @"")
-                forKey:NSLocalizedDescriptionKey];
+    errDict[NSLocalizedDescriptionKey] = NSLocalizedString(@"UnrecognisedDiskImage", @"");
     *outError = [NSError errorWithDomain:ELErrorDomain
                                     code:ELBadProDOSImageError
                                 userInfo:errDict];

@@ -16,18 +16,12 @@
     self = [super init];
     if (self)
     {
-        lettersCharSet = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"] retain];
-        legalCharSet = [[NSCharacterSet characterSetWithCharactersInString:@".0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"] retain];
+        lettersCharSet = [NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+        legalCharSet = [NSCharacterSet characterSetWithCharactersInString:@".0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"];
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [lettersCharSet release];
-    [legalCharSet release];
-    [super dealloc];
-}
 
 - (NSString *)stringForObjectValue:(id)obj
 {

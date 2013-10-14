@@ -20,7 +20,7 @@
     BlockStorage *blockStorage;
 }
 
-@property(retain, readonly) PDVolume *volume;
+@property(strong, readonly) PDVolume *volume;
 
 - (void)insertEntry:(PDEntry *)entry;
 
