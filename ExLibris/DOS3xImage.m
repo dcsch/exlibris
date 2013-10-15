@@ -15,6 +15,15 @@
 #import "DiskII.h"
 #import "ExLibrisErrors.h"
 
+@interface DOS3xImage ()
+{
+    D3Volume *_volume;
+    BlockStorage *_blockStorage;
+}
+
+@end
+
+
 @implementation DOS3xImage
 
 - (id)init
@@ -48,7 +57,7 @@
 //        [blockStorage2 release];
     }
     
-    if ([blockStorage commitModifiedBlocks])
+    if ([_blockStorage commitModifiedBlocks])
         return YES;
 
     *outError = [NSError errorWithDomain:NSOSStatusErrorDomain
@@ -62,21 +71,21 @@
              ofType:(NSString *)typeName
               error:(NSError **)outError
 {
-    blockStorage = [[BlockStorage alloc] initWithURL:absoluteURL];
-    if (!blockStorage)
+    _blockStorage = [[BlockStorage alloc] initWithURL:absoluteURL];
+    if (!_blockStorage)
         return NO;
     
     if ([DiskImageController extensionForUrl:absoluteURL] == EL2imgExtension)
     {
-        NSData *headerData = [blockStorage headerDataWithLength:256];
+        NSData *headerData = [_blockStorage headerDataWithLength:256];
         DiskImageHeader *header = [[DiskImageHeader alloc] initWithData:headerData];
         if (header)
-            blockStorage.partitionOffset = header.imageDataOffset;
+            _blockStorage.partitionOffset = header.imageDataOffset;
     }
     
     // Try handling this as a DOS 3.x image
-    volume = [[D3Volume alloc] initWithContainer:self blockStorage:blockStorage];
-    if (volume)
+    _volume = [[D3Volume alloc] initWithContainer:self blockStorage:_blockStorage];
+    if (_volume)
         return YES;
     
     // TODO Work out why this information doesn't appear in the error alert
@@ -160,7 +169,5 @@
 //    
 //    //[self updateViews];
 //}
-
-@synthesize volume;
 
 @end

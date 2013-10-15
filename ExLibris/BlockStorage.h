@@ -8,32 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class MediaDevice;
-
 @interface BlockStorage : NSObject
-{
-    NSString *path;
-    NSUInteger blockSize;
-    NSUInteger length;
-    NSUInteger partitionOffset;
-    MediaDevice *device;
-    int fd;
-    NSMutableDictionary *blocks;
-    NSMutableSet *modifiedIndicies;
-    BOOL dosToProdosSectorMapping;
-    BOOL newStorage;
-    NSData *headerData;
-}
 
 @property(copy) NSString *path;
 
-@property NSUInteger blockSize;
+@property(nonatomic) NSUInteger blockSize;
 
 @property(readonly) NSUInteger length;
 
 @property NSUInteger partitionOffset;
 
-@property BOOL dosToProdosSectorMapping;
+@property(nonatomic) BOOL dosToProdosSectorMapping;
 
 @property(copy) NSData *headerData;
 

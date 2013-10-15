@@ -19,7 +19,4 @@
     return self;
 }
 
-
-@synthesize blockCount;
-
 @end

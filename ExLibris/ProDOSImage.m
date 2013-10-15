@@ -17,6 +17,15 @@
 #import "DiskII.h"
 #import "ExLibrisErrors.h"
 
+@interface ProDOSImage ()
+{
+    PDVolume *_volume;
+    BlockStorage *_blockStorage;
+}
+
+@end
+
+
 @implementation ProDOSImage
 
 - (id)init
@@ -47,10 +56,10 @@
         // TODO mark all blocks as modified and needing to be written out
 
         self.fileURL = absoluteURL;
-        blockStorage.path = absoluteURL.path;
+        _blockStorage.path = absoluteURL.path;
     }
     
-    if ([blockStorage commitModifiedBlocks])
+    if ([_blockStorage commitModifiedBlocks])
         return YES;
 
     *outError = [NSError errorWithDomain:NSOSStatusErrorDomain
@@ -64,21 +73,21 @@
              ofType:(NSString *)typeName
               error:(NSError **)outError
 {
-    blockStorage = [[BlockStorage alloc] initWithURL:absoluteURL];
-    if (!blockStorage)
+    _blockStorage = [[BlockStorage alloc] initWithURL:absoluteURL];
+    if (!_blockStorage)
         return NO;
     
     if ([DiskImageController extensionForUrl:absoluteURL] == EL2imgExtension)
     {
-        NSData *headerData = [blockStorage headerDataWithLength:256];
+        NSData *headerData = [_blockStorage headerDataWithLength:256];
         DiskImageHeader *header = [[DiskImageHeader alloc] initWithData:headerData];
         if (header)
-            blockStorage.partitionOffset = header.imageDataOffset;
+            _blockStorage.partitionOffset = header.imageDataOffset;
     }
     
     // Try handling this as a ProDOS image
-    volume = [[PDVolume alloc] initWithContainer:self blockStorage:blockStorage];
-    if (volume)
+    _volume = [[PDVolume alloc] initWithContainer:self blockStorage:_blockStorage];
+    if (_volume)
         return YES;
     
     // TODO Work out why this information doesn't appear in the error alert
@@ -92,27 +101,27 @@
 
 - (PDVolume *)volume
 {
-    if (!volume)
+    if (!_volume)
     {
-        // Lazy initialisation of a volume for new documents
-        blockStorage = [[BlockStorage alloc] initWithBlockSize:kProDOSBlockSize
-                                                      capacity:self.blockCount];
-        [PDVolume formatBlockStorage:blockStorage];
-        volume = [[PDVolume alloc] initWithContainer:self blockStorage:blockStorage];
-    }
-    return volume;
-}
+        // TEMPORARY HACK
+        if (self.blockCount == 0)
+            self.blockCount = 280;
+        // END TEMPORARY HACK
 
-- (NSUInteger)blockCount
-{
-    return blockCount;
+        // Lazy initialisation of a volume for new documents
+        _blockStorage = [[BlockStorage alloc] initWithBlockSize:kProDOSBlockSize
+                                                       capacity:self.blockCount];
+        [PDVolume formatBlockStorage:_blockStorage];
+        _volume = [[PDVolume alloc] initWithContainer:self blockStorage:_blockStorage];
+    }
+    return _volume;
 }
 
 - (void)setBlockCount:(NSUInteger)aBlockCount
 {
     // The block count can only be set if block storage isn't yet set up
-    if (!blockStorage)
-        blockCount = aBlockCount;
+    if (!_blockStorage)
+        super.blockCount = aBlockCount;
 }
 
 - (void)insertEntry:(PDEntry *)entry

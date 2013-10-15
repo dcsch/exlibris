@@ -10,9 +10,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface DiskImage : NSDocument
-{
-    NSUInteger blockCount;
-}
 
 @property NSUInteger blockCount;
 

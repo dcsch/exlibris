@@ -11,6 +11,18 @@
 #import "DiskII.h"
 #include <util.h>
 
+@interface BlockStorage ()
+{
+    MediaDevice *_device;
+    int _fd;
+    NSMutableDictionary *_blocks;
+    NSMutableSet *_modifiedIndicies;
+    BOOL _newStorage;
+}
+
+@end
+
+
 @implementation BlockStorage
 
 - (id)init
@@ -19,8 +31,8 @@
     if (self)
     {
         // The cache of read and modified blocks
-        blocks = [[NSMutableDictionary alloc] init];
-        modifiedIndicies = [[NSMutableSet alloc] init];
+        _blocks = [[NSMutableDictionary alloc] init];
+        _modifiedIndicies = [[NSMutableSet alloc] init];
     }
     return self;
 }
@@ -30,37 +42,37 @@
     self = [self init];
     if (self)
     {
-        path = [absoluteURL.path copy];
-        blockSize = kProDOSBlockSize;
+        _path = [absoluteURL.path copy];
+        _blockSize = kProDOSBlockSize;
 
-        if ([path hasPrefix:@"/dev/"])
+        if ([_path hasPrefix:@"/dev/"])
         {
             // This is a ProDOS device
 
             // Chop up the path into device and partition
-            NSString *partitionString = path.lastPathComponent;
+            NSString *partitionString = _path.lastPathComponent;
             NSInteger partition = partitionString.integerValue;
-            NSString *devicePath = path.stringByDeletingLastPathComponent;
+            NSString *devicePath = _path.stringByDeletingLastPathComponent;
             
-            path = devicePath;
+            _path = devicePath;
             
             // We've been passed a device name, so find it in our
             // collection of devices
             NSArray *deviceArray = [MediaDevice devices];
             for (MediaDevice *md in deviceArray)
-                if ([md.path isEqualToString:path])
+                if ([md.path isEqualToString:_path])
                 {
-                    device = md;
-                    length = device.size;
+                    _device = md;
+                    _length = _device.size;
                     break;
                 }
             
-            if (!device)
+            if (!_device)
             {
                 self = nil;
             }
             
-            partitionOffset = kMaxProDOSVolumeSize * partition;
+            _partitionOffset = kMaxProDOSVolumeSize * partition;
         }
         else
         {
@@ -95,7 +107,7 @@
     self = [self init];
     if (self)
     {
-        blockSize = aBlockSize;
+        _blockSize = aBlockSize;
         
         // Create a cache where every block is modified
         NSUInteger blockIndex;
@@ -104,11 +116,11 @@
             [self zeroBlock:blockIndex];
             [self markModifiedBlockAtIndex:blockIndex];
         }
-        length = blockSize * blockCount;
+        _length = _blockSize * blockCount;
         
         // We flag this as new storage so that when a path is assigned,
         // any existing file with that path are deleted
-        newStorage = YES;
+        _newStorage = YES;
     }
     return self;
 }
@@ -122,73 +134,53 @@
     [self close];
 }
 
-- (NSString *)path
-{
-    return path;
-}
-
-- (void)setPath:(NSString *)aPath
-{
-    path = [aPath copy];
-}
-
-- (NSUInteger)blockSize
-{
-    return blockSize;
-}
-
 - (void)setBlockSize:(NSUInteger)aBlockSize
 {
     // The block can't exceed the ProDOS block size.  This facility exists
     // so that DOS 3.3 sectors can be handled as 'blocks'.
     if (aBlockSize <= kProDOSBlockSize)
-        blockSize = aBlockSize;
-}
-
-- (BOOL)dosToProdosSectorMapping
-{
-    return dosToProdosSectorMapping;
+        _blockSize = aBlockSize;
 }
 
 - (void)setDosToProdosSectorMapping:(BOOL)sectorMapping
 {
-    if (dosToProdosSectorMapping != sectorMapping)
+    if (_dosToProdosSectorMapping != sectorMapping)
     {
         // The mapping is changing, so we need to flush the block cache
-        [blocks removeAllObjects];
-        dosToProdosSectorMapping = sectorMapping;
+        [_blocks removeAllObjects];
+        _dosToProdosSectorMapping = sectorMapping;
     }
 }
 
 - (void)open
 {
-    if (fd <= 0 && path != nil)
-        fd = open(path.UTF8String, O_RDONLY);
+    if (_fd <= 0 && _path != nil)
+        _fd = open(_path.UTF8String, O_RDONLY);
 }
 
 - (void)openForWriting
 {
     int oflag = O_WRONLY | O_CREAT;
-    if (newStorage)
+    if (_newStorage)
     {
         // Since this is a new storage, we must be sure to clear any existing
         // file with the same path name
         oflag |= O_TRUNC;
-        newStorage = NO;
+        _newStorage = NO;
     }
 
-    if (fd <= 0 && path != nil)
-        fd = open(path.UTF8String,
-                  oflag,
-                  S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+    if (_fd <= 0 && _path != nil)
+        _fd = open(_path.UTF8String,
+                   oflag,
+                   S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
 }
 
 - (void)close
 {
-    if (fd > 0)
+    if (_fd > 0)
     {
-        close(fd);
-        fd = 0;
+        close(_fd);
+        _fd = 0;
     }
 }
 
@@ -204,24 +196,23 @@
 - (NSMutableData *)mutableDataForBlock:(NSUInteger)blockIndex
 {
     // Is it cached?
-    NSMutableData *blockData =
-        blocks[@(blockIndex)];
+    NSMutableData *blockData = _blocks[@(blockIndex)];
     if (blockData)
         return blockData;
 
-    if (fd <= 0)
+    if (_fd <= 0)
         [self open];
     
-    if (fd > 0)
+    if (_fd > 0)
     {
         unsigned char buf[kProDOSBlockSize];
 
-        if (dosToProdosSectorMapping)
+        if (_dosToProdosSectorMapping)
         {
             const NSUInteger sectorSize = 256;
 
             // Translate block number to DOS-ordered sector numbers
-            unsigned int track = (2 * blockIndex) / 16;
+            NSUInteger track = (2 * blockIndex) / 16;
             
             unsigned int sector1 = (2 * blockIndex) % 16;
             if (sector1 > 0)
@@ -233,29 +224,29 @@
                 sector2 = 15 - sector2;
             sector2 += 16 * track;
             
-            off_t pos = sectorSize * sector1 + partitionOffset;
-            lseek(fd, pos, SEEK_SET);
-            ssize_t bytesRead = read(fd, buf, sectorSize);
+            off_t pos = sectorSize * sector1 + _partitionOffset;
+            lseek(_fd, pos, SEEK_SET);
+            ssize_t bytesRead = read(_fd, buf, sectorSize);
             
-            NSLog(@"Read block %d (sector %d) (%ld bytes @ %lld)", blockIndex, sector1, bytesRead, pos);
+            NSLog(@"Read block %lu (sector %d) (%ld bytes @ %lld)", (unsigned long)blockIndex, sector1, bytesRead, pos);
             
-            pos = sectorSize * sector2 + partitionOffset;
-            lseek(fd, pos, SEEK_SET);
-            bytesRead = read(fd, buf + sectorSize, sectorSize);
+            pos = sectorSize * sector2 + _partitionOffset;
+            lseek(_fd, pos, SEEK_SET);
+            bytesRead = read(_fd, buf + sectorSize, sectorSize);
             
-            NSLog(@"Read block %d (sector %d) (%ld bytes @ %lld)", blockIndex, sector2, bytesRead, pos);
+            NSLog(@"Read block %lu (sector %d) (%ld bytes @ %lld)", (unsigned long)blockIndex, sector2, bytesRead, pos);
         }
         else
         {
-            off_t pos = blockSize * blockIndex + partitionOffset;
-            lseek(fd, pos, SEEK_SET);
-            ssize_t bytesRead = read(fd, buf, blockSize);
+            off_t pos = _blockSize * blockIndex + _partitionOffset;
+            lseek(_fd, pos, SEEK_SET);
+            ssize_t bytesRead = read(_fd, buf, _blockSize);
             
-            NSLog(@"Read block %d (%ld bytes @ %lld)", blockIndex, bytesRead, pos);
+            NSLog(@"Read block %lu (%ld bytes @ %lld)", (unsigned long)blockIndex, bytesRead, pos);
         }
 
-        blockData = [NSMutableData dataWithBytes:buf length:blockSize];
-        blocks[@(blockIndex)] = blockData;
+        blockData = [NSMutableData dataWithBytes:buf length:_blockSize];
+        _blocks[@(blockIndex)] = blockData;
     }
 
     return blockData;
@@ -263,12 +254,12 @@
 
 - (NSData *)headerDataWithLength:(NSUInteger)dataLength
 {
-    if (fd <= 0)
+    if (_fd <= 0)
         [self open];
-    if (fd > 0)
+    if (_fd > 0)
     {
         NSMutableData *data = [NSMutableData dataWithLength:dataLength];
-        pread(fd, data.mutableBytes, dataLength, 0);
+        pread(_fd, data.mutableBytes, dataLength, 0);
         return data;
     }
     return nil;
@@ -278,12 +269,12 @@
 {
     // Create a block full of zeros, and put it into the cache
     NSMutableData *blockData = [NSMutableData dataWithLength:kProDOSBlockSize];
-    blocks[@(blockIndex)] = blockData;
+    _blocks[@(blockIndex)] = blockData;
 }
 
 - (void)markModifiedBlockAtIndex:(NSUInteger)blockIndex
 {
-    [modifiedIndicies addObject:[NSNumber numberWithUnsignedInt:blockIndex]];
+    [_modifiedIndicies addObject:[NSNumber numberWithUnsignedInteger:blockIndex]];
 }
 
 - (BOOL)commitModifiedBlocks
@@ -292,33 +283,27 @@
     [self close];
     [self openForWriting];
     
-    if (headerData)
+    if (_headerData)
     {
-        pwrite(fd, headerData.bytes, headerData.length, 0);
-        partitionOffset = headerData.length;
+        pwrite(_fd, _headerData.bytes, _headerData.length, 0);
+        _partitionOffset = _headerData.length;
     }
 
     // Iterate through the modified blocks, writing each one out
-    for (NSNumber *blockNumber in modifiedIndicies)
+    for (NSNumber *blockNumber in _modifiedIndicies)
     {
-        NSData *block = blocks[blockNumber];
+        NSData *block = _blocks[blockNumber];
         NSUInteger blockIndex = blockNumber.unsignedIntegerValue;
-        off_t pos = blockSize * blockIndex + partitionOffset;
-        ssize_t bytesWritten = pwrite(fd, block.bytes, blockSize, pos);
+        off_t pos = _blockSize * blockIndex + _partitionOffset;
+        ssize_t bytesWritten = pwrite(_fd, block.bytes, _blockSize, pos);
         
         NSLog(@"Write block %lu (%ld bytes @ %lld)", (unsigned long)blockIndex, bytesWritten, pos);
     }
 
     [self close];
-    [modifiedIndicies removeAllObjects];
+    [_modifiedIndicies removeAllObjects];
     
     return YES;
 }
-
-@synthesize length;
-
-@synthesize partitionOffset;
-
-@synthesize headerData;
 
 @end

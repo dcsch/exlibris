@@ -10,14 +10,9 @@
 #import <Cocoa/Cocoa.h>
 #import "DiskImage.h"
 
-@class BlockStorage;
 @class D3Volume;
 
 @interface DOS3xImage : DiskImage
-{
-    D3Volume *volume;
-    BlockStorage *blockStorage;
-}
 
 @property(strong, readonly) D3Volume *volume;
 

@@ -10,15 +10,10 @@
 #import <Cocoa/Cocoa.h>
 #import "DiskImage.h"
 
-@class BlockStorage;
 @class PDVolume;
 @class PDEntry;
 
 @interface ProDOSImage : DiskImage
-{
-    PDVolume *volume;
-    BlockStorage *blockStorage;
-}
 
 @property(strong, readonly) PDVolume *volume;
 
