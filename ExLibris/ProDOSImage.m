@@ -28,6 +28,11 @@
 
 @implementation ProDOSImage
 
+//+ (BOOL)autosavesInPlace
+//{
+//    return YES;
+//}
+
 - (id)init
 {
     self = [super init];
@@ -36,7 +41,6 @@
     }
     return self;
 }
-
 
 - (void)makeWindowControllers
 {
@@ -58,7 +62,11 @@
         self.fileURL = absoluteURL;
         _blockStorage.path = absoluteURL.path;
     }
-    
+    else if (saveOperation == NSAutosaveElsewhereOperation)
+    {
+        _blockStorage.path = absoluteURL.path;
+    }
+
     if ([_blockStorage commitModifiedBlocks])
         return YES;
 

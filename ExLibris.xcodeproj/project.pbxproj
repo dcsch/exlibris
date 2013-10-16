@@ -57,8 +57,6 @@
 		63582B501334A823008AF599 /* DiskImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B1F1334A822008AF599 /* DiskImageController.m */; };
 		63582B511334A823008AF599 /* NewDiskImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B211334A822008AF599 /* NewDiskImageController.m */; };
 		63582B6B1334B2DB008AF599 /* prodos.boot in Resources */ = {isa = PBXBuildFile; fileRef = 63582B591334B2DA008AF599 /* prodos.boot */; };
-		63582B751334B2DB008AF599 /* disk.icns in Resources */ = {isa = PBXBuildFile; fileRef = 63582B661334B2DB008AF599 /* disk.icns */; };
-		63582B761334B2DB008AF599 /* drive.icns in Resources */ = {isa = PBXBuildFile; fileRef = 63582B671334B2DB008AF599 /* drive.icns */; };
 		63582B7A1334B471008AF599 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63582B791334B471008AF599 /* IOKit.framework */; };
 		63582B891334BA46008AF599 /* DiskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B801334BA26008AF599 /* DiskImage.m */; };
 		63582B8A1334BA46008AF599 /* ProDOSWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582B821334BA2C008AF599 /* ProDOSWindowController.m */; };
@@ -77,6 +75,7 @@
 		636A54B01334BE97009C4AE1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636A54B21334BE97009C4AE1 /* MainMenu.xib */; };
 		636A54B31334BEA8009C4AE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 636A54B51334BEA8009C4AE1 /* Localizable.strings */; };
 		636A54C21334C566009C4AE1 /* Ex Libris Help in Resources */ = {isa = PBXBuildFile; fileRef = 636A54C11334C566009C4AE1 /* Ex Libris Help */; };
+		6394DDEC180E1A010068953E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6394DDEB180E1A010068953E /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,8 +191,6 @@
 		63582B521334B219008AF599 /* DiskII.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskII.h; sourceTree = "<group>"; };
 		63582B531334B219008AF599 /* ExLibrisErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExLibrisErrors.h; sourceTree = "<group>"; };
 		63582B591334B2DA008AF599 /* prodos.boot */ = {isa = PBXFileReference; lastKnownFileType = file; path = prodos.boot; sourceTree = "<group>"; };
-		63582B661334B2DB008AF599 /* disk.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = disk.icns; sourceTree = "<group>"; };
-		63582B671334B2DB008AF599 /* drive.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = drive.icns; sourceTree = "<group>"; };
 		63582B791334B471008AF599 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		63582B7F1334BA24008AF599 /* DiskImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiskImage.h; sourceTree = "<group>"; };
 		63582B801334BA26008AF599 /* DiskImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiskImage.m; sourceTree = "<group>"; };
@@ -218,6 +215,7 @@
 		636A54B11334BE97009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		636A54B41334BEA8009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		636A54C11334C566009C4AE1 /* Ex Libris Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Ex Libris Help"; sourceTree = "<group>"; };
+		6394DDEB180E1A010068953E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,8 +259,6 @@
 			isa = PBXGroup;
 			children = (
 				63582B591334B2DA008AF599 /* prodos.boot */,
-				63582B661334B2DB008AF599 /* disk.icns */,
-				63582B671334B2DB008AF599 /* drive.icns */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -408,6 +404,7 @@
 				63582B1F1334A822008AF599 /* DiskImageController.m */,
 				63582B201334A822008AF599 /* NewDiskImageController.h */,
 				63582B211334A822008AF599 /* NewDiskImageController.m */,
+				6394DDEB180E1A010068953E /* Images.xcassets */,
 				63582A921334A581008AF599 /* Supporting Files */,
 			);
 			path = ExLibris;
@@ -519,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63582A961334A581008AF599 /* InfoPlist.strings in Resources */,
+				6394DDEC180E1A010068953E /* Images.xcassets in Resources */,
 				636A54B31334BEA8009C4AE1 /* Localizable.strings in Resources */,
 				636A54981334BE16009C4AE1 /* DOS3xWindow.xib in Resources */,
 				636A549B1334BE34009C4AE1 /* ProDOSWindow.xib in Resources */,
@@ -529,8 +527,6 @@
 				636A54A71334BE7E009C4AE1 /* ProDOSInfoWindow.xib in Resources */,
 				636A54AA1334BE86009C4AE1 /* DOS3xInfoWindow.xib in Resources */,
 				636A54B01334BE97009C4AE1 /* MainMenu.xib in Resources */,
-				63582B751334B2DB008AF599 /* disk.icns in Resources */,
-				63582B761334B2DB008AF599 /* drive.icns in Resources */,
 				636A54AD1334BE8F009C4AE1 /* GraphicsBrowse.xib in Resources */,
 				636A54C21334C566009C4AE1 /* Ex Libris Help in Resources */,
 			);
@@ -790,6 +786,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -807,6 +804,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;

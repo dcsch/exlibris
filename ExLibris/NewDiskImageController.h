@@ -8,23 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-
 @interface NewDiskImageController : NSWindowController
-{
-    IBOutlet NSTextField *fileNameTextField;
-    IBOutlet NSComboBox *locationComboBox;
-    IBOutlet NSPopUpButton *fileSystemPopUpButton;
-    IBOutlet NSPopUpButton *fileFormatPopUpButton;
-    IBOutlet NSPopUpButton *imageSizePopUpButton;
-    NSOpenPanel *openPanel;
-}
-
-- (IBAction)chooseLocation:(id)sender;
-
-- (IBAction)selectFileSystem:(id)sender;
-
-- (IBAction)newDiskImage:(id)sender;
-
-- (IBAction)cancel:(id)sender;
 
 @end

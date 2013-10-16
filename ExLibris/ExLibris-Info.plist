@@ -96,8 +96,6 @@
 	<string>Ex Libris Help</string>
 	<key>CFBundleHelpBookName</key>
 	<string>Ex Libris Help</string>
-	<key>CFBundleIconFile</key>
-	<string>disk</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.synchroma.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>

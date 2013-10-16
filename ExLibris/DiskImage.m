@@ -10,6 +10,11 @@
 
 @implementation DiskImage
 
++ (BOOL)autosavesInPlace
+{
+    return YES;
+}
+
 - (id)init
 {
     self = [super init];

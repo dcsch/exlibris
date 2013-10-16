@@ -14,8 +14,15 @@
 #import "NewDiskImageController.h"
 #import "DiskII.h"
 
-@implementation DiskImageController
+@interface DiskImageController ()
+{
+    NSWindowController *_newDiskImageController;
+}
 
+@end
+
+
+@implementation DiskImageController
 
 - (NSString *)typeForContentsOfURL:(NSURL *)inAbsoluteURL error:(NSError **)outError
 {
@@ -77,9 +84,9 @@
 
 - (IBAction)newDocument:(id)sender
 {
-    if (!newDiskImageController)
-        newDiskImageController = [[NewDiskImageController alloc] init];
-    [newDiskImageController showWindow:self];
+    if (!_newDiskImageController)
+        _newDiskImageController = [[NewDiskImageController alloc] init];
+    [_newDiskImageController showWindow:self];
 //    return [super newDocument:sender];
 }
 

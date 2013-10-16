@@ -16,9 +16,6 @@ typedef enum _ELDiskImageExtension
 } ELDiskImageExtension;
 
 @interface DiskImageController : NSDocumentController
-{
-    NSWindowController *newDiskImageController;
-}
 
 + (ELDiskImageExtension)extensionForUrl:(NSURL *)url;
 

@@ -24,11 +24,39 @@
 #import "DiskII.h"
 #import "ExLibrisErrors.h"
 
-@interface ProDOSWindowController (Private)
+@interface ProDOSWindowController ()
+{
+    IBOutlet NSOutlineView *catalogOutlineView;
+    IBOutlet NSTreeController *catalogTreeController;
+    IBOutlet NSTabView *tabView;
+    IBOutlet NSSearchField *searchField;
+
+    NSMutableDictionary *windowControllers;
+}
+
+- (IBAction)copy:(id)sender;
+
+- (IBAction)paste:(id)sender;
+
+- (IBAction)delete:(id)sender;
+
+- (IBAction)openGraphics:(id)sender;
+
+- (IBAction)getInfo:(id)sender;
+
+- (IBAction)createSubdirectory:(id)sender;
+
+- (IBAction)viewFile:(id)sender;
+
+- (IBAction)enterSearchQuery:(id)sender;
+
+- (void)showFileBrowse:(NSArray *)entries;
 
 - (PDEntry *)selectedEntry;
 
 - (void)deleteSubdirectory:(PDFileEntry *)fileEntry;
+
+- (void)handleShowAllDirectoryEntriesChange:(NSNotification *)note;
 
 @end
 
@@ -86,8 +114,7 @@
     [column.dataCell setFormatter:[[PDAccessFormatter alloc] init]];
 
     // Arrange the ability to drag files around
-    [catalogOutlineView registerForDraggedTypes:
-        @[NSFilesPromisePboardType]];
+    [catalogOutlineView registerForDraggedTypes:@[NSFilesPromisePboardType]];
     [catalogOutlineView setDraggingSourceOperationMask:NSDragOperationCopy
                                               forLocal:NO];
 }
@@ -109,7 +136,7 @@
     PDEntry *entry = item;
     if ([tableColumn.identifier isEqualToString:@"fileName"])
     {
-        unsigned int storageType = entry.storageType;
+        NSUInteger storageType = entry.storageType;
         if (storageType == 15)
             return @"Volume Directory Header";
         else if (storageType == 14)
@@ -223,8 +250,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
 {
     NSPasteboard *pb = [NSPasteboard generalPasteboard];
 
-    [pb declareTypes:@[ProDOSFilePboardType]
-               owner:self];
+    [pb declareTypes:@[ProDOSFilePboardType] owner:self];
 
     PDEntry *entry = self.selectedEntry;
     if (entry)
@@ -358,6 +384,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
 
 - (IBAction)getInfo:(id)sender
 {
+//    BOOL edited = [self.document isDocumentEdited];
     PDEntry *entry = self.selectedEntry;
     if (entry)
     {

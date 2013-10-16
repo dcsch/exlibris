@@ -266,7 +266,7 @@
                        data:(NSData *)aData
 {
     NSLog(@"Creating file: %@ in directory: %@", aFileEntry.fileName, self.name);
-    
+
     // Do we have space in the existing directory blocks, or do we need to add one?
     BOOL directorySpace = NO;
     for (PDDirectoryBlock *block in blocks)
@@ -334,7 +334,12 @@
         NSData *data = fileInBlocks[index];
         [[volume blockStorage] setData:data forBlock:[index integerValue]];
     }
-    
+
+    // Add the file entry to the directory block
+
+    // Update the entries for this directory
+    [self collectEntries];
+
     return YES;
 }
 

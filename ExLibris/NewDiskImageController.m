@@ -10,11 +10,23 @@
 #import "DiskImage.h"
 #import "DiskII.h"
 
-@interface NewDiskImageController (Private)
+@interface NewDiskImageController ()
+{
+    IBOutlet NSTextField *fileNameTextField;
+    IBOutlet NSComboBox *locationComboBox;
+    IBOutlet NSPopUpButton *fileSystemPopUpButton;
+    IBOutlet NSPopUpButton *fileFormatPopUpButton;
+    IBOutlet NSPopUpButton *imageSizePopUpButton;
+    NSOpenPanel *openPanel;
+}
 
-//- (void)openPanelDidEnd:(NSOpenPanel *)panel
-//             returnCode:(int)returnCode
-//            contextInfo:(void *)contextInfo;
+- (IBAction)chooseLocation:(id)sender;
+
+- (IBAction)selectFileSystem:(id)sender;
+
+- (IBAction)newDiskImage:(id)sender;
+
+- (IBAction)cancel:(id)sender;
 
 - (void)selectProDOS;
 
@@ -55,13 +67,7 @@
     openPanel.canChooseDirectories = YES;
     openPanel.canCreateDirectories = YES;
     openPanel.prompt = @"Choose";
-//    [openPanel beginSheetForDirectory:nil
-//                                 file:nil
-//                       modalForWindow:self.window
-//                        modalDelegate:self
-//                       didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:)
-//                          contextInfo:NULL];
-    
+
     [openPanel beginSheetModalForWindow:[self window]
                       completionHandler:^(NSInteger result) {
         NSURL *dirName = (openPanel.URLs)[0];
@@ -115,6 +121,7 @@
     {
         DiskImage *diskImage = (DiskImage *)document;
         diskImage.blockCount = blockCount;
+        //[diskImage updateChangeCount:NSChangeDone | NSChangeDiscardable];
 
         [documentController addDocument:document];
         [document makeWindowControllers];
@@ -129,14 +136,6 @@
 {
     [self.window performClose:self];
 }
-
-//- (void)openPanelDidEnd:(NSOpenPanel *)panel
-//             returnCode:(int)returnCode
-//            contextInfo:(void *)contextInfo
-//{
-//    NSURL *dirName = [openPanel.URLs objectAtIndex:0];
-//    locationComboBox.stringValue = [[dirName path] stringByAbbreviatingWithTildeInPath];
-//}
 
 - (void)selectProDOS
 {
