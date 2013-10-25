@@ -35,7 +35,7 @@
 - (BOOL)createFileWithEntry:(PDFileEntry *)aFileEntry
                        data:(NSData *)aData;
 
-- (BOOL)createDirectoryWithName:(NSString *)name error:(NSError **)outError;
+- (PDFileEntry *)createDirectoryWithName:(NSString *)name error:(NSError **)outError;
 
 - (void)deleteFileEntry:(PDFileEntry *)aFileEntry;
 

@@ -86,7 +86,7 @@ static void bitPos(NSUInteger blockNumber,
                                                                     length:0];
     dirHead.storageType = 15;
     dirHead.fileName = @"UNTITLED";
-    dirHead.creationDateAndTime = [NSCalendarDate calendarDate];
+    dirHead.creationDateAndTime = [NSDate date];
     dirHead.version = 0;
     dirHead.minVersion = 0;
     dirHead.access = 0xe3;

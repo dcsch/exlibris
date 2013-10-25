@@ -12,11 +12,11 @@
 #import "PDFileEntry.h"
 
 BOOL unpackDateAndTime(const unsigned char *data,
-                       int *year,
-                       unsigned int *month,
-                       unsigned int *day,
-                       unsigned int *hour,
-                       unsigned int *minute)
+                       NSInteger *year,
+                       NSInteger *month,
+                       NSInteger *day,
+                       NSInteger *hour,
+                       NSInteger *minute)
 {
     // ProDOS Tech Note 28 describes how to represent dates from 1940 to 2039
     int y = data[1] >> 1;
@@ -45,11 +45,11 @@ BOOL unpackDateAndTime(const unsigned char *data,
 }
 
 BOOL packDateAndTime(unsigned char *data,
-                     int year,
-                     unsigned int month,
-                     unsigned int day,
-                     unsigned int hour,
-                     unsigned int minute)
+                     NSInteger year,
+                     NSInteger month,
+                     NSInteger day,
+                     NSInteger hour,
+                     NSInteger minute)
 {
     if (1940 <= year && year <= 1999)
         year -= 1900;
@@ -64,6 +64,15 @@ BOOL packDateAndTime(unsigned char *data,
     return YES;
 }
 
+
+@interface PDEntry ()
+{
+    NSString *_fileName;
+}
+
+@end
+
+
 @implementation PDEntry
 
 - (id)initWithVolume:(PDVolume *)aVolume
@@ -75,9 +84,9 @@ BOOL packDateAndTime(unsigned char *data,
     self = [super init];
     if (self)
     {
-        volume = aVolume;  // We won't retain this as it's owned by our parent
+        _volume = aVolume;
         self.parentDirectory = aDirectory;
-        parentEntry = aParentEntry;
+        _parentEntry = aParentEntry;
         entryBytes = anEntryBytes;
         entryLength = anEntryLength;
     }
@@ -89,12 +98,6 @@ BOOL packDateAndTime(unsigned char *data,
 {
     memset(entryBytes, 0, entryLength);
 }
-
-@synthesize volume;
-
-@synthesize parentDirectory;
-
-@synthesize parentEntry;
 
 - (NSUInteger)storageType
 {
@@ -108,27 +111,27 @@ BOOL packDateAndTime(unsigned char *data,
 
 - (NSString *)fileName
 {
-    if (!fileName)
+    if (!_fileName)
     {
         // We'll cache the file name
         unsigned char nameLength = entryBytes[0] & 0xf;
         if (nameLength > 0)
-            fileName = [[NSString alloc] initWithBytes:entryBytes + 1
-                                                length:nameLength
-                                              encoding:[NSString defaultCStringEncoding]];
+            _fileName = [[NSString alloc] initWithBytes:entryBytes + 1
+                                                 length:nameLength
+                                               encoding:[NSString defaultCStringEncoding]];
         else
         {
             // The nameLength is zero, so this is likely to be an empty entry.
             // But is there a lingering filename from a deleted entry?
             if (entryBytes[1])
             {
-                fileName = [[NSString alloc] initWithBytes:entryBytes + 1
-                                                    length:15
-                                                  encoding:[NSString defaultCStringEncoding]];
+                _fileName = [[NSString alloc] initWithBytes:entryBytes + 1
+                                                     length:15
+                                                   encoding:[NSString defaultCStringEncoding]];
             }
         }
     }
-    return fileName;
+    return _fileName;
 }
 
 - (void)setFileName:(NSString *)aFileName
@@ -146,14 +149,14 @@ BOOL packDateAndTime(unsigned char *data,
                   range:range
          remainingRange:NULL];
     
-    fileName = [aFileName copy];
+    _fileName = [aFileName copy];
 }
 
 - (NSString *)pathName
 {
     // Build path from parent directories
     NSMutableArray *dirArray = [NSMutableArray array];
-    PDDirectory *dir = parentDirectory;
+    PDDirectory *dir = _parentDirectory;
     while (dir)
     {
         [dirArray addObject:dir];
@@ -164,8 +167,7 @@ BOOL packDateAndTime(unsigned char *data,
     }
     
     NSMutableString *path = [NSMutableString string];
-    int i;
-    for (i = dirArray.count - 1; i >= 0; --i)
+    for (NSInteger i = dirArray.count - 1; i >= 0; --i)
     {
         dir = dirArray[i];
         [path appendFormat:@"/%@", dir.name];
@@ -176,40 +178,46 @@ BOOL packDateAndTime(unsigned char *data,
     return path;
 }
 
-- (NSCalendarDate *)creationDateAndTime
+- (NSDate *)creationDateAndTime
 {
     if (entryBytes[0x18] || entryBytes[0x19])
     {
-        int year;
-        unsigned int month;
-        unsigned int day;
-        unsigned int hour;
-        unsigned int minute;
+        NSInteger year;
+        NSInteger month;
+        NSInteger day;
+        NSInteger hour;
+        NSInteger minute;
         if (unpackDateAndTime(entryBytes + 0x18,
                               &year,
                               &month,
                               &day,
                               &hour,
                               &minute))
-            return [NSCalendarDate dateWithYear:year
-                                          month:month
-                                            day:day
-                                           hour:hour
-                                         minute:minute
-                                         second:0
-                                       timeZone:[NSTimeZone systemTimeZone]];
+        {
+            NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+            dateComponents.year = year;
+            dateComponents.month = month;
+            dateComponents.day = day;
+            dateComponents.hour = hour;
+            dateComponents.minute = minute;
+            dateComponents.timeZone = [NSTimeZone systemTimeZone];
+            return [[NSCalendar currentCalendar] dateFromComponents:dateComponents];
+        }
     }
     return nil;
 }
 
-- (void)setCreationDateAndTime:(NSCalendarDate *)aDate
+- (void)setCreationDateAndTime:(NSDate *)date
 {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *dateComponents = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit
+                                                   fromDate:date];
     packDateAndTime(entryBytes + 0x18,
-                    aDate.yearOfCommonEra,
-                    aDate.monthOfYear,
-                    aDate.dayOfMonth,
-                    aDate.hourOfDay,
-                    aDate.minuteOfHour);
+                    dateComponents.year,
+                    dateComponents.month,
+                    dateComponents.day,
+                    dateComponents.hour,
+                    dateComponents.minute);
 }
 
 - (NSUInteger)version
@@ -254,7 +262,7 @@ BOOL packDateAndTime(unsigned char *data,
 
 - (NSScriptObjectSpecifier *)objectSpecifier
 {
-    NSScriptObjectSpecifier *containerSpec = parentDirectory.objectSpecifier;
+    NSScriptObjectSpecifier *containerSpec = _parentDirectory.objectSpecifier;
     return [[NSNameSpecifier alloc] initWithContainerClassDescription:containerSpec.keyClassDescription
                                                    containerSpecifier:containerSpec
                                                                   key:@"entry"

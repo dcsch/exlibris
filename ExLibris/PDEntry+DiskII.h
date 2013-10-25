@@ -19,7 +19,7 @@
 @property(readonly) NSUInteger blocksUsed;
 @property(readonly) NSUInteger eof;
 @property(readonly) NSUInteger auxType;
-@property(retain, readonly) NSCalendarDate *lastMod;
+@property(retain, readonly) NSDate *lastMod;
 @property(readonly) BOOL destroyEnabled;
 @property(readonly) BOOL renameEnabled;
 @property(readonly) BOOL backup;

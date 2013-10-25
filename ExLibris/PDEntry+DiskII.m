@@ -36,7 +36,7 @@
     return 0;
 }
 
-- (NSCalendarDate *)lastMod
+- (NSDate *)lastMod
 {
     return nil;
 }

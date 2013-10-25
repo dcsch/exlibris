@@ -376,7 +376,7 @@
     return currentString;
 }
 
-- (BOOL)createDirectoryWithName:(NSString *)name error:(NSError **)outError
+- (PDFileEntry *)createDirectoryWithName:(NSString *)name error:(NSError **)outError
 {
     NSArray *allocatedBlocks = nil;
     PDFileEntry *dirEntry = nil;
@@ -416,7 +416,7 @@
         {
             NSLog(@"Volume directory has reached its maximum number of entries.");
             *outError = [Error errorWithCode:ELVolumeDirectoryEntryLimitError];
-            return NO;
+            return nil;
         }
 
         // We need to create a new directory block to put our entry in, as well
@@ -429,7 +429,7 @@
         {
             NSLog(@"There is not enough space on the volume.");
             *outError = [Error errorWithCode:ELVolumeSpaceLimitError];
-            return NO;
+            return nil;
         }
 
         NSUInteger dirBlockNumber = [allocatedBlocks[0] unsignedIntegerValue];
@@ -468,7 +468,7 @@
         {
             NSLog(@"There is not enough space on the volume.");
             *outError = [Error errorWithCode:ELVolumeSpaceLimitError];
-            return NO;
+            return nil;
         }
     }
     
@@ -494,13 +494,15 @@
     dirEntry.keyPointer = dirBlockNumber;
     dirEntry.blocksUsed = 1;
     dirEntry.eof = 512;
-    dirEntry.creationDateAndTime = [NSCalendarDate calendarDate];
+    dirEntry.creationDateAndTime = [NSDate date];
     dirEntry.version = 0;
     dirEntry.minVersion = 0;
     dirEntry.access = 0xe3;
     dirEntry.auxType = 0;
-    dirEntry.lastMod = [NSCalendarDate calendarDate];
+    dirEntry.lastMod = [NSDate date];
     dirEntry.headerPointer = keyDirectoryBlock.blockNumber;
+
+    PDDirectory *directory = [dirEntry directory];
     
     // Increment the file count in the directory header
     PDDirectoryHeader *dirHeader = (keyDirectoryBlock.entries)[0];
@@ -523,7 +525,7 @@
     
     NSLog(@"Added new subdirectory (at %lu)", (unsigned long)absoluteEntryIndex);
     
-    return YES;
+    return dirEntry;
 }
 
 - (void)deleteFileEntry:(PDFileEntry *)aFileEntry

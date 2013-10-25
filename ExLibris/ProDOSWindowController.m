@@ -356,6 +356,8 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
 
 - (void)deleteSubdirectory:(PDFileEntry *)fileEntry
 {
+    // TODO Delete subdirectory only if it is empty
+
     [fileEntry.directory deleteFileEntry:fileEntry];
 }
 
@@ -434,7 +436,17 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
     {
         NSString *name = [directory uniqueNameFromString:@"NEW.DIR"];
         NSError *error;
-        if ([directory createDirectoryWithName:name error:&error] == NO)
+        PDFileEntry *dirEntry = [directory createDirectoryWithName:name error:&error];
+        if (dirEntry)
+        {
+            NSUndoManager *undoManager = [self.document undoManager];
+            [undoManager registerUndoWithTarget:self
+                                       selector:@selector(deleteSubdirectory:)
+                                         object:dirEntry];
+            [[undoManager prepareWithInvocationTarget:self] deleteSubdirectory:dirEntry];
+            [undoManager setActionName:@"Create Subdirectory"];
+        }
+        else
         {
             NSAlert *alert = [NSAlert alertWithError:error];
             [alert beginSheetModalForWindow:self.window

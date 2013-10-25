@@ -23,7 +23,7 @@
 @property NSUInteger blocksUsed;
 @property NSUInteger eof;
 @property NSUInteger auxType;
-@property(strong) NSCalendarDate *lastMod;
+@property(strong) NSDate *lastMod;
 @property NSUInteger headerPointer;
 @property(strong, readonly) PDDirectory *directory;
 

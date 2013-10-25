@@ -101,40 +101,46 @@
     entryBytes[0x20] = (unsigned char)(auxType >> 8);
 }
 
-- (NSCalendarDate *)lastMod
+- (NSDate *)lastMod
 {
     if (entryBytes[0x21] || entryBytes[0x22])
     {
-        int year;
-        unsigned int month;
-        unsigned int day;
-        unsigned int hour;
-        unsigned int minute;
+        NSInteger year;
+        NSInteger month;
+        NSInteger day;
+        NSInteger hour;
+        NSInteger minute;
         if (unpackDateAndTime(entryBytes + 0x21,
                               &year,
                               &month,
                               &day,
                               &hour,
                               &minute))
-            return [NSCalendarDate dateWithYear:year
-                                          month:month
-                                            day:day
-                                           hour:hour
-                                         minute:minute
-                                         second:0
-                                       timeZone:[NSTimeZone systemTimeZone]];
+        {
+            NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+            dateComponents.year = year;
+            dateComponents.month = month;
+            dateComponents.day = day;
+            dateComponents.hour = hour;
+            dateComponents.minute = minute;
+            dateComponents.timeZone = [NSTimeZone systemTimeZone];
+            return [[NSCalendar currentCalendar] dateFromComponents:dateComponents];
+        }
     }
     return nil;
 }
 
-- (void)setLastMod:(NSCalendarDate *)date
+- (void)setLastMod:(NSDate *)date
 {
-    packDateAndTime(entryBytes + 0x21,
-                    date.yearOfCommonEra,
-                    date.monthOfYear,
-                    date.dayOfMonth,
-                    date.hourOfDay,
-                    date.minuteOfHour);
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *dateComponents = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit
+                                                   fromDate:date];
+    packDateAndTime(entryBytes + 0x18,
+                    dateComponents.year,
+                    dateComponents.month,
+                    dateComponents.day,
+                    dateComponents.hour,
+                    dateComponents.minute);
 }
 
 - (NSUInteger)headerPointer

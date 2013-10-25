@@ -9,40 +9,36 @@
 #import <Cocoa/Cocoa.h>
 
 BOOL unpackDateAndTime(const unsigned char *data,
-                       int *year,
-                       unsigned int *month,
-                       unsigned int *day,
-                       unsigned int *hour,
-                       unsigned int *minute);
+                       NSInteger *year,
+                       NSInteger *month,
+                       NSInteger *day,
+                       NSInteger *hour,
+                       NSInteger *minute);
 
 BOOL packDateAndTime(unsigned char *data,
-                     int year,
-                     unsigned int month,
-                     unsigned int day,
-                     unsigned int hour,
-                     unsigned int minute);
+                     NSInteger year,
+                     NSInteger month,
+                     NSInteger day,
+                     NSInteger hour,
+                     NSInteger minute);
 
 @class PDVolume;
 @class PDDirectory;
 
 @interface PDEntry : NSObject
 {
-    PDVolume *volume;
-    PDDirectory *parentDirectory;
-    PDEntry *parentEntry;
     unsigned char *entryBytes;
     NSUInteger entryLength;
-    NSString *fileName;
 }
 
-@property(strong, readonly) PDVolume *volume;
+@property(weak, readonly) PDVolume *volume;
 @property(strong) PDDirectory *parentDirectory;
 @property(strong, readonly) PDEntry *parentEntry;
 
 @property NSUInteger storageType;
 @property(strong) NSString *fileName;
 @property(readonly, copy) NSString *pathName;
-@property(strong) NSCalendarDate *creationDateAndTime;
+@property(strong) NSDate *creationDateAndTime;
 @property NSUInteger version;
 @property NSUInteger minVersion;
 @property NSUInteger access;

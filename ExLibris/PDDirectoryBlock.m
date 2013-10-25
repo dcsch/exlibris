@@ -129,7 +129,7 @@
                                                                         length:0];
         dirHead.storageType = 14;
         dirHead.fileName = directoryName;
-        dirHead.creationDateAndTime = [NSCalendarDate calendarDate];
+        dirHead.creationDateAndTime = [NSDate date];
         dirHead.version = 0;
         dirHead.minVersion = 0;
         dirHead.access = 0xe3;
