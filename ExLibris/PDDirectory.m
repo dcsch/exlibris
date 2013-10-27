@@ -37,7 +37,7 @@
 @implementation PDDirectory
 
 - (id)initWithVolume:(PDVolume *)aVolume
-         blockNumber:(unsigned int)aBlockNumber
+         blockNumber:(NSUInteger)aBlockNumber
 {
     self = [super init];
     if (self)

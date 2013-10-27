@@ -15,7 +15,7 @@
 }
 
 + (NSString *)disassembleData:(NSData *)data
-                   withOffset:(unsigned int)offset
+                   withOffset:(NSUInteger)offset
                     hasHeader:(BOOL)aHeader;
 
 @end

@@ -24,17 +24,17 @@
 
 #pragma mark - NSMenuDelegate Methods
 
-- (int)numberOfItemsInMenu:(NSMenu *)menu
+- (NSInteger)numberOfItemsInMenu:(NSMenu *)menu
 {
     return mediaDevice.partitionCount;
 }
 
 - (BOOL)menu:(NSMenu *)menu
   updateItem:(NSMenuItem *)item
-     atIndex:(int)x
+     atIndex:(NSInteger)x
 shouldCancel:(BOOL)shouldCancel
 {
-    item.title = [NSString stringWithFormat:@"Partition %d", x];
+    item.title = [NSString stringWithFormat:@"Partition %ld", (long)x];
     item.tag = x;
     item.target = self;
     item.action = @selector(openPartition:);

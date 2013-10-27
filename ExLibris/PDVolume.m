@@ -246,13 +246,13 @@ static void bitPos(NSUInteger blockNumber,
 
 - (NSData *)dataForEntry:(PDEntry *)entry includeMetadata:(BOOL)includeMetadata
 {
-    unsigned int storageType = [entry storageType];
+    NSUInteger storageType = [entry storageType];
     
     if ([entry isKindOfClass:[PDFileEntry class]])
     {
         PDFileEntry *fileEntry = (PDFileEntry *)entry;
-        unsigned int keyPointer = [fileEntry keyPointer];
-        unsigned int blockCount = [fileEntry eof] / 512;
+        NSUInteger keyPointer = [fileEntry keyPointer];
+        NSUInteger blockCount = [fileEntry eof] / 512;
         if ([fileEntry eof] % 512 > 0)
             ++blockCount;
 
@@ -335,7 +335,7 @@ static void bitPos(NSUInteger blockNumber,
         }
     }
     
-    NSLog(@"Unhandled storage type: $%x", storageType);
+    NSLog(@"Unhandled storage type: $%lx", (unsigned long)storageType);
     
     return nil;
 }

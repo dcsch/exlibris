@@ -12,7 +12,7 @@
 @implementation Disassembler
 
 + (NSString *)disassembleData:(NSData *)data
-                   withOffset:(unsigned int)offset
+                   withOffset:(NSUInteger)offset
                     hasHeader:(BOOL)aHeader
 {
     unsigned int byteCount[] =
@@ -96,8 +96,8 @@
     
     NSMutableString *str = [NSMutableString string];
     const unsigned char *startPtr = [data bytes];
-    unsigned int addr = 0;
-    unsigned int length = [data length];
+    NSUInteger addr = 0;
+    NSUInteger length = [data length];
     if (aHeader)
     {
         startPtr += 4;
@@ -107,7 +107,7 @@
     while (addr < length)
     {
         // Address & hex
-        [str appendFormat:@"%04X-   ", addr + offset];
+        [str appendFormat:@"%04lX-   ", addr + offset];
         
         unsigned int opCode = startPtr[addr];
         unsigned int bytes = byteCount[opCode];
@@ -155,10 +155,10 @@
                 [str appendFormat:@"   $%02X%02X,X", startPtr[addr + 2], startPtr[addr + 1]];
                 break;
             case 8:  // Accumulator
-                [str appendFormat:@"   A", startPtr[addr + 1]];
+                [str appendFormat:@"   A"];
                 break;
             case 9:  // Relative
-                [str appendFormat:@"   $%04X", offset + addr + bytes + (char)startPtr[addr + 1]];
+                [str appendFormat:@"   $%04lX", offset + addr + bytes + (char)startPtr[addr + 1]];
                 break;
             case 11:  // Indirect
                 [str appendFormat:@"   ($%02X%02X)", startPtr[addr + 2], startPtr[addr + 1]];

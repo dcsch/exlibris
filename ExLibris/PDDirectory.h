@@ -28,7 +28,7 @@
 @property BOOL allEntriesVisible;
 
 - (id)initWithVolume:(PDVolume *)aVolume
-         blockNumber:(unsigned int)aBlockNumber;
+         blockNumber:(NSUInteger)aBlockNumber;
 
 - (id)initWithFileEntry:(PDFileEntry *)aFileEntry;
 

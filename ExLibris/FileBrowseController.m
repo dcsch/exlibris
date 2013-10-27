@@ -89,19 +89,19 @@
 
 - (void)hexDump
 {
-    unsigned int length;
+    NSUInteger length;
 //    if ([entry isKindOfClass:[PDFileEntry class]])
 //        length = [(PDFileEntry *)entry eof];
 //    else
         length = [data length];
             
     NSMutableString *hexDumpString = [NSMutableString string];
-    unsigned int lineCount = length / 16;
-    unsigned int line;
+    NSUInteger lineCount = length / 16;
+    NSUInteger line;
     for (line = 0; line < lineCount; ++line)
     {
         const unsigned char *ptr = [data bytes] + 16 * line;
-        [hexDumpString appendFormat:@"%08x: ", 16 * line];
+        [hexDumpString appendFormat:@"%08lx: ", 16 * line];
         [hexDumpString appendFormat:@"%02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x  ",
             ptr[0],
             ptr[1],
@@ -157,7 +157,7 @@
     if (extraBytes)
     {
         const unsigned char *ptr = [data bytes] + 16 * lineCount;
-        [hexDumpString appendFormat:@"%08x: ", 16 * lineCount];
+        [hexDumpString appendFormat:@"%08lx: ", 16 * lineCount];
         unsigned int i;
         for (i = 0; i < extraBytes; ++i)
             [hexDumpString appendFormat:@"%02x ", ptr[i]];
@@ -259,11 +259,11 @@
             [catString appendFormat:@"  %5d ", unpackWord(ptr + 0x13)];
             
             // Modified
-            int year;
-            unsigned int month;
-            unsigned int day;
-            unsigned int hour;
-            unsigned int minute;
+            NSInteger year;
+            NSInteger month;
+            NSInteger day;
+            NSInteger hour;
+            NSInteger minute;
             char *nameOfMonth = "JAN\0FEB\0MAR\0APR\0MAY\0JUN\0JUL\0AUG\0SEP\0OCT\0NOV\0DEC";
             unpackDateAndTime(ptr + 0x21, &year, &month, &day, &hour, &minute);
             if (month > 0)
@@ -272,12 +272,12 @@
                     year -= 2000;
                 else
                     year -= 1900;
-                [catString appendFormat:@" %2d-%s-%02d %2d:%02d ",
-                 day,
+                [catString appendFormat:@" %2ld-%s-%02ld %2ld:%02ld ",
+                 (long)day,
                  nameOfMonth + 4 * (month - 1),
-                 year,
-                 hour,
-                 minute];
+                 (long)year,
+                 (long)hour,
+                 (long)minute];
             }
             else
                 [catString appendString:@" <NO DATE>       "];
@@ -290,12 +290,12 @@
                     year -= 2000;
                 else
                     year -= 1900;
-                [catString appendFormat:@" %2d-%s-%02d %2d:%02d ",
-                 day,
+                [catString appendFormat:@" %2ld-%s-%02ld %2ld:%02ld ",
+                 (long)day,
                  nameOfMonth + 4 * (month - 1),
-                 year,
-                 hour,
-                 minute];
+                 (long)year,
+                 (long)hour,
+                 (long)minute];
             }
             else
                 [catString appendString:@" <NO DATE>       "];
@@ -321,10 +321,10 @@
     ProDOSImage *diskImage = [self document];
     PDVolume *volume = (PDVolume *)diskImage.volume;
 
-    [catString appendFormat:@"\nBLOCKS FREE:%5d     BLOCKS USED:%5d     TOTAL BLOCKS:%5d\n",
+    [catString appendFormat:@"\nBLOCKS FREE:%5d     BLOCKS USED:%5d     TOTAL BLOCKS:%5lu\n",
      0,
      0,
-     volume.totalBlockCount];
+     (unsigned long)volume.totalBlockCount];
 
     [textView setString:catString];
 }

@@ -13,7 +13,7 @@
 @implementation MediaMenuDelegate
 
 
-- (int)numberOfItemsInMenu:(NSMenu *)menu
+- (NSInteger)numberOfItemsInMenu:(NSMenu *)menu
 {
     mediaDeviceArray = [MediaDevice devices];
     return (mediaDeviceArray.count > 0) ? mediaDeviceArray.count : 1;
