@@ -48,10 +48,11 @@
     [self addWindowController:controller];
 }
 
-- (BOOL)saveToURL:(NSURL *)absoluteURL
-           ofType:(NSString *)typeName
- forSaveOperation:(NSSaveOperationType)saveOperation
-            error:(NSError **)outError
+-  (BOOL)writeToURL:(NSURL *)absoluteURL
+             ofType:(NSString *)typeName
+   forSaveOperation:(NSSaveOperationType)saveOperation
+originalContentsURL:(NSURL *)absoluteOriginalContentsURL
+              error:(NSError **)outError
 {
     NSLog(@"Saving %@", absoluteURL);
     
