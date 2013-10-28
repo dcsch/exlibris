@@ -36,6 +36,8 @@
                           length:anEntryLength];
     if (self)
     {
+        if (self.fileType.typeId == DIRECTORY_FILE_TYPE_ID)
+            [self updateDirectory];
     }
     return self;
 }
