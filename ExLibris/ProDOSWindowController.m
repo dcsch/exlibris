@@ -191,7 +191,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
             PDFileEntry *fileEntry = (PDFileEntry *)entry;
             NSURL *url = [NSURL URLWithString:fileEntry.fileName
                                 relativeToURL:dropDestination];
-            NSData *data = [volume dataForEntry:fileEntry includeMetadata:NO];
+            NSData *data = [volume dataForEntry:fileEntry appendMetadata:NO];
             [data writeToURL:url atomically:NO];
             
             // Store the ProDOS metadata in the resource fork
@@ -257,7 +257,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
     {
         ProDOSImage *image = self.document;
         PDVolume *volume = (PDVolume *)image.volume;
-        NSData *data = [volume dataForEntry:entry includeMetadata:YES];
+        NSData *data = [volume dataForEntry:entry appendMetadata:YES];
         [pb setData:data forType:ProDOSFilePboardType];
     
         NSLog(@"Copy ProDOS file to pasteboard");
@@ -278,9 +278,10 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
         NSData *data = [pb dataForType:ProDOSFilePboardType];
         
         // Split pasteboard into file data and metadata
-        unsigned char metaLen = ((unsigned char *)data.bytes)[0];
-        NSRange metaRange = NSMakeRange(1, metaLen);
-        NSRange fileRange = NSMakeRange(metaLen + 1, data.length - (metaLen + 1));
+        // (metadata has been appended after the last 512 byte block)
+        unsigned char metaLen = data.length % 512;
+        NSRange metaRange = NSMakeRange(data.length - metaLen, metaLen);
+        NSRange fileRange = NSMakeRange(0, data.length - metaLen);
         NSData *metadata = [data subdataWithRange:metaRange];
         NSData *fileData = [data subdataWithRange:fileRange];
 
@@ -373,7 +374,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
         {
             ProDOSImage *di = self.document;
             PDVolume *volume = (PDVolume *)di.volume;
-            NSData *data = [volume dataForEntry:entry includeMetadata:NO];
+            NSData *data = [volume dataForEntry:entry appendMetadata:NO];
             windowController = [[GraphicsBrowseController alloc] initWithData:data
                                                                          name:entry.fileName
                                                                     hasHeader:NO];
@@ -493,7 +494,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
             // file browser.
             ProDOSImage *di = self.document;
             PDVolume *volume = (PDVolume *)di.volume;
-            NSData *data = [volume dataForEntry:entry includeMetadata:NO];
+            NSData *data = [volume dataForEntry:entry appendMetadata:NO];
             if (data)
             {
                 NSUInteger typeId = 0;

@@ -43,7 +43,7 @@
 - (id)initWithContainer:(NSObject *)aContainer
            blockStorage:(BlockStorage *)aBlockStorage;
 
-- (NSData *)dataForEntry:(PDEntry *)entry includeMetadata:(BOOL)includeMetadata;
+- (NSData *)dataForEntry:(PDEntry *)entry appendMetadata:(BOOL)appendMetadata;
 
 - (NSArray *)allocateBlocks:(NSUInteger)aBlockCount;
 

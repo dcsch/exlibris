@@ -244,7 +244,7 @@ static void bitPos(NSUInteger blockNumber,
     return self.volumeDirectoryHeader.totalBlocks;
 }
 
-- (NSData *)dataForEntry:(PDEntry *)entry includeMetadata:(BOOL)includeMetadata
+- (NSData *)dataForEntry:(PDEntry *)entry appendMetadata:(BOOL)appendMetadata
 {
     NSUInteger storageType = [entry storageType];
     
@@ -258,21 +258,13 @@ static void bitPos(NSUInteger blockNumber,
 
         NSUInteger dataSize = 512 * blockCount;
         NSData *metadata = nil;
-        if (includeMetadata)
+        if (appendMetadata)
         {
             metadata = entry.entryData;
-            dataSize += metadata.length + 1;
+            dataSize += metadata.length;
         }
         NSMutableData *allBlockData = [NSMutableData dataWithCapacity:dataSize];
-        if (metadata)
-        {
-            // The first byte is a length of the metadata, followed by the
-            // metadata itself
-            unsigned char metadataLen = (unsigned char)metadata.length;
-            [allBlockData appendBytes:&metadataLen length:1];
-            [allBlockData appendData:metadata];
-        }
-        
+
         // Load according to the storage type
         if (storageType == SEEDLING_FILE)
         {
@@ -280,6 +272,8 @@ static void bitPos(NSUInteger blockNumber,
             
             NSData *data = [blockStorage mutableDataForBlock:keyPointer];
             [allBlockData appendData:data];
+            if (metadata)
+                [allBlockData appendData:metadata];
             return allBlockData;
         }
         else if (storageType == SAPLING_FILE)
@@ -290,6 +284,8 @@ static void bitPos(NSUInteger blockNumber,
                              withIndexBlock:[blockStorage mutableDataForBlock:keyPointer]
                               isMasterIndex:NO
                               toMutableData:allBlockData];
+            if (metadata)
+                [allBlockData appendData:metadata];
             return allBlockData;
         }
         else if (storageType == TREE_FILE)
@@ -300,6 +296,8 @@ static void bitPos(NSUInteger blockNumber,
                              withIndexBlock:[blockStorage mutableDataForBlock:keyPointer]
                               isMasterIndex:YES
                               toMutableData:allBlockData];
+            if (metadata)
+                [allBlockData appendData:metadata];
             return allBlockData;
         }
         else if (storageType == SUBDIRECTORY)
@@ -320,7 +318,7 @@ static void bitPos(NSUInteger blockNumber,
             NSLog(@"Subdirectory key block");
             
             return [self dataForEntry:entry.parentEntry
-                      includeMetadata:includeMetadata];
+                       appendMetadata:appendMetadata];
         }
         else if (storageType == VOLUME_DIRECTORY_KEY_BLOCK)
         {
