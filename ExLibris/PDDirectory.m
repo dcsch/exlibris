@@ -16,7 +16,11 @@
 #import "DiskII.h"
 #import "Error.h"
 
-@interface PDDirectory (Private)
+@interface PDDirectory ()
+{
+    PDVolume *volume;
+    NSMutableArray *_blocks;
+}
 
 + (NSUInteger)blockCountForData:(NSData *)aData;
 
@@ -30,7 +34,7 @@
 
 + (NSDictionary *)createBlocks:(NSArray *)aBlockNumbers forData:(NSData *)aData;
 
-- (void)collectEntries;
+- (void)updateEntries;
 
 @end
 
@@ -44,8 +48,8 @@
     {
         volume = aVolume;
 
-        blocks = [[NSMutableArray alloc] init];
-        entries = [[NSMutableArray alloc] init];
+        _blocks = [[NSMutableArray alloc] init];
+        _entries = [[NSMutableArray alloc] init];
         
         // Load all the directory blocks for this directory
         PDDirectoryBlock *keyBlock = nil;
@@ -72,26 +76,25 @@
                 // Not a valid directory block (not a ProDOS volume?)
                 return nil;
             }
-            [blocks addObject:block];
+            [_blocks addObject:block];
             blockNumber = [block nextBlockNumber];
         }
 
-        [self collectEntries];
+        [self updateEntries];
     }
     return self;
 }
 
 - (id)initWithFileEntry:(PDFileEntry *)aFileEntry
 {
-    fileEntry = aFileEntry;
-    return [self initWithVolume:fileEntry.volume
-                    blockNumber:fileEntry.keyPointer];
+    _fileEntry = aFileEntry;
+    return [self initWithVolume:_fileEntry.volume
+                    blockNumber:_fileEntry.keyPointer];
 }
-
 
 - (NSString *)name
 {
-    PDDirectoryBlock *block = blocks[0];
+    PDDirectoryBlock *block = _blocks[0];
     if (block)
     {
         PDDirectoryHeader *dirHead = (block.entries)[0];
@@ -103,7 +106,7 @@
 
 - (void)setName:(NSString *)aName
 {
-    PDDirectoryBlock *block = blocks[0];
+    PDDirectoryBlock *block = _blocks[0];
     if (block)
     {
         PDDirectoryHeader *dirHead = (block.entries)[0];
@@ -112,17 +115,12 @@
     }
 }
 
-- (BOOL)allEntriesVisible
-{
-    return allEntriesVisible;
-}
-
 - (void)setAllEntriesVisible:(BOOL)flag
 {
-    if (allEntriesVisible != flag)
+    if (_allEntriesVisible != flag)
     {
-        allEntriesVisible = flag;
-        [self collectEntries];
+        _allEntriesVisible = flag;
+        [self updateEntries];
     }
 }
 
@@ -269,7 +267,7 @@
 
     // Do we have space in the existing directory blocks, or do we need to add one?
     BOOL directorySpace = NO;
-    for (PDDirectoryBlock *block in blocks)
+    for (PDDirectoryBlock *block in _blocks)
     {
 //        if (block.entries.count < block.entriesPerBlock)
 //        {
@@ -294,7 +292,7 @@
     {
         // Add a new directory block
         // NOTE that this can only go ahead if this isn't the volume directory
-        PDDirectoryBlock *lastDirBlock = blocks[blocks.count - 1];
+        PDDirectoryBlock *lastDirBlock = _blocks[_blocks.count - 1];
         NSUInteger dirBlockNumber = [[volume allocateBlocks:1][0] unsignedIntegerValue];
         
         // Clear out any old data in the block
@@ -338,7 +336,7 @@
     // Add the file entry to the directory block
 
     // Update the entries for this directory
-    [self collectEntries];
+    [self updateEntries];
 
     return YES;
 }
@@ -352,7 +350,7 @@
     do
     {
         duplicate = NO;
-        for (PDDirectoryBlock *block in blocks)
+        for (PDDirectoryBlock *block in _blocks)
         {
             for (PDEntry *entry in block.entries)
             {
@@ -387,7 +385,7 @@
     NSInteger index = -1;
     PDDirectoryBlock *keyDirectoryBlock = nil;
     PDDirectoryBlock *lastDirectoryBlock = nil;
-    for (PDDirectoryBlock *block in blocks)
+    for (PDDirectoryBlock *block in _blocks)
     {
         lastDirectoryBlock = block;
         if (keyDirectoryBlock == nil)
@@ -412,7 +410,7 @@
     if (!dirEntry)
     {
         // If this is the volume directory, then we can't expand it
-        if (fileEntry == nil)
+        if (_fileEntry == nil)
         {
             NSLog(@"Volume directory has reached its maximum number of entries.");
             *outError = [Error errorWithCode:ELVolumeDirectoryEntryLimitError];
@@ -447,10 +445,10 @@
         lastDirectoryBlock.nextBlockNumber = dirBlockNumber;
         parentDirBlockNumber = lastDirectoryBlock.blockNumber;
         
-        [blocks addObject:dirBlock];
+        [_blocks addObject:dirBlock];
         dirEntry = (dirBlock.entries)[0];
 
-        fileEntry.eof += kProDOSBlockSize;
+        _fileEntry.eof += kProDOSBlockSize;
 
         if (self.allEntriesVisible)
         {
@@ -502,7 +500,7 @@
     dirEntry.lastMod = [NSDate date];
     dirEntry.headerPointer = keyDirectoryBlock.blockNumber;
 
-    PDDirectory *directory = [dirEntry directory];
+    [dirEntry updateDirectory];
     
     // Increment the file count in the directory header
     PDDirectoryHeader *dirHeader = (keyDirectoryBlock.entries)[0];
@@ -545,14 +543,14 @@
     return @"BOOP";
 }
 
-- (void)collectEntries
+- (void)updateEntries
 {
     // We must use the proxy so that KVO works correctly
     NSMutableArray *entriesProxy = [self mutableArrayValueForKey:@"entries"];
     [entriesProxy removeAllObjects];
     
     BOOL showAll = self.allEntriesVisible;
-    for (PDDirectoryBlock *block in blocks)
+    for (PDDirectoryBlock *block in _blocks)
     {
         for (PDEntry *entry in block.entries)
         {
@@ -575,11 +573,5 @@
                                                                   key:@"directory"
                                                                  name:self.name];
 }
-
-@synthesize fileEntry;
-
-@synthesize blocks;
-
-@synthesize entries;
 
 @end

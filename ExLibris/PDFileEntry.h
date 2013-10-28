@@ -13,10 +13,6 @@
 @class PDFileType;
 
 @interface PDFileEntry : PDEntry
-{
-    PDDirectory *directory;
-    PDFileType *fileType;
-}
 
 @property(strong) PDFileType *fileType;
 @property NSUInteger keyPointer;
@@ -26,5 +22,7 @@
 @property(strong) NSDate *lastMod;
 @property NSUInteger headerPointer;
 @property(strong, readonly) PDDirectory *directory;
+
+- (void)updateDirectory;
 
 @end

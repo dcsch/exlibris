@@ -13,19 +13,12 @@
 @class PDFileEntry;
 
 @interface PDDirectory : NSObject
-{
-    PDFileEntry *fileEntry;
-    PDVolume *volume;
-    NSMutableArray *blocks;
-    NSMutableArray *entries;
-    BOOL allEntriesVisible;
-}
 
 @property(strong, readonly) PDFileEntry *fileEntry;
 @property(strong, readonly) NSArray *blocks;
 @property(strong, readonly) NSArray *entries;
 @property(copy) NSString *name;
-@property BOOL allEntriesVisible;
+@property(nonatomic) BOOL allEntriesVisible;
 
 - (id)initWithVolume:(PDVolume *)aVolume
          blockNumber:(NSUInteger)aBlockNumber;

@@ -12,6 +12,15 @@
 #import "PDFileType.h"
 #import "PDEntry.h"
 
+@interface PDFileEntry ()
+{
+    PDDirectory *_directory;
+    PDFileType *_fileType;
+}
+
+@end
+
+
 @implementation PDFileEntry
 
 - (id)initWithVolume:(PDVolume *)aVolume
@@ -39,21 +48,21 @@
 - (PDFileType *)fileType
 {
     NSUInteger typeId = entryBytes[0x10];
-    if (fileType && (fileType.typeId != typeId))
+    if (_fileType && (_fileType.typeId != typeId))
     {
-        fileType = nil;
+        _fileType = nil;
     }
-    if (!fileType)
+    if (!_fileType)
     {
-        fileType = [PDFileType fileTypeWithId:entryBytes[0x10]];
+        _fileType = [PDFileType fileTypeWithId:entryBytes[0x10]];
     }
-    return fileType;
+    return _fileType;
 }
 
 - (void)setFileType:(PDFileType *)aFileType
 {
-    fileType = aFileType;
-    entryBytes[0x10] = (unsigned char)fileType.typeId;
+    _fileType = aFileType;
+    entryBytes[0x10] = (unsigned char)_fileType.typeId;
 }
 
 - (NSUInteger)keyPointer
@@ -156,14 +165,21 @@
 
 - (PDDirectory *)directory
 {
-    // If this file type isn't a directory, then we can never return one
-    if (self.fileType.typeId != 0x0f)
-        return nil;
+    if (self.fileType.typeId == 0x0f)
+    {
+        int foo = 0;
+//        NSAssert(_directory != nil,
+//                 @"Directory file entry has a nil directory object");
+    }
 
-    // If we haven't initialised one, do it now
-    if (!directory)
-        directory = [[PDDirectory alloc] initWithFileEntry:self];
-    return directory;
+    return _directory;
+}
+
+- (void)updateDirectory
+{
+    NSAssert(self.fileType.typeId == 0x0f, @"Trying to update a directory on a non-directory file entry");
+
+    [self setValue:[[PDDirectory alloc] initWithFileEntry:self] forKey:@"directory"];
 }
 
 @end
