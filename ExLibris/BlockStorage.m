@@ -274,7 +274,7 @@
 
 - (void)markModifiedBlockAtIndex:(NSUInteger)blockIndex
 {
-    [_modifiedIndicies addObject:[NSNumber numberWithUnsignedInteger:blockIndex]];
+    [_modifiedIndicies addObject:@(blockIndex)];
 }
 
 - (BOOL)commitModifiedBlocks

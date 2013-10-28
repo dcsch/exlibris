@@ -22,15 +22,15 @@ static NSMutableDictionary *fileTypes;
                                             detail:@"Typeless file"];
         fileTypes[@0x01U] = [PDFileType fileTypeWithId:0x01
                                             detail:@"Bad block file"];
-        fileTypes[[NSNumber numberWithUnsignedInt:TEXT_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:TEXT_FILE_TYPE_ID
+        fileTypes[[NSNumber numberWithUnsignedInteger:TEXT_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:TEXT_FILE_TYPE_ID
                                                    name:@"TXT"
                                             detail:@"ASCII text file"];
-        fileTypes[[NSNumber numberWithUnsignedInt:BINARY_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:BINARY_FILE_TYPE_ID
+        fileTypes[[NSNumber numberWithUnsignedInteger:BINARY_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:BINARY_FILE_TYPE_ID
                                                    name:@"BIN"
                                             detail:@"General binary file"];
         fileTypes[@0x08U] = [PDFileType fileTypeWithId:0x08
                                             detail:@"Graphics screen file"];
-        fileTypes[[NSNumber numberWithUnsignedInt:DIRECTORY_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:DIRECTORY_FILE_TYPE_ID
+        fileTypes[[NSNumber numberWithUnsignedInteger:DIRECTORY_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:DIRECTORY_FILE_TYPE_ID
                                                    name:@"DIR"
                                             detail:@"Directory file"];
         fileTypes[@0x18U] = [PDFileType fileTypeWithId:0x18
@@ -64,11 +64,11 @@ static NSMutableDictionary *fileTypes;
                                             detail:@"ProDOS user defined file 7"];
         fileTypes[@0xf8U] = [PDFileType fileTypeWithId:0xf8
                                             detail:@"ProDOS user defined file 8"];
-        fileTypes[[NSNumber numberWithUnsignedInt:INTEGER_BASIC_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:INTEGER_BASIC_FILE_TYPE_ID
+        fileTypes[[NSNumber numberWithUnsignedInteger:INTEGER_BASIC_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:INTEGER_BASIC_FILE_TYPE_ID
                                             detail:@"Integer BASIC program file"];
         fileTypes[@0xfbU] = [PDFileType fileTypeWithId:0xfb
                                             detail:@"Integer BASIC variable file"];
-        fileTypes[[NSNumber numberWithUnsignedInt:APPLESOFT_BASIC_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:APPLESOFT_BASIC_FILE_TYPE_ID
+        fileTypes[[NSNumber numberWithUnsignedInteger:APPLESOFT_BASIC_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:APPLESOFT_BASIC_FILE_TYPE_ID
                                                    name:@"BAS"
                                             detail:@"Applesoft program file"];
         fileTypes[@0xfdU] = [PDFileType fileTypeWithId:0xfd
@@ -77,7 +77,7 @@ static NSMutableDictionary *fileTypes;
         fileTypes[@0xfeU] = [PDFileType fileTypeWithId:0xfe
                                                    name:@"REL"
                                             detail:@"Relocatable code file (EDASM)"];
-        fileTypes[[NSNumber numberWithUnsignedInt:SYSTEM_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:SYSTEM_FILE_TYPE_ID
+        fileTypes[[NSNumber numberWithUnsignedInteger:SYSTEM_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:SYSTEM_FILE_TYPE_ID
                                                    name:@"SYS"
                                             detail:@"ProDOS system file"];
     }
@@ -97,12 +97,12 @@ static NSMutableDictionary *fileTypes;
 
 + (PDFileType *)fileTypeWithId:(NSUInteger)aTypeId
 {
-    PDFileType *fileType = [PDFileType fileTypeDictionary][[NSNumber numberWithUnsignedInteger:aTypeId]];
+    PDFileType *fileType = [PDFileType fileTypeDictionary][@(aTypeId)];
     if (!fileType)
     {
         // Since we don't have a record of this type, create a placeholder
         fileType = [PDFileType fileTypeWithId:aTypeId detail:nil];
-        fileTypes[[NSNumber numberWithUnsignedInteger:aTypeId]] = fileType;
+        fileTypes[@(aTypeId)] = fileType;
     }
     return fileType;
 }

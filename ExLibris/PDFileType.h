@@ -8,12 +8,22 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define TEXT_FILE_TYPE_ID               0x04
-#define BINARY_FILE_TYPE_ID             0x06
-#define DIRECTORY_FILE_TYPE_ID          0x0f
-#define INTEGER_BASIC_FILE_TYPE_ID      0xfa
-#define APPLESOFT_BASIC_FILE_TYPE_ID    0xfc
-#define SYSTEM_FILE_TYPE_ID             0xff
+enum FileType
+{
+    TEXT_FILE_TYPE_ID = 0x04U,
+    BINARY_FILE_TYPE_ID = 0x06U,
+    DIRECTORY_FILE_TYPE_ID = 0x0fU,
+    INTEGER_BASIC_FILE_TYPE_ID = 0xfaU,
+    APPLESOFT_BASIC_FILE_TYPE_ID = 0xfcU,
+    SYSTEM_FILE_TYPE_ID = 0xffU
+};
+
+//#define TEXT_FILE_TYPE_ID               (NSUInteger)0x04
+//#define BINARY_FILE_TYPE_ID             (NSUInteger)0x06
+//#define DIRECTORY_FILE_TYPE_ID          (NSUInteger)0x0f
+//#define INTEGER_BASIC_FILE_TYPE_ID      (NSUInteger)0xfa
+//#define APPLESOFT_BASIC_FILE_TYPE_ID    (NSUInteger)0xfc
+//#define SYSTEM_FILE_TYPE_ID             (NSUInteger)0xff
 
 @interface PDFileType : NSObject <NSCopying>
 {

@@ -87,7 +87,7 @@
             value += (c - L'A' + 10) * factor;
         factor *= 16;
     }
-    return [NSNumber numberWithUnsignedInteger:value];
+    return @(value);
 }
 
 - (BOOL)isPartialStringValid:(NSString *)partialString
