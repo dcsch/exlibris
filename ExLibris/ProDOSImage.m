@@ -58,14 +58,16 @@ originalContentsURL:(NSURL *)absoluteOriginalContentsURL
     
     if (saveOperation == NSSaveAsOperation)
     {
-        // TODO mark all blocks as modified and needing to be written out
-
+        [_blockStorage precacheBlocksInRange:NSMakeRange(0, self.blockCount)];
         self.fileURL = absoluteURL;
         _blockStorage.path = absoluteURL.path;
+        [_blockStorage markModifiedBlocksInRange:NSMakeRange(0, self.blockCount)];
     }
     else if (saveOperation == NSAutosaveElsewhereOperation)
     {
+        [_blockStorage precacheBlocksInRange:NSMakeRange(0, self.blockCount)];
         _blockStorage.path = absoluteURL.path;
+        [_blockStorage markModifiedBlocksInRange:NSMakeRange(0, self.blockCount)];
     }
 
     if ([_blockStorage commitModifiedBlocks])
@@ -82,6 +84,10 @@ originalContentsURL:(NSURL *)absoluteOriginalContentsURL
              ofType:(NSString *)typeName
               error:(NSError **)outError
 {
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    NSDictionary *fileAttributes = [fileManager attributesOfItemAtPath:absoluteURL.path error:nil];
+    self.blockCount = [fileAttributes fileSize] / kProDOSBlockSize;
+
     _blockStorage = [[BlockStorage alloc] initWithURL:absoluteURL];
     if (!_blockStorage)
         return NO;

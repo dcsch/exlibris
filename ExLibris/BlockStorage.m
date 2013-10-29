@@ -252,6 +252,12 @@
     return blockData;
 }
 
+- (void)precacheBlocksInRange:(NSRange)range
+{
+    for (NSUInteger i = range.location; i < range.location + range.length; ++i)
+        [self mutableDataForBlock:i];
+}
+
 - (NSData *)headerDataWithLength:(NSUInteger)dataLength
 {
     if (_fd <= 0)
@@ -275,6 +281,12 @@
 - (void)markModifiedBlockAtIndex:(NSUInteger)blockIndex
 {
     [_modifiedIndicies addObject:@(blockIndex)];
+}
+
+- (void)markModifiedBlocksInRange:(NSRange)range
+{
+    for (NSUInteger i = range.location; i < range.location + range.length; ++i)
+        [_modifiedIndicies addObject:@(i)];
 }
 
 - (BOOL)commitModifiedBlocks

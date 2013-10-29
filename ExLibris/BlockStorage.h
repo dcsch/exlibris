@@ -39,12 +39,14 @@
 - (void)setData:(NSData *)data forBlock:(NSUInteger)blockIndex;
 
 - (NSMutableData *)mutableDataForBlock:(NSUInteger)blockIndex;
+- (void)precacheBlocksInRange:(NSRange)range;
 
 - (NSData *)headerDataWithLength:(NSUInteger)dataLength;
 
 - (void)zeroBlock:(NSUInteger)blockIndex;
 
 - (void)markModifiedBlockAtIndex:(NSUInteger)blockIndex;
+- (void)markModifiedBlocksInRange:(NSRange)range;
 
 - (BOOL)commitModifiedBlocks;
 
