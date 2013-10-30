@@ -354,7 +354,8 @@
         {
             for (PDEntry *entry in block.entries)
             {
-                if ([entry.fileName isEqualToString:currentString])
+                if ([entry isKindOfClass:[PDFileEntry class]] &&
+                     [entry.fileName isEqualToString:currentString])
                 {
                     duplicate = YES;
                     break;

@@ -1,4 +1,4 @@
-//
+    //
 //  ProDOSImage.m
 //  Disk II
 //
@@ -27,11 +27,6 @@
 
 
 @implementation ProDOSImage
-
-//+ (BOOL)autosavesInPlace
-//{
-//    return YES;
-//}
 
 - (id)init
 {
