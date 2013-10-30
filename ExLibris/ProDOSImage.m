@@ -51,19 +51,23 @@ originalContentsURL:(NSURL *)absoluteOriginalContentsURL
 {
     NSLog(@"Saving %@", absoluteURL);
     
-    if (saveOperation == NSSaveAsOperation)
-    {
-        [_blockStorage precacheBlocksInRange:NSMakeRange(0, self.blockCount)];
-        self.fileURL = absoluteURL;
-        _blockStorage.path = absoluteURL.path;
-        [_blockStorage markModifiedBlocksInRange:NSMakeRange(0, self.blockCount)];
-    }
-    else if (saveOperation == NSAutosaveElsewhereOperation)
-    {
-        [_blockStorage precacheBlocksInRange:NSMakeRange(0, self.blockCount)];
-        _blockStorage.path = absoluteURL.path;
-        [_blockStorage markModifiedBlocksInRange:NSMakeRange(0, self.blockCount)];
-    }
+//    if (saveOperation == NSSaveAsOperation)
+//    {
+//        [_blockStorage precacheBlocksInRange:NSMakeRange(0, self.blockCount)];
+//        self.fileURL = absoluteURL;
+//        _blockStorage.path = absoluteURL.path;
+//        [_blockStorage markModifiedBlocksInRange:NSMakeRange(0, self.blockCount)];
+//    }
+//    else if (saveOperation == NSAutosaveElsewhereOperation || saveOperation == NSAutosaveInPlaceOperation)
+//    {
+//        [_blockStorage precacheBlocksInRange:NSMakeRange(0, self.blockCount)];
+//        _blockStorage.path = absoluteURL.path;
+//        [_blockStorage markModifiedBlocksInRange:NSMakeRange(0, self.blockCount)];
+//    }
+
+    [_blockStorage precacheBlocksInRange:NSMakeRange(0, self.blockCount)];
+    [_blockStorage markModifiedBlocksInRange:NSMakeRange(0, self.blockCount)];
+    _blockStorage.path = absoluteURL.path;
 
     if ([_blockStorage commitModifiedBlocks])
         return YES;
