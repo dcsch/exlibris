@@ -502,6 +502,13 @@
     dirEntry.headerPointer = keyDirectoryBlock.blockNumber;
 
     [dirEntry updateDirectory];
+
+    // Cascade the visibility status of empty entries
+    if (self.allEntriesVisible)
+    {
+        dirEntry.directory.allEntriesVisible = self.allEntriesVisible;
+        [dirEntry.directory updateEntries];
+    }
     
     // Increment the file count in the directory header
     PDDirectoryHeader *dirHeader = (keyDirectoryBlock.entries)[0];
