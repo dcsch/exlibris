@@ -106,7 +106,7 @@ BOOL packDateAndTime(unsigned char *data,
 
 - (void)setStorageType:(NSUInteger)aStorageType
 {
-    entryBytes[0] |= (unsigned char)aStorageType << 4;
+    entryBytes[0] = (aStorageType << 4) | (entryBytes[0] & 0xf);
 }
 
 - (NSString *)fileName

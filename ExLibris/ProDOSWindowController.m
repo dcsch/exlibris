@@ -121,7 +121,7 @@
 
 - (void)setDocumentEdited:(BOOL)flag
 {
-    NSLog(@"DiskImageController told of edit");
+    NSLog(@"ProDOSWindowController told of edit");
 
     [super setDocumentEdited:flag];
 }
@@ -359,7 +359,7 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
 {
     // TODO Delete subdirectory only if it is empty
 
-    [fileEntry.directory deleteFileEntry:fileEntry];
+    [fileEntry.parentDirectory deleteFileEntryWithName:fileEntry.fileName];
 }
 
 - (IBAction)openGraphics:(id)sender

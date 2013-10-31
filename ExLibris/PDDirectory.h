@@ -30,7 +30,7 @@
 
 - (PDFileEntry *)createDirectoryWithName:(NSString *)name error:(NSError **)outError;
 
-- (void)deleteFileEntry:(PDFileEntry *)aFileEntry;
+- (void)deleteFileEntryWithName:(NSString *)name;
 
 - (NSString *)uniqueNameFromString:(NSString *)string;
 

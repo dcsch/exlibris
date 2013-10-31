@@ -534,16 +534,22 @@
     return dirEntry;
 }
 
-- (void)deleteFileEntry:(PDFileEntry *)aFileEntry
+- (void)deleteFileEntryWithName:(NSString *)name
 {
-//    for (PDDirectoryBlock *block in blocks)
-//    {
-//        NSUInteger entryIndex = [block indexOfObject:aFileEntry];
-//        if (entryIndex != NSNotFound)
-//        {
-//            aFileEntry.storageType = 0;
-//        }
-//    }
+    for (PDDirectoryBlock *block in _blocks)
+    {
+        for (PDEntry *entry in block.entries)
+        {
+            if ([entry.fileName isEqualToString:name] &&
+                entry.storageType != 0 &&
+                [entry isKindOfClass:[PDFileEntry class]])
+            {
+                entry.storageType = 0;
+                [self updateEntries];
+                return;
+            }
+        }
+    }
 }
 
 - (id)valueForUndefinedKey:(NSString *)key
