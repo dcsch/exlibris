@@ -97,6 +97,7 @@ BOOL packDateAndTime(unsigned char *data,
 - (void)clear
 {
     memset(entryBytes, 0, entryLength);
+    [self setValue:nil forKey:@"fileName"];
 }
 
 - (NSUInteger)storageType

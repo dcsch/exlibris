@@ -47,6 +47,6 @@
 
 - (NSArray *)allocateBlocks:(NSUInteger)aBlockCount;
 
-//- (void)deallocateBlocks:(NSArray *)blockIndexes;
+- (void)deallocateBlocks:(NSArray *)blockIndicies;
 
 @end

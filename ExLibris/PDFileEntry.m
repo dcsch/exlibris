@@ -179,9 +179,12 @@
 
 - (void)updateDirectory
 {
-    NSAssert(self.fileType.typeId == 0x0f, @"Trying to update a directory on a non-directory file entry");
+//    NSAssert(self.fileType.typeId == 0x0f, @"Trying to update a directory on a non-directory file entry");
 
-    [self setValue:[[PDDirectory alloc] initWithFileEntry:self] forKey:@"directory"];
+    if (self.fileType.typeId == 0x0f)
+        [self setValue:[[PDDirectory alloc] initWithFileEntry:self] forKey:@"directory"];
+    else
+        [self setValue:nil forKey:@"directory"];
 }
 
 @end

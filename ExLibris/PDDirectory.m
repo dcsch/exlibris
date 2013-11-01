@@ -544,7 +544,16 @@
                 entry.storageType != 0 &&
                 [entry isKindOfClass:[PDFileEntry class]])
             {
-                entry.storageType = 0;
+                // Deallocate the associated directory blocks
+                NSMutableArray *blockIndiciesToDeallocate = [NSMutableArray array];
+                PDFileEntry *fileEntry = (PDFileEntry *)entry;
+                for (PDDirectoryBlock *dirBlock in fileEntry.directory.blocks)
+                    [blockIndiciesToDeallocate addObject:@(dirBlock.blockNumber)];
+                [volume deallocateBlocks:blockIndiciesToDeallocate];
+
+                // Reset the entry
+                [fileEntry clear];
+                [fileEntry updateDirectory];
                 [self updateEntries];
                 return;
             }

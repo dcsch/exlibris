@@ -440,4 +440,10 @@ static void bitPos(NSUInteger blockNumber,
     return array;
 }
 
+- (void)deallocateBlocks:(NSArray *)blockIndicies
+{
+    for (NSNumber *blockIndex in blockIndicies)
+        [self setBlockAvailable:NO atIndex:[blockIndex unsignedIntegerValue]];
+}
+
 @end
