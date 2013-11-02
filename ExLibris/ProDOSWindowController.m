@@ -359,6 +359,13 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
 {
     // TODO Delete subdirectory only if it is empty
 
+    NSUndoManager *undoManager = [self.document undoManager];
+    [undoManager registerUndoWithTarget:self
+                               selector:@selector(deleteSubdirectory:)
+                                 object:dirEntry];
+    [[undoManager prepareWithInvocationTarget:self] createSubdirectory:dirEntry];
+    [undoManager setActionName:@"Create Subdirectory"];
+
     [fileEntry.parentDirectory deleteFileEntryWithName:fileEntry.fileName];
 }
 
