@@ -361,9 +361,8 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
 
     NSUndoManager *undoManager = [self.document undoManager];
     [undoManager registerUndoWithTarget:self
-                               selector:@selector(deleteSubdirectory:)
-                                 object:dirEntry];
-    [[undoManager prepareWithInvocationTarget:self] createSubdirectory:dirEntry];
+                               selector:@selector(createSubdirectory:)
+                                 object:fileEntry.parentEntry];
     [undoManager setActionName:@"Create Subdirectory"];
 
     [fileEntry.parentDirectory deleteFileEntryWithName:fileEntry.fileName];
@@ -451,7 +450,6 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
             [undoManager registerUndoWithTarget:self
                                        selector:@selector(deleteSubdirectory:)
                                          object:dirEntry];
-            [[undoManager prepareWithInvocationTarget:self] deleteSubdirectory:dirEntry];
             [undoManager setActionName:@"Create Subdirectory"];
         }
         else
