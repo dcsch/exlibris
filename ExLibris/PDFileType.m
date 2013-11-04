@@ -17,69 +17,91 @@ static NSMutableDictionary *fileTypes;
     // Check if we have to set up the file types dictionary
     if (!fileTypes)
     {
+        NSURL *url = [[NSBundle mainBundle] URLForResource:@"FileTypes" withExtension:@"plist"];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        NSPropertyListFormat format;
+        NSError *error;
+        NSArray *plist = [NSPropertyListSerialization propertyListWithData:data
+                                                                   options:NSPropertyListImmutable
+                                                                    format:&format
+                                                                     error:&error];
+        if (!plist)
+        {
+            NSLog(@"%@", error.description);
+            return nil;
+        }
+
         fileTypes = [[NSMutableDictionary alloc] init];
-        fileTypes[@0x00U] = [PDFileType fileTypeWithId:0x00
-                                            detail:@"Typeless file"];
-        fileTypes[@0x01U] = [PDFileType fileTypeWithId:0x01
-                                            detail:@"Bad block file"];
-        fileTypes[[NSNumber numberWithUnsignedInteger:TEXT_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:TEXT_FILE_TYPE_ID
-                                                   name:@"TXT"
-                                            detail:@"ASCII text file"];
-        fileTypes[[NSNumber numberWithUnsignedInteger:BINARY_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:BINARY_FILE_TYPE_ID
-                                                   name:@"BIN"
-                                            detail:@"General binary file"];
-        fileTypes[@0x08U] = [PDFileType fileTypeWithId:0x08
-                                            detail:@"Graphics screen file"];
-        fileTypes[[NSNumber numberWithUnsignedInteger:DIRECTORY_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:DIRECTORY_FILE_TYPE_ID
-                                                   name:@"DIR"
-                                            detail:@"Directory file"];
-        fileTypes[@0x18U] = [PDFileType fileTypeWithId:0x18
-                                            detail:@"AppleWorks Data Base file"];
-        fileTypes[@0x19U] = [PDFileType fileTypeWithId:0x19
-                                            detail:@"AppleWorks Word Processor file"];
-        fileTypes[@0x1aU] = [PDFileType fileTypeWithId:0x1a
-                                            detail:@"AppleWorks Spreadsheet file"];
-        fileTypes[@0x1bU] = [PDFileType fileTypeWithId:0x1b
-                                            detail:@"AppleWorks Spreadsheet file"];
-        fileTypes[@0xb3U] = [PDFileType fileTypeWithId:0xb3
-                                                   name:@"S16"
-                                            detail:@"GS/OS application"];
-        fileTypes[@0xefU] = [PDFileType fileTypeWithId:0xef
-                                            detail:@"Pascal area"];
-        fileTypes[@0xf0U] = [PDFileType fileTypeWithId:0xf0
-                                            detail:@"ProDOS CI added command file"];
-        fileTypes[@0xf1U] = [PDFileType fileTypeWithId:0xf1
-                                            detail:@"ProDOS user defined file 1"];
-        fileTypes[@0xf2U] = [PDFileType fileTypeWithId:0xf2
-                                            detail:@"ProDOS user defined file 2"];
-        fileTypes[@0xf3U] = [PDFileType fileTypeWithId:0xf3
-                                            detail:@"ProDOS user defined file 3"];
-        fileTypes[@0xf4U] = [PDFileType fileTypeWithId:0xf4
-                                            detail:@"ProDOS user defined file 4"];
-        fileTypes[@0xf5U] = [PDFileType fileTypeWithId:0xf5
-                                            detail:@"ProDOS user defined file 5"];
-        fileTypes[@0xf6U] = [PDFileType fileTypeWithId:0xf6
-                                            detail:@"ProDOS user defined file 6"];
-        fileTypes[@0xf7U] = [PDFileType fileTypeWithId:0xf7
-                                            detail:@"ProDOS user defined file 7"];
-        fileTypes[@0xf8U] = [PDFileType fileTypeWithId:0xf8
-                                            detail:@"ProDOS user defined file 8"];
-        fileTypes[[NSNumber numberWithUnsignedInteger:INTEGER_BASIC_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:INTEGER_BASIC_FILE_TYPE_ID
-                                            detail:@"Integer BASIC program file"];
-        fileTypes[@0xfbU] = [PDFileType fileTypeWithId:0xfb
-                                            detail:@"Integer BASIC variable file"];
-        fileTypes[[NSNumber numberWithUnsignedInteger:APPLESOFT_BASIC_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:APPLESOFT_BASIC_FILE_TYPE_ID
-                                                   name:@"BAS"
-                                            detail:@"Applesoft program file"];
-        fileTypes[@0xfdU] = [PDFileType fileTypeWithId:0xfd
-                                                   name:@"VAR"
-                                            detail:@"Applesoft variables file"];
-        fileTypes[@0xfeU] = [PDFileType fileTypeWithId:0xfe
-                                                   name:@"REL"
-                                            detail:@"Relocatable code file (EDASM)"];
-        fileTypes[[NSNumber numberWithUnsignedInteger:SYSTEM_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:SYSTEM_FILE_TYPE_ID
-                                                   name:@"SYS"
-                                            detail:@"ProDOS system file"];
+        for (NSDictionary *item in plist)
+        {
+            NSUInteger type = [item[@"Type"] unsignedIntegerValue];
+            NSUInteger aux = [item[@"Aux"] unsignedIntegerValue];
+            NSNumber *key = [NSNumber numberWithUnsignedInteger:(type << 16) | aux];
+            fileTypes[key] = [PDFileType fileTypeWithId:type name:item[@"Name"] detail:item[@"Definition"]];
+        }
+
+//        fileTypes[@0x00U] = [PDFileType fileTypeWithId:0x00
+//                                            detail:@"Typeless file"];
+//        fileTypes[@0x01U] = [PDFileType fileTypeWithId:0x01
+//                                            detail:@"Bad block file"];
+//        fileTypes[[NSNumber numberWithUnsignedInteger:TEXT_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:TEXT_FILE_TYPE_ID
+//                                                   name:@"TXT"
+//                                            detail:@"ASCII text file"];
+//        fileTypes[[NSNumber numberWithUnsignedInteger:BINARY_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:BINARY_FILE_TYPE_ID
+//                                                   name:@"BIN"
+//                                            detail:@"General binary file"];
+//        fileTypes[@0x08U] = [PDFileType fileTypeWithId:0x08
+//                                            detail:@"Graphics screen file"];
+//        fileTypes[[NSNumber numberWithUnsignedInteger:DIRECTORY_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:DIRECTORY_FILE_TYPE_ID
+//                                                   name:@"DIR"
+//                                            detail:@"Directory file"];
+//        fileTypes[@0x18U] = [PDFileType fileTypeWithId:0x18
+//                                            detail:@"AppleWorks Data Base file"];
+//        fileTypes[@0x19U] = [PDFileType fileTypeWithId:0x19
+//                                            detail:@"AppleWorks Word Processor file"];
+//        fileTypes[@0x1aU] = [PDFileType fileTypeWithId:0x1a
+//                                            detail:@"AppleWorks Spreadsheet file"];
+//        fileTypes[@0x1bU] = [PDFileType fileTypeWithId:0x1b
+//                                            detail:@"AppleWorks Spreadsheet file"];
+//        fileTypes[@0xb3U] = [PDFileType fileTypeWithId:0xb3
+//                                                   name:@"S16"
+//                                            detail:@"GS/OS application"];
+//        fileTypes[@0xefU] = [PDFileType fileTypeWithId:0xef
+//                                            detail:@"Pascal area"];
+//        fileTypes[@0xf0U] = [PDFileType fileTypeWithId:0xf0
+//                                            detail:@"ProDOS CI added command file"];
+//        fileTypes[@0xf1U] = [PDFileType fileTypeWithId:0xf1
+//                                            detail:@"ProDOS user defined file 1"];
+//        fileTypes[@0xf2U] = [PDFileType fileTypeWithId:0xf2
+//                                            detail:@"ProDOS user defined file 2"];
+//        fileTypes[@0xf3U] = [PDFileType fileTypeWithId:0xf3
+//                                            detail:@"ProDOS user defined file 3"];
+//        fileTypes[@0xf4U] = [PDFileType fileTypeWithId:0xf4
+//                                            detail:@"ProDOS user defined file 4"];
+//        fileTypes[@0xf5U] = [PDFileType fileTypeWithId:0xf5
+//                                            detail:@"ProDOS user defined file 5"];
+//        fileTypes[@0xf6U] = [PDFileType fileTypeWithId:0xf6
+//                                            detail:@"ProDOS user defined file 6"];
+//        fileTypes[@0xf7U] = [PDFileType fileTypeWithId:0xf7
+//                                            detail:@"ProDOS user defined file 7"];
+//        fileTypes[@0xf8U] = [PDFileType fileTypeWithId:0xf8
+//                                            detail:@"ProDOS user defined file 8"];
+//        fileTypes[[NSNumber numberWithUnsignedInteger:INTEGER_BASIC_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:INTEGER_BASIC_FILE_TYPE_ID
+//                                            detail:@"Integer BASIC program file"];
+//        fileTypes[@0xfbU] = [PDFileType fileTypeWithId:0xfb
+//                                            detail:@"Integer BASIC variable file"];
+//        fileTypes[[NSNumber numberWithUnsignedInteger:APPLESOFT_BASIC_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:APPLESOFT_BASIC_FILE_TYPE_ID
+//                                                   name:@"BAS"
+//                                            detail:@"Applesoft program file"];
+//        fileTypes[@0xfdU] = [PDFileType fileTypeWithId:0xfd
+//                                                   name:@"VAR"
+//                                            detail:@"Applesoft variables file"];
+//        fileTypes[@0xfeU] = [PDFileType fileTypeWithId:0xfe
+//                                                   name:@"REL"
+//                                            detail:@"Relocatable code file (EDASM)"];
+//        fileTypes[[NSNumber numberWithUnsignedInteger:SYSTEM_FILE_TYPE_ID]] = [PDFileType fileTypeWithId:SYSTEM_FILE_TYPE_ID
+//                                                   name:@"SYS"
+//                                            detail:@"ProDOS system file"];
     }
     return fileTypes;
 }
@@ -97,12 +119,12 @@ static NSMutableDictionary *fileTypes;
 
 + (PDFileType *)fileTypeWithId:(NSUInteger)aTypeId
 {
-    PDFileType *fileType = [PDFileType fileTypeDictionary][@(aTypeId)];
+    PDFileType *fileType = [PDFileType fileTypeDictionary][@(aTypeId << 16)];
     if (!fileType)
     {
         // Since we don't have a record of this type, create a placeholder
         fileType = [PDFileType fileTypeWithId:aTypeId detail:nil];
-        fileTypes[@(aTypeId)] = fileType;
+        fileTypes[@(aTypeId << 16)] = fileType;
     }
     return fileType;
 }

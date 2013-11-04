@@ -76,6 +76,7 @@
 		636A54B31334BEA8009C4AE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 636A54B51334BEA8009C4AE1 /* Localizable.strings */; };
 		636A54C21334C566009C4AE1 /* Ex Libris Help in Resources */ = {isa = PBXBuildFile; fileRef = 636A54C11334C566009C4AE1 /* Ex Libris Help */; };
 		6394DDEC180E1A010068953E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6394DDEB180E1A010068953E /* Images.xcassets */; };
+		63E00F1C1827B57700CAF152 /* FileTypes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63E00F1B1827B57700CAF152 /* FileTypes.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,6 +217,7 @@
 		636A54B41334BEA8009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		636A54C11334C566009C4AE1 /* Ex Libris Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Ex Libris Help"; sourceTree = "<group>"; };
 		6394DDEB180E1A010068953E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		63E00F1B1827B57700CAF152 /* FileTypes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FileTypes.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				63582B591334B2DA008AF599 /* prodos.boot */,
+				63E00F1B1827B57700CAF152 /* FileTypes.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				636A54B01334BE97009C4AE1 /* MainMenu.xib in Resources */,
 				636A54AD1334BE8F009C4AE1 /* GraphicsBrowse.xib in Resources */,
 				636A54C21334C566009C4AE1 /* Ex Libris Help in Resources */,
+				63E00F1C1827B57700CAF152 /* FileTypes.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
