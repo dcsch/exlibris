@@ -108,11 +108,91 @@
 	</dict>
 	<dict>
 		<key>Type</key>
+		<integer>9</integer>
+		<key>Name</key>
+		<string>BA3</string>
+		<key>Definition</key>
+		<string>Apple /// BASIC Program</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>10</integer>
+		<key>Name</key>
+		<string>DA3</string>
+		<key>Definition</key>
+		<string>Apple /// BASIC Data</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>11</integer>
+		<key>Name</key>
+		<string>WPF</string>
+		<key>Definition</key>
+		<string>Word Processor File</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>12</integer>
+		<key>Name</key>
+		<string>SOS</string>
+		<key>Definition</key>
+		<string>Apple /// SOS System File</string>
+	</dict>
+	<dict>
+		<key>Type</key>
 		<integer>15</integer>
 		<key>Name</key>
 		<string>DIR</string>
 		<key>Definition</key>
 		<string>Directory</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>16</integer>
+		<key>Name</key>
+		<string>RPD</string>
+		<key>Definition</key>
+		<string>Apple /// RPS Data</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>17</integer>
+		<key>Name</key>
+		<string>RPI</string>
+		<key>Definition</key>
+		<string>Apple /// RPS Index</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>18</integer>
+		<key>Name</key>
+		<string>AFD</string>
+		<key>Definition</key>
+		<string>Apple /// AppleFile Discard</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>19</integer>
+		<key>Name</key>
+		<string>AFM</string>
+		<key>Definition</key>
+		<string>Apple /// AppleFile Model</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>20</integer>
+		<key>Name</key>
+		<string>AFR</string>
+		<key>Definition</key>
+		<string>Apple /// AppleFile Report</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>21</integer>
+		<key>Name</key>
+		<string>SCL</string>
+		<key>Definition</key>
+		<string>Apple /// Screen Library</string>
 	</dict>
 </array>
 </plist>
