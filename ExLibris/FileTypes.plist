@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Type</key>
+		<integer>0</integer>
+		<key>Name</key>
+		<string>UNK</string>
+		<key>Definition</key>
+		<string>Unknown</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>1</integer>
+		<key>Name</key>
+		<string>BAD</string>
+		<key>Definition</key>
+		<string>Bad Block File</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>2</integer>
+		<key>Name</key>
+		<string>PCD</string>
+		<key>Definition</key>
+		<string>Apple /// Pascal Code</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>3</integer>
+		<key>Name</key>
+		<string>PTX</string>
+		<key>Definition</key>
+		<string>Apple /// Pascal Text</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>4</integer>
+		<key>Name</key>
+		<string>TXT</string>
+		<key>Definition</key>
+		<string>Text File</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>5</integer>
+		<key>Name</key>
+		<string>PDA</string>
+		<key>Definition</key>
+		<string>Apple /// Pascal Data</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>6</integer>
+		<key>Name</key>
+		<string>BIN</string>
+		<key>Definition</key>
+		<string>Binary File</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>7</integer>
+		<key>Name</key>
+		<string>FNT</string>
+		<key>Definition</key>
+		<string>Apple /// Font</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>8</integer>
+		<key>Aux</key>
+		<integer>16384</integer>
+		<key>Name</key>
+		<string>FOT</string>
+		<key>Definition</key>
+		<string>Packed HiRes</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>8</integer>
+		<key>Aux</key>
+		<integer>16385</integer>
+		<key>Name</key>
+		<string>FOT</string>
+		<key>Definition</key>
+		<string>Packed Double HiRes</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>8</integer>
+		<key>Aux</key>
+		<integer>32769</integer>
+		<key>Name</key>
+		<string>FOT</string>
+		<key>Definition</key>
+		<string>Printographer Packed HiRes</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>8</integer>
+		<key>Aux</key>
+		<integer>32770</integer>
+		<key>Name</key>
+		<string>FOT</string>
+		<key>Definition</key>
+		<string>Printographer Packed Double HiRes</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>9</integer>
+		<key>Name</key>
+		<string>BA3</string>
+		<key>Definition</key>
+		<string>Apple /// BASIC Program</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>10</integer>
+		<key>Name</key>
+		<string>DA3</string>
+		<key>Definition</key>
+		<string>Apple /// BASIC Data</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>11</integer>
+		<key>Name</key>
+		<string>WPF</string>
+		<key>Definition</key>
+		<string>Word Processor File</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>12</integer>
+		<key>Name</key>
+		<string>SOS</string>
+		<key>Definition</key>
+		<string>Apple /// SOS System File</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>15</integer>
+		<key>Name</key>
+		<string>DIR</string>
+		<key>Definition</key>
+		<string>Directory</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>16</integer>
+		<key>Name</key>
+		<string>RPD</string>
+		<key>Definition</key>
+		<string>Apple /// RPS Data</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>17</integer>
+		<key>Name</key>
+		<string>RPI</string>
+		<key>Definition</key>
+		<string>Apple /// RPS Index</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>18</integer>
+		<key>Name</key>
+		<string>AFD</string>
+		<key>Definition</key>
+		<string>Apple /// AppleFile Discard</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>19</integer>
+		<key>Name</key>
+		<string>AFM</string>
+		<key>Definition</key>
+		<string>Apple /// AppleFile Model</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>20</integer>
+		<key>Name</key>
+		<string>AFR</string>
+		<key>Definition</key>
+		<string>Apple /// AppleFile Report</string>
+	</dict>
+	<dict>
+		<key>Type</key>
+		<integer>21</integer>
+		<key>Name</key>
+		<string>SCL</string>
+		<key>Definition</key>
+		<string>Apple /// Screen Library</string>
+	</dict>
+</array>
+</plist>
