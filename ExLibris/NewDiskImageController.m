@@ -12,15 +12,11 @@
 
 @interface NewDiskImageController ()
 {
-    IBOutlet NSTextField *fileNameTextField;
-    IBOutlet NSComboBox *locationComboBox;
     IBOutlet NSPopUpButton *fileSystemPopUpButton;
     IBOutlet NSPopUpButton *fileFormatPopUpButton;
     IBOutlet NSPopUpButton *imageSizePopUpButton;
     NSOpenPanel *openPanel;
 }
-
-- (IBAction)chooseLocation:(id)sender;
 
 - (IBAction)selectFileSystem:(id)sender;
 
@@ -49,8 +45,6 @@
 {
     //[(NSPanel *)self.window setFloatingPanel:YES];
 
-    fileNameTextField.stringValue = @"untitled.2mg";
-    
     [fileSystemPopUpButton removeAllItems];
     [fileSystemPopUpButton addItemWithTitle:@"ProDOS"];
     [fileSystemPopUpButton addItemWithTitle:@"DOS 3.3"];
@@ -58,21 +52,6 @@
     [self selectProDOS];
 
     [super windowDidLoad];
-}
-
-- (IBAction)chooseLocation:(id)sender
-{
-    openPanel = [NSOpenPanel openPanel];
-    openPanel.canChooseFiles = NO;
-    openPanel.canChooseDirectories = YES;
-    openPanel.canCreateDirectories = YES;
-    openPanel.prompt = @"Choose";
-
-    [openPanel beginSheetModalForWindow:[self window]
-                      completionHandler:^(NSInteger result) {
-        NSURL *dirName = (openPanel.URLs)[0];
-        locationComboBox.stringValue = [[dirName path] stringByAbbreviatingWithTildeInPath];
-    }];
 }
 
 - (IBAction)selectFileSystem:(id)sender
