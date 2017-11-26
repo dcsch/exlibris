@@ -49,15 +49,13 @@ shouldCancel:(BOOL)shouldCancel
     NSString *pathWithPartition = [NSString stringWithFormat:@"%@/%ld", mediaDevice.path, (long)item.tag];
     NSURL *url = [NSURL fileURLWithPath:pathWithPartition];
     NSDocumentController *dc = [NSDocumentController sharedDocumentController];
-    NSError *error;
-    if ([dc openDocumentWithContentsOfURL:url display:YES error:&error])
-    {
-        NSLog(@"Open partition: %@", url);
-    }
-    else
-    {
-        NSLog(@"Failed to open partition: %@", url);
-    }
+    [dc openDocumentWithContentsOfURL:url display:YES completionHandler:^(NSDocument * _Nullable document, BOOL documentWasAlreadyOpen, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Failed to open partition: %@", url);
+        } else {
+            NSLog(@"Open partition: %@", url);
+        }
+    }];
 }
 
 @end
