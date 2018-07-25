@@ -38,6 +38,7 @@
 
 @property(readonly) NSUInteger sectorsUsed;
 
-- (id)initWithBytes:(const void *)bytes;
+- (instancetype)initWithBytes:(const void *)bytes NS_DESIGNATED_INITIALIZER;
+- (instancetype)init __attribute__((unavailable));
 
 @end

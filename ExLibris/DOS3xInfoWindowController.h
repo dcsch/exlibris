@@ -16,6 +16,6 @@
     D3FileEntry *entry;
 }
 
-- (id)initWithEntry:(D3FileEntry *)anEntry;
+- (instancetype)initWithEntry:(D3FileEntry *)anEntry;
 
 @end

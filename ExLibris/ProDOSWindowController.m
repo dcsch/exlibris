@@ -13,7 +13,6 @@
 #import "PDFileEntry.h"
 #import "PDDirectoryHeader.h"
 #import "PDFileType.h"
-#import "ResourceManager.h"
 #import "FileBrowseController.h"
 #import "GraphicsBrowseController.h"
 #import "ProDOSInfoWindowController.h"
@@ -52,7 +51,7 @@
 
 - (void)showFileBrowse:(NSArray *)entries;
 
-- (PDEntry *)selectedEntry;
+@property (readonly, strong) PDEntry *selectedEntry;
 
 - (void)deleteSubdirectory:(PDFileEntry *)fileEntry;
 
@@ -62,7 +61,7 @@
 
 @implementation ProDOSWindowController
 
-- (id)init
+- (instancetype)init
 {
     self = [super initWithWindowNibName:@"ProDOSWindow"];
     if (self)
@@ -194,10 +193,8 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
             NSData *data = [volume dataForEntry:fileEntry appendMetadata:NO];
             [data writeToURL:url atomically:NO];
             
-            // Store the ProDOS metadata in the resource fork
-            ResourceManager *rm = [[ResourceManager alloc] initWithURL:url];
-            
-        
+            // TODO Store the ProDOS metadata somewhere
+
             [fileNames addObject:fileEntry.fileName];
             
             NSLog(@"Written: %@", fileEntry.fileName);
@@ -528,11 +525,11 @@ namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination
                 [self.document addWindowController:windowController];
             }
             else
-                [NSAlert alertWithMessageText:@"Unhandled storage type"
-                                defaultButton:nil
-                              alternateButton:nil
-                                  otherButton:nil
-                    informativeTextWithFormat:nil];
+            {
+                NSAlert *alert = [[NSAlert alloc] init];
+                alert.messageText = @"Unhandled storage type";
+                [alert runModal];
+            }
         }
         [windowController showWindow:self];
         

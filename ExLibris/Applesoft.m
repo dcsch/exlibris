@@ -236,7 +236,7 @@
 + (NSString *)parseData:(NSData *)data hasHeader:(BOOL)aHeader
 {
     NSMutableString *str = [NSMutableString string];
-    const unsigned char *startPtr = [data bytes];
+    const unsigned char *startPtr = data.bytes;
     if (aHeader)
         startPtr += 2;
     const unsigned char *linePtr = startPtr;

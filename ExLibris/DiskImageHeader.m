@@ -11,12 +11,12 @@
 
 @implementation DiskImageHeader
 
-- (id)initWithData:(NSData *)data
+- (instancetype)initWithData:(NSData *)data
 {
     self = [super init];
     if (self)
     {
-        const unsigned char *ptr = [data bytes];
+        const unsigned char *ptr = data.bytes;
         
         // Look for the magic identifier
         if (ptr[0] == '2'

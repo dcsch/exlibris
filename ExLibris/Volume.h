@@ -20,7 +20,8 @@
 
 @property(copy, readonly) NSString *name;
 
-- (id)initWithContainer:(NSObject *)aContainer
-           blockStorage:(BlockStorage *)aBlockStorage;
+- (instancetype)initWithContainer:(NSObject *)aContainer
+           blockStorage:(BlockStorage *)aBlockStorage NS_DESIGNATED_INITIALIZER;
+- (instancetype)init __attribute__((unavailable));
 
 @end

@@ -17,7 +17,7 @@
 
 @implementation SYHexFormatter
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self)
@@ -76,7 +76,7 @@
     NSUInteger value = 0;
     NSUInteger factor = 1;
     NSInteger i;
-    for (i = [hexString length] - 1; i >= 0; --i)
+    for (i = hexString.length - 1; i >= 0; --i)
     {
         unichar c = [hexString characterAtIndex:i];
         if (L'0' <= c && c <= L'9')

@@ -12,7 +12,7 @@
 
 @implementation D3FileEntry
 
-- (id)initWithBytes:(const void *)bytes
+- (instancetype)initWithBytes:(const void *)bytes
 {
     self = [super init];
     if (self)

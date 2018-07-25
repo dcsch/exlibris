@@ -17,7 +17,7 @@
 
 @implementation PDDirectoryBlock
 
-- (id)initWithVolume:(PDVolume *)aVolume
+- (instancetype)initWithVolume:(PDVolume *)aVolume
            directory:(PDDirectory *)aDirectory
          blockNumber:(NSUInteger)aBlockNumber
 {
@@ -85,7 +85,7 @@
     return self;
 }
 
-- (id)initWithVolume:(PDVolume *)aVolume
+- (instancetype)initWithVolume:(PDVolume *)aVolume
            directory:(PDDirectory *)aDirectory
          blockNumber:(NSUInteger)aBlockNumber
      entriesPerBlock:(NSUInteger)count
@@ -98,7 +98,7 @@
                     blockNumber:aBlockNumber];
 }
 
-- (id)initWithVolume:(PDVolume *)aVolume
+- (instancetype)initWithVolume:(PDVolume *)aVolume
            directory:(PDDirectory *)aDirectory
          blockNumber:(NSUInteger)aBlockNumber
      nextBlockNumber:(NSUInteger)aNextBlockNumber

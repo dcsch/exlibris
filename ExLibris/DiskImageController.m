@@ -92,8 +92,8 @@
 
 + (ELDiskImageExtension)extensionForUrl:(NSURL *)url
 {
-    NSString *path = [url absoluteString];
-    NSString *ext = [path pathExtension];
+    NSString *path = url.absoluteString;
+    NSString *ext = path.pathExtension;
     
     if ([ext caseInsensitiveCompare:@"2mg"] == 0
         || [ext caseInsensitiveCompare:@"2img"] == 0)

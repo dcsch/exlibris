@@ -20,13 +20,13 @@
 
 @interface DOS3xWindowController (Private)
 
-- (D3FileEntry *)selectedEntry;
+@property (readonly, strong) D3FileEntry *selectedEntry;
 
 @end
 
 @implementation DOS3xWindowController
 
-- (id)init
+- (instancetype)init
 {
     self = [super initWithWindowNibName:@"DOS3xWindow"];
     if (self)
@@ -140,7 +140,7 @@
                 case BINARY_FILE:
                 {
                     typeId = BINARY_FILE_TYPE_ID;
-                    const unsigned char* ptr = [data bytes];
+                    const unsigned char* ptr = data.bytes;
                     startAddress = unpackWord(ptr);
                     break;
                 }
@@ -157,11 +157,11 @@
                 [self.document addWindowController:windowController];
             }
             else
-                [NSAlert alertWithMessageText:@"Unhandled storage type"
-                                defaultButton:nil
-                              alternateButton:nil
-                                  otherButton:nil
-                    informativeTextWithFormat:nil];
+            {
+                NSAlert *alert = [[NSAlert alloc] init];
+                alert.messageText = @"Unhandled storage type";
+                [alert runModal];
+            }
         }
         [windowController showWindow:self];
         

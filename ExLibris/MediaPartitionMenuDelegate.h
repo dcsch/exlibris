@@ -16,7 +16,8 @@
     NSUInteger partitionIndex;
 }
 
-- (id)initWithMediaDevice:(MediaDevice *)aMediaDevice;
+- (instancetype)initWithMediaDevice:(MediaDevice *)aMediaDevice NS_DESIGNATED_INITIALIZER;
+- (instancetype)init __attribute__((unavailable));
 
 - (IBAction)openPartition:(id)sender;
 

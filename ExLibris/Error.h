@@ -11,8 +11,8 @@
 
 @interface Error : NSError
 
-- (id)initWithCode:(NSInteger)code;
+- (instancetype)initWithCode:(NSInteger)code;
 
-+ (id)errorWithCode:(NSInteger)code;
++ (instancetype)errorWithCode:(NSInteger)code;
 
 @end

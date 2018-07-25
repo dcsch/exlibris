@@ -75,11 +75,11 @@ BOOL packDateAndTime(unsigned char *data,
 
 @implementation PDEntry
 
-- (id)initWithVolume:(PDVolume *)aVolume
-     parentDirectory:(PDDirectory *)aDirectory
-         parentEntry:(PDEntry *)aParentEntry
-               bytes:(void *)anEntryBytes
-              length:(NSUInteger)anEntryLength;
+- (instancetype)initWithVolume:(PDVolume *)aVolume
+               parentDirectory:(PDDirectory *)aDirectory
+                   parentEntry:(PDEntry *)aParentEntry
+                         bytes:(void *)anEntryBytes
+                        length:(NSUInteger)anEntryLength;
 {
     self = [super init];
     if (self)

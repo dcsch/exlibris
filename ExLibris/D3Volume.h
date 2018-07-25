@@ -26,8 +26,8 @@
 
 @property(strong, readonly) D3Catalog *catalog;
 
-- (id)initWithContainer:(NSObject *)aContainer
-           blockStorage:(BlockStorage *)aBlockStorage;
+- (instancetype)initWithContainer:(NSObject *)aContainer
+           blockStorage:(BlockStorage *)aBlockStorage NS_DESIGNATED_INITIALIZER;
 
 - (NSData *)dataForTrackSector:(D3TrackSector *)aTrackSector;
 

@@ -95,9 +95,9 @@
     };
     
     NSMutableString *str = [NSMutableString string];
-    const unsigned char *startPtr = [data bytes];
+    const unsigned char *startPtr = data.bytes;
     NSUInteger addr = 0;
-    NSUInteger length = [data length];
+    NSUInteger length = data.length;
     if (aHeader)
     {
         startPtr += 4;

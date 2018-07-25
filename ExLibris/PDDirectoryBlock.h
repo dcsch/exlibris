@@ -32,17 +32,17 @@
 @property(strong, readonly) NSArray *entries;
 @property(strong, readonly) NSData *data;
 
-- (id)initWithVolume:(PDVolume *)aVolume
+- (instancetype)initWithVolume:(PDVolume *)aVolume
            directory:(PDDirectory *)aDirectory
-         blockNumber:(NSUInteger)aBlockNumber;
+         blockNumber:(NSUInteger)aBlockNumber NS_DESIGNATED_INITIALIZER;
 
-- (id)initWithVolume:(PDVolume *)aVolume
+- (instancetype)initWithVolume:(PDVolume *)aVolume
            directory:(PDDirectory *)aDirectory
          blockNumber:(NSUInteger)aBlockNumber
      entriesPerBlock:(NSUInteger)count
          entryLength:(NSUInteger)length;
 
-- (id)initWithVolume:(PDVolume *)aVolume
+- (instancetype)initWithVolume:(PDVolume *)aVolume
            directory:(PDDirectory *)aDirectory
          blockNumber:(NSUInteger)aBlockNumber
      nextBlockNumber:(NSUInteger)aNextBlockNumber
@@ -52,6 +52,8 @@
    parentEntryNumber:(NSUInteger)parentEntryNumber
    parentEntryLength:(NSUInteger)parentEntryLength;
 
-- (NSInteger)findInactiveEntryIndex;
+- (instancetype)init __attribute__((unavailable));
+
+@property (readonly) NSInteger findInactiveEntryIndex;
 
 @end

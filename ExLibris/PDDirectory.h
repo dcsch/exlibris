@@ -20,10 +20,12 @@
 @property(copy) NSString *name;
 @property(nonatomic) BOOL allEntriesVisible;
 
-- (id)initWithVolume:(PDVolume *)aVolume
-         blockNumber:(NSUInteger)aBlockNumber;
+- (instancetype)initWithVolume:(PDVolume *)aVolume
+         blockNumber:(NSUInteger)aBlockNumber NS_DESIGNATED_INITIALIZER;
 
-- (id)initWithFileEntry:(PDFileEntry *)aFileEntry;
+- (instancetype)initWithFileEntry:(PDFileEntry *)aFileEntry;
+
+- (instancetype)init __attribute__((unavailable));
 
 - (BOOL)createFileWithEntry:(PDFileEntry *)aFileEntry
                        data:(NSData *)aData;

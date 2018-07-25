@@ -21,6 +21,6 @@
 @property(strong, readonly) PDEntry *entry;
 @property(strong, readonly) NSArray *fileTypes;
 
-- (id)initWithEntry:(PDEntry *)anEntry;
+- (instancetype)initWithEntry:(PDEntry *)anEntry;
 
 @end

@@ -12,7 +12,7 @@
 
 @implementation DOS3xInfoWindowController
 
-- (id)initWithEntry:(D3FileEntry *)anEntry
+- (instancetype)initWithEntry:(D3FileEntry *)anEntry
 {
     self = [super initWithWindowNibName:@"DOS3xInfoWindow"];
     if (self)

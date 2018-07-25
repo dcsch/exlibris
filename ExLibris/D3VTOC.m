@@ -13,14 +13,14 @@
 
 @implementation D3VTOC
 
-- (id)initWithVolume:(D3Volume *)volume
+- (instancetype)initWithVolume:(D3Volume *)volume
 {
     self = [super init];
     if (self)
     {
         sectorData = [volume dataForTrackSector:[D3TrackSector track:17 sector:0]];
         
-        const unsigned char *ptr = [sectorData bytes];
+        const unsigned char *ptr = sectorData.bytes;
         catalogFirstTrackNumber = ptr[1];
         catalogFirstSectorNumber = ptr[2];
         dosRelease = ptr[3];

@@ -40,8 +40,8 @@
 
 + (void)formatBlockStorage:(BlockStorage *)blockStorage;
 
-- (id)initWithContainer:(NSObject *)aContainer
-           blockStorage:(BlockStorage *)aBlockStorage;
+- (instancetype)initWithContainer:(NSObject *)aContainer
+           blockStorage:(BlockStorage *)aBlockStorage NS_DESIGNATED_INITIALIZER;
 
 - (NSData *)dataForEntry:(PDEntry *)entry appendMetadata:(BOOL)appendMetadata;
 

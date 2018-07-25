@@ -23,7 +23,6 @@
 		63582B2E1334A822008AF599 /* FileBrowseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582ADB1334A822008AF599 /* FileBrowseController.m */; };
 		63582B2F1334A822008AF599 /* Applesoft.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582ADD1334A822008AF599 /* Applesoft.m */; };
 		63582B301334A822008AF599 /* Disassembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582ADF1334A822008AF599 /* Disassembler.m */; };
-		63582B311334A823008AF599 /* ResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AE11334A822008AF599 /* ResourceManager.m */; };
 		63582B321334A823008AF599 /* BinaryII.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AE31334A822008AF599 /* BinaryII.m */; };
 		63582B331334A823008AF599 /* PDVolume.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AE51334A822008AF599 /* PDVolume.m */; };
 		63582B341334A823008AF599 /* PDFileType.m in Sources */ = {isa = PBXBuildFile; fileRef = 63582AE71334A822008AF599 /* PDFileType.m */; };
@@ -123,8 +122,6 @@
 		63582ADD1334A822008AF599 /* Applesoft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Applesoft.m; sourceTree = "<group>"; };
 		63582ADE1334A822008AF599 /* Disassembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Disassembler.h; sourceTree = "<group>"; };
 		63582ADF1334A822008AF599 /* Disassembler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Disassembler.m; sourceTree = "<group>"; };
-		63582AE01334A822008AF599 /* ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceManager.h; sourceTree = "<group>"; };
-		63582AE11334A822008AF599 /* ResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceManager.m; sourceTree = "<group>"; };
 		63582AE21334A822008AF599 /* BinaryII.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryII.h; sourceTree = "<group>"; };
 		63582AE31334A822008AF599 /* BinaryII.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinaryII.m; sourceTree = "<group>"; };
 		63582AE41334A822008AF599 /* PDVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDVolume.h; sourceTree = "<group>"; };
@@ -274,7 +271,9 @@
 				63582A8A1334A581008AF599 /* Frameworks */,
 				63582A881334A581008AF599 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		63582A881334A581008AF599 /* Products */ = {
 			isa = PBXGroup;
@@ -341,8 +340,6 @@
 				63582ADD1334A822008AF599 /* Applesoft.m */,
 				63582ADE1334A822008AF599 /* Disassembler.h */,
 				63582ADF1334A822008AF599 /* Disassembler.m */,
-				63582AE01334A822008AF599 /* ResourceManager.h */,
-				63582AE11334A822008AF599 /* ResourceManager.m */,
 				63582AE21334A822008AF599 /* BinaryII.h */,
 				63582AE31334A822008AF599 /* BinaryII.m */,
 				63582AE41334A822008AF599 /* PDVolume.h */,
@@ -474,7 +471,6 @@
 				63582AA61334A582008AF599 /* Sources */,
 				63582AA71334A582008AF599 /* Frameworks */,
 				63582AA81334A582008AF599 /* Resources */,
-				63582AA91334A582008AF599 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -547,22 +543,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		63582AA91334A582008AF599 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		63582A831334A581008AF599 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -578,7 +558,6 @@
 				63582B2E1334A822008AF599 /* FileBrowseController.m in Sources */,
 				63582B2F1334A822008AF599 /* Applesoft.m in Sources */,
 				63582B301334A822008AF599 /* Disassembler.m in Sources */,
-				63582B311334A823008AF599 /* ResourceManager.m in Sources */,
 				63582B321334A823008AF599 /* BinaryII.m in Sources */,
 				63582B331334A823008AF599 /* PDVolume.m in Sources */,
 				63582B341334A823008AF599 /* PDFileType.m in Sources */,

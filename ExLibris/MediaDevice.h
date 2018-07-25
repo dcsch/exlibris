@@ -25,7 +25,8 @@
 
 + (NSArray *)devices;
 
-- (id)initWithDevicePath:(NSString *)aPath size:(NSUInteger)aSize;
+- (instancetype)initWithDevicePath:(NSString *)aPath size:(NSUInteger)aSize NS_DESIGNATED_INITIALIZER;
+- (instancetype)init __attribute__((unavailable));
 
 //- (NSData *)partitionAtIndex:(NSUInteger)index;
 

@@ -40,8 +40,8 @@
 
 @implementation PDDirectory
 
-- (id)initWithVolume:(PDVolume *)aVolume
-         blockNumber:(NSUInteger)aBlockNumber
+- (instancetype)initWithVolume:(PDVolume *)aVolume
+                   blockNumber:(NSUInteger)aBlockNumber
 {
     self = [super init];
     if (self)
@@ -61,8 +61,8 @@
                 block = [[PDDirectoryBlock alloc] initWithVolume:volume
                                                         directory:self
                                                       blockNumber:blockNumber
-                                                  entriesPerBlock:[keyBlock entriesPerBlock]
-                                                      entryLength:[keyBlock entryLength]];
+                                                  entriesPerBlock:keyBlock.entriesPerBlock
+                                                      entryLength:keyBlock.entryLength];
             else
             {
                 block = [[PDDirectoryBlock alloc] initWithVolume:volume
@@ -77,7 +77,7 @@
                 return nil;
             }
             [_blocks addObject:block];
-            blockNumber = [block nextBlockNumber];
+            blockNumber = block.nextBlockNumber;
         }
 
         [self updateEntries];
@@ -85,7 +85,7 @@
     return self;
 }
 
-- (id)initWithFileEntry:(PDFileEntry *)aFileEntry
+- (instancetype)initWithFileEntry:(PDFileEntry *)aFileEntry
 {
     _fileEntry = aFileEntry;
     return [self initWithVolume:_fileEntry.volume
@@ -275,9 +275,9 @@
 //            break;
 //        }
         
-        for (PDEntry *entry in [block entries])
+        for (PDEntry *entry in block.entries)
         {
-            if ([entry storageType] == 0)
+            if (entry.storageType == 0)
             {
                 directorySpace = YES;
                 break;
@@ -330,7 +330,7 @@
     for (NSNumber *index in blockIndicies)
     {
         NSData *data = fileInBlocks[index];
-        [[volume blockStorage] setData:data forBlock:[index integerValue]];
+        [volume.blockStorage setData:data forBlock:index.integerValue];
     }
 
     // Add the file entry to the directory block
@@ -414,7 +414,8 @@
         if (_fileEntry == nil)
         {
             NSLog(@"Volume directory has reached its maximum number of entries.");
-            *outError = [Error errorWithCode:ELVolumeDirectoryEntryLimitError];
+            if (outError)
+                *outError = [Error errorWithCode:ELVolumeDirectoryEntryLimitError];
             return nil;
         }
 
@@ -427,7 +428,8 @@
         if (allocatedBlocks == nil)
         {
             NSLog(@"There is not enough space on the volume.");
-            *outError = [Error errorWithCode:ELVolumeSpaceLimitError];
+            if (outError)
+                *outError = [Error errorWithCode:ELVolumeSpaceLimitError];
             return nil;
         }
 
@@ -466,7 +468,8 @@
         if (allocatedBlocks == nil)
         {
             NSLog(@"There is not enough space on the volume.");
-            *outError = [Error errorWithCode:ELVolumeSpaceLimitError];
+            if (outError)
+                *outError = [Error errorWithCode:ELVolumeSpaceLimitError];
             return nil;
         }
     }

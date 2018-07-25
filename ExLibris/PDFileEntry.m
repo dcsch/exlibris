@@ -23,7 +23,7 @@
 
 @implementation PDFileEntry
 
-- (id)initWithVolume:(PDVolume *)aVolume
+- (instancetype)initWithVolume:(PDVolume *)aVolume
      parentDirectory:(PDDirectory *)aDirectory
          parentEntry:(PDEntry *)aParentEntry
                bytes:(void *)anEntryBytes
@@ -169,7 +169,6 @@
 {
     if (self.fileType.typeId == 0x0f)
     {
-        int foo = 0;
 //        NSAssert(_directory != nil,
 //                 @"Directory file entry has a nil directory object");
     }

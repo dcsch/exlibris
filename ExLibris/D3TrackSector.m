@@ -16,7 +16,7 @@
     return [[D3TrackSector alloc] initWithTrack:aTrack sector:aSector];
 }
 
-- (id)initWithTrack:(NSUInteger)aTrack sector:(NSUInteger)aSector
+- (instancetype)initWithTrack:(NSUInteger)aTrack sector:(NSUInteger)aSector
 {
     self = [super init];
     if (self)

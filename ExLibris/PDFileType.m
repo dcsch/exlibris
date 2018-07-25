@@ -36,7 +36,7 @@ static NSMutableDictionary *fileTypes;
         {
             NSUInteger type = [item[@"Type"] unsignedIntegerValue];
             NSUInteger aux = [item[@"Aux"] unsignedIntegerValue];
-            NSNumber *key = [NSNumber numberWithUnsignedInteger:(type << 16) | aux];
+            NSNumber *key = @((type << 16) | aux);
             fileTypes[key] = [PDFileType fileTypeWithId:type name:item[@"Name"] detail:item[@"Definition"]];
         }
 
@@ -145,7 +145,7 @@ static NSMutableDictionary *fileTypes;
                                detail:adetail];
 }
 
-- (id)initWithId:(NSUInteger)aTypeId
+- (instancetype)initWithId:(NSUInteger)aTypeId
             name:(NSString *)aName
      detail:(NSString *)adetail;
 {
@@ -159,7 +159,7 @@ static NSMutableDictionary *fileTypes;
     return self;
 }
 
-- (id)initWithId:(NSUInteger)aTypeId
+- (instancetype)initWithId:(NSUInteger)aTypeId
      detail:(NSString *)adetail;
 {
     return [self initWithId:aTypeId

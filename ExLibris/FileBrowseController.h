@@ -19,7 +19,7 @@
     BOOL header;
 }
 
-- (id)initWithData:(NSData *)aData
+- (instancetype)initWithData:(NSData *)aData
       startAddress:(NSUInteger)aStartAddress
               name:(NSString *)aName
             typeId:(NSUInteger)aTypeId

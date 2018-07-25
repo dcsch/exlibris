@@ -26,7 +26,7 @@
 
 @implementation DOS3xImage
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self)
@@ -60,9 +60,10 @@
     if ([_blockStorage commitModifiedBlocks])
         return YES;
 
-    *outError = [NSError errorWithDomain:NSOSStatusErrorDomain
-                                    code:unimpErr
-                                userInfo:NULL];
+    if (outError)
+        *outError = [NSError errorWithDomain:NSOSStatusErrorDomain
+                                        code:unimpErr
+                                    userInfo:NULL];
     
     return NO;
 }
@@ -89,11 +90,14 @@
         return YES;
     
     // TODO Work out why this information doesn't appear in the error alert
-    NSMutableDictionary *errDict = [NSMutableDictionary dictionary];
-    errDict[NSLocalizedDescriptionKey] = NSLocalizedString(@"UnrecognisedDiskImage", @"");
-    *outError = [NSError errorWithDomain:ELErrorDomain
-                                    code:ELBadDOS3xImageError
-                                userInfo:errDict];
+    if (outError)
+    {
+        NSMutableDictionary *errDict = [NSMutableDictionary dictionary];
+        errDict[NSLocalizedDescriptionKey] = NSLocalizedString(@"UnrecognisedDiskImage", @"");
+        *outError = [NSError errorWithDomain:ELErrorDomain
+                                        code:ELBadDOS3xImageError
+                                    userInfo:errDict];
+    }
     return NO;
 }
 

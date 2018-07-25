@@ -28,7 +28,7 @@
 
 @implementation ProDOSImage
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self)
@@ -72,9 +72,10 @@ originalContentsURL:(NSURL *)absoluteOriginalContentsURL
     if ([_blockStorage commitModifiedBlocks])
         return YES;
 
-    *outError = [NSError errorWithDomain:NSOSStatusErrorDomain
-                                    code:unimpErr
-                                userInfo:NULL];
+    if (outError)
+        *outError = [NSError errorWithDomain:NSOSStatusErrorDomain
+                                        code:unimpErr
+                                    userInfo:NULL];
     
     return NO;
 }
@@ -105,11 +106,14 @@ originalContentsURL:(NSURL *)absoluteOriginalContentsURL
         return YES;
     
     // TODO Work out why this information doesn't appear in the error alert
-    NSMutableDictionary *errDict = [NSMutableDictionary dictionary];
-    errDict[NSLocalizedDescriptionKey] = NSLocalizedString(@"UnrecognisedDiskImage", @"");
-    *outError = [NSError errorWithDomain:ELErrorDomain
-                                    code:ELBadProDOSImageError
-                                userInfo:errDict];
+    if (outError)
+    {
+        NSMutableDictionary *errDict = [NSMutableDictionary dictionary];
+        errDict[NSLocalizedDescriptionKey] = NSLocalizedString(@"UnrecognisedDiskImage", @"");
+        *outError = [NSError errorWithDomain:ELErrorDomain
+                                        code:ELBadProDOSImageError
+                                    userInfo:errDict];
+    }
     return NO;
 }
 
@@ -143,7 +147,7 @@ originalContentsURL:(NSURL *)absoluteOriginalContentsURL
     // Sort out the undo manager
     NSUndoManager *undo = self.undoManager;
     [[undo prepareWithInvocationTarget:self] deleteEntry:entry];
-    if (![undo isUndoing])
+    if (!undo.undoing)
     {
         NSString *actionName = [NSString stringWithFormat:@"Insert %@",
                                 entry.fileName];
@@ -156,7 +160,7 @@ originalContentsURL:(NSURL *)absoluteOriginalContentsURL
     // Sort out the undo manager
     NSUndoManager *undo = self.undoManager;
     [[undo prepareWithInvocationTarget:self] insertEntry:entry];
-    if (![undo isUndoing])
+    if (!undo.undoing)
     {
         NSString *actionName = [NSString stringWithFormat:@"Delete %@",
                                 entry.fileName];
@@ -176,7 +180,7 @@ originalContentsURL:(NSURL *)absoluteOriginalContentsURL
     NSUndoManager *undo = self.undoManager;
     [[undo prepareWithInvocationTarget:self] setFileName:anEntry.fileName
                                                  ofEntry:anEntry];
-    if (![undo isUndoing])
+    if (!undo.undoing)
     {
         NSString *actionName = [NSString stringWithFormat:@"Rename %@ to %@",
                                 anEntry.fileName,

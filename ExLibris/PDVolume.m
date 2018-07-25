@@ -37,7 +37,7 @@ static void bitPos(NSUInteger blockNumber,
 
 - (void)setBlockAvailable:(BOOL)available atIndex:(NSUInteger)blockNumber;
 
-- (PDDirectoryHeader *)volumeDirectoryHeader;
+@property (readonly, strong) PDDirectoryHeader *volumeDirectoryHeader;
 
 @end
 
@@ -140,7 +140,7 @@ static void bitPos(NSUInteger blockNumber,
     }
 }
 
-- (id)initWithContainer:(NSObject *)aContainer
+- (instancetype)initWithContainer:(NSObject *)aContainer
            blockStorage:(BlockStorage *)aBlockStorage
 {
     self = [super initWithContainer:aContainer blockStorage:aBlockStorage];
@@ -246,14 +246,14 @@ static void bitPos(NSUInteger blockNumber,
 
 - (NSData *)dataForEntry:(PDEntry *)entry appendMetadata:(BOOL)appendMetadata
 {
-    NSUInteger storageType = [entry storageType];
+    NSUInteger storageType = entry.storageType;
     
     if ([entry isKindOfClass:[PDFileEntry class]])
     {
         PDFileEntry *fileEntry = (PDFileEntry *)entry;
-        NSUInteger keyPointer = [fileEntry keyPointer];
-        NSUInteger blockCount = [fileEntry eof] / 512;
-        if ([fileEntry eof] % 512 > 0)
+        NSUInteger keyPointer = fileEntry.keyPointer;
+        NSUInteger blockCount = fileEntry.eof / 512;
+        if (fileEntry.eof % 512 > 0)
             ++blockCount;
 
         NSUInteger dataSize = 512 * blockCount;
@@ -343,7 +343,7 @@ static void bitPos(NSUInteger blockNumber,
                     isMasterIndex:(BOOL)masterIndex
                     toMutableData:(NSMutableData *)allBlockData
 {
-    const unsigned char *ptr = [indexData bytes];
+    const unsigned char *ptr = indexData.bytes;
     unsigned int skippedBlocks = 0;
     unsigned int i;
     for (i = 0; i < 256; ++i)
@@ -443,7 +443,7 @@ static void bitPos(NSUInteger blockNumber,
 - (void)deallocateBlocks:(NSArray *)blockIndicies
 {
     for (NSNumber *blockIndex in blockIndicies)
-        [self setBlockAvailable:NO atIndex:[blockIndex unsignedIntegerValue]];
+        [self setBlockAvailable:NO atIndex:blockIndex.unsignedIntegerValue];
 }
 
 @end

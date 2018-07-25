@@ -50,11 +50,13 @@ enum FileType
 + (PDFileType *)fileTypeWithId:(NSUInteger)aTypeId
                         detail:(NSString *)aDescription;
 
-- (id)initWithId:(NSUInteger)aTypeId
+- (instancetype)initWithId:(NSUInteger)aTypeId
             name:(NSString *)aName
+          detail:(NSString *)aDescription NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)initWithId:(NSUInteger)aTypeId
           detail:(NSString *)aDescription;
 
-- (id)initWithId:(NSUInteger)aTypeId
-          detail:(NSString *)aDescription;
+- (instancetype)init __attribute__((unavailable));
 
 @end

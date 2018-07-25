@@ -11,9 +11,9 @@
 
 @implementation GraphicsBrowseController
 
-- (id)initWithData:(NSData *)data
-              name:(NSString *)aName
-         hasHeader:(BOOL)header
+- (instancetype)initWithData:(NSData *)data
+                        name:(NSString *)aName
+                   hasHeader:(BOOL)header
 {
     self = [super initWithWindowNibName:@"GraphicsBrowse"];
     if (self)

@@ -16,7 +16,7 @@
 
 @implementation ProDOSInfoWindowController
 
-- (id)initWithEntry:(PDEntry *)anEntry
+- (instancetype)initWithEntry:(PDEntry *)anEntry
 {
     self = [super initWithWindowNibName:@"ProDOSInfoWindow"];
     if (self)

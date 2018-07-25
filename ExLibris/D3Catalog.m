@@ -14,7 +14,7 @@
 
 @implementation D3Catalog
 
-- (id)initWithVolume:(D3Volume *)volume
+- (instancetype)initWithVolume:(D3Volume *)volume
 {
     self = [super init];
     if (self)
@@ -29,7 +29,7 @@
         {
             NSData *sectorData = [volume dataForTrackSector:[D3TrackSector track:track sector:sector]];
             [sectors addObject:sectorData];
-            const unsigned char *ptr = [sectorData bytes];
+            const unsigned char *ptr = sectorData.bytes;
             
             // The next track/sector
             track = ptr[1];

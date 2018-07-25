@@ -16,8 +16,8 @@
     NSString *name;
 }
 
-- (id)initWithData:(NSData *)data
-              name:(NSString *)aName
-         hasHeader:(BOOL)header;
+- (instancetype)initWithData:(NSData *)data
+                        name:(NSString *)aName
+                   hasHeader:(BOOL)header;
 
 @end

@@ -31,6 +31,7 @@
 
 @property(readonly) NSUInteger volumeNumber;
 
-- (id)initWithVolume:(D3Volume *)volume;
+- (instancetype)initWithVolume:(D3Volume *)volume NS_DESIGNATED_INITIALIZER;
+- (instancetype)init __attribute__((unavailable));
 
 @end

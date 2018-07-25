@@ -13,7 +13,7 @@
 
 @implementation MediaDevice
 
-- (id)initWithDevicePath:(NSString *)aPath size:(NSUInteger)aSize
+- (instancetype)initWithDevicePath:(NSString *)aPath size:(NSUInteger)aSize
 {
     self = [super init];
     if (self)
@@ -83,7 +83,7 @@
         IORegistryEntryCreateCFProperty(obj, CFSTR("Size"), kCFAllocatorDefault, 0);
         NSString *path = [NSString stringWithFormat:@"/dev/%@", (__bridge NSString *)nameRef];
         [mediaDevices addObject:[[MediaDevice alloc] initWithDevicePath:path
-                                                                   size:[(__bridge NSNumber *)sizeRef unsignedIntegerValue]]];
+                                                                   size:((__bridge NSNumber *)sizeRef).unsignedIntegerValue]];
         NSLog(@"Found: %@", (__bridge NSString *)nameRef);
         CFRelease(nameRef);
         CFRelease(sizeRef);

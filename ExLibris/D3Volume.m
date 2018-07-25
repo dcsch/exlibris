@@ -16,7 +16,7 @@
 
 @implementation D3Volume
 
-- (id)initWithContainer:(NSObject *)aContainer
+- (instancetype)initWithContainer:(NSObject *)aContainer
            blockStorage:(BlockStorage *)aBlockStorage
 {
     self = [super initWithContainer:aContainer blockStorage:aBlockStorage];

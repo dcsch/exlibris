@@ -21,6 +21,7 @@
 
 + (id)track:(NSUInteger)aTrack sector:(NSUInteger)aSector;
 
-- (id)initWithTrack:(NSUInteger)aTrack sector:(NSUInteger)aSector;
+- (instancetype)initWithTrack:(NSUInteger)aTrack sector:(NSUInteger)aSector NS_DESIGNATED_INITIALIZER;
+- (instancetype)init __attribute__((unavailable));
 
 @end

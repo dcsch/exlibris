@@ -25,7 +25,7 @@
 
 @implementation BlockStorage
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self)
@@ -37,7 +37,7 @@
     return self;
 }
 
-- (id)initWithURL:(NSURL *)absoluteURL
+- (instancetype)initWithURL:(NSURL *)absoluteURL
 {
     self = [self init];
     if (self)
@@ -102,7 +102,7 @@
     return self;
 }
 
-- (id)initWithBlockSize:(NSUInteger)aBlockSize capacity:(NSUInteger)blockCount
+- (instancetype)initWithBlockSize:(NSUInteger)aBlockSize capacity:(NSUInteger)blockCount
 {
     self = [self init];
     if (self)

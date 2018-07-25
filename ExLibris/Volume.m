@@ -11,7 +11,7 @@
 
 @implementation Volume
 
-- (id)initWithContainer:(NSObject *)aContainer
+- (instancetype)initWithContainer:(NSObject *)aContainer
            blockStorage:(BlockStorage *)aBlockStorage
 {
     self = [super init];

@@ -22,9 +22,9 @@
 
 @property(copy) NSData *headerData;
 
-- (id)initWithURL:(NSURL *)absoluteURL;
+- (instancetype)initWithURL:(NSURL *)absoluteURL;
 
-- (id)initWithBlockSize:(NSUInteger)aBlockSize capacity:(NSUInteger)blockCount;
+- (instancetype)initWithBlockSize:(NSUInteger)aBlockSize capacity:(NSUInteger)blockCount;
 
 //- (id)initWithURL:(NSURL *)absoluteURL blockStorage:(BlockStorage *)aBlockStorage;
 
@@ -48,6 +48,6 @@
 - (void)markModifiedBlockAtIndex:(NSUInteger)blockIndex;
 - (void)markModifiedBlocksInRange:(NSRange)range;
 
-- (BOOL)commitModifiedBlocks;
+@property (readonly) BOOL commitModifiedBlocks;
 
 @end

@@ -32,7 +32,7 @@
 
 @implementation NewDiskImageController
 
-- (id)init
+- (instancetype)init
 {
     self = [super initWithWindowNibName:@"NewDiskImage"];
     if (self)
@@ -56,7 +56,7 @@
 
 - (IBAction)selectFileSystem:(id)sender
 {
-    NSMenuItem *item = [fileSystemPopUpButton selectedItem];
+    NSMenuItem *item = fileSystemPopUpButton.selectedItem;
     if ([item.title isEqualToString:@"ProDOS"])
     {
         [self selectProDOS];
@@ -74,7 +74,7 @@
 
     // What document type are we creating?
     NSString *docType;
-    NSMenuItem *item = [fileSystemPopUpButton selectedItem];
+    NSMenuItem *item = fileSystemPopUpButton.selectedItem;
     if ([item.title isEqualToString:@"ProDOS"])
         docType = ELAppleProDOSDiskImageDocumentType;
     else if ([item.title isEqualToString:@"DOS 3.3"])
@@ -84,7 +84,7 @@
     NSUInteger blockCount = 0;
     if (docType == ELAppleProDOSDiskImageDocumentType)
     {
-        NSMenuItem *item = [imageSizePopUpButton selectedItem];
+        NSMenuItem *item = imageSizePopUpButton.selectedItem;
         if ([item.title isEqualToString:@"140 KB"])
             blockCount = 280;
         else if ([item.title isEqualToString:@"800 KB"])

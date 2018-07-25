@@ -11,7 +11,7 @@
 
 @implementation PreferencesWindowController
 
-- (id)init
+- (instancetype)init
 {
     self = [super initWithWindowNibName:@"PreferencesWindow"];
     return self;

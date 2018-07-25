@@ -11,7 +11,7 @@
 
 @implementation Error
 
-- (id)initWithCode:(NSInteger)code
+- (instancetype)initWithCode:(NSInteger)code
 {
     NSString *descrip = nil;
     switch (code)
@@ -23,12 +23,15 @@
         case ELVolumeSpaceLimitError:
             descrip = NSLocalizedString(@"There is not enough space on the volume.", @"");
             break;
+
+        default:
+            descrip = @"";
     }
     NSDictionary *errDict = @{NSLocalizedDescriptionKey: descrip};
     return [super initWithDomain:ELErrorDomain code:code userInfo:errDict];
 }
 
-+ (id)errorWithCode:(NSInteger)code
++ (instancetype)errorWithCode:(NSInteger)code
 {
     return [[Error alloc] initWithCode:code];
 }

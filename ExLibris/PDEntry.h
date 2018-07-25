@@ -44,11 +44,12 @@ BOOL packDateAndTime(unsigned char *data,
 @property NSUInteger access;
 @property(weak, readonly) NSData *entryData;
 
-- (id)initWithVolume:(PDVolume *)aVolume
+- (instancetype)initWithVolume:(PDVolume *)aVolume
      parentDirectory:(PDDirectory *)aDirectory
          parentEntry:(PDEntry *)aParentEntry
                bytes:(void *)anEntryBytes
-              length:(NSUInteger)anEntryLength;
+              length:(NSUInteger)anEntryLength NS_DESIGNATED_INITIALIZER;
+- (instancetype)init __attribute__((unavailable));
 
 - (void)clear;
 

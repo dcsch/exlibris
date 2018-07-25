@@ -17,7 +17,7 @@
 
 @implementation FileBrowseController
 
-- (id)initWithData:(NSData *)aData
+- (instancetype)initWithData:(NSData *)aData
       startAddress:(NSUInteger)aStartAddress
               name:(NSString *)aName
             typeId:(NSUInteger)aTypeId
@@ -47,7 +47,7 @@
 {
     if (!data)
     {
-        [textView setString:@"Unhandled storage type"];
+        textView.string = @"Unhandled storage type";
         return;
     }
 
@@ -84,7 +84,7 @@
         
     [popUpButton selectItem:menuItem];
 
-    [textView setFont:[NSFont userFixedPitchFontOfSize:10]];
+    textView.font = [NSFont userFixedPitchFontOfSize:10];
 }
 
 - (void)hexDump
@@ -93,14 +93,14 @@
 //    if ([entry isKindOfClass:[PDFileEntry class]])
 //        length = [(PDFileEntry *)entry eof];
 //    else
-        length = [data length];
+        length = data.length;
             
     NSMutableString *hexDumpString = [NSMutableString string];
     NSUInteger lineCount = length / 16;
     NSUInteger line;
     for (line = 0; line < lineCount; ++line)
     {
-        const unsigned char *ptr = [data bytes] + 16 * line;
+        const unsigned char *ptr = data.bytes + 16 * line;
         [hexDumpString appendFormat:@"%08lx: ", 16 * line];
         [hexDumpString appendFormat:@"%02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x  ",
             ptr[0],
@@ -156,7 +156,7 @@
     unsigned int extraBytes = length % 16;
     if (extraBytes)
     {
-        const unsigned char *ptr = [data bytes] + 16 * lineCount;
+        const unsigned char *ptr = data.bytes + 16 * lineCount;
         [hexDumpString appendFormat:@"%08lx: ", 16 * lineCount];
         unsigned int i;
         for (i = 0; i < extraBytes; ++i)
@@ -197,7 +197,7 @@
             c[15]];
     }
 
-    [textView setString:hexDumpString];
+    textView.string = hexDumpString;
 }
 
 - (void)catalog
@@ -211,7 +211,7 @@
     unsigned char storageType = ptr[0x04] >> 4;
     if (storageType != 15 && storageType != 14)
     {
-        [textView setString:@"Invalid directory data"];
+        textView.string = @"Invalid directory data";
         return;
     }
     
@@ -318,7 +318,7 @@
 
     // We have no choice but to go to the volume directory header to get
     // the total blocks
-    ProDOSImage *diskImage = [self document];
+    ProDOSImage *diskImage = self.document;
     PDVolume *volume = (PDVolume *)diskImage.volume;
 
     [catString appendFormat:@"\nBLOCKS FREE:%5d     BLOCKS USED:%5d     TOTAL BLOCKS:%5lu\n",
@@ -326,7 +326,7 @@
      0,
      (unsigned long)volume.totalBlockCount];
 
-    [textView setString:catString];
+    textView.string = catString;
 }
 
 - (IBAction)displayHexDump:(id)sender
@@ -336,14 +336,14 @@
 
 - (IBAction)displayApplesoftBasic:(id)sender
 {
-    [textView setString:[Applesoft parseData:data hasHeader:header]];
+    textView.string = [Applesoft parseData:data hasHeader:header];
 }
 
 - (IBAction)display6502Disassembly:(id)sender
 {
-    [textView setString:[Disassembler disassembleData:data
+    textView.string = [Disassembler disassembleData:data
                                            withOffset:startAddress
-                                            hasHeader:header]];
+                                            hasHeader:header];
 }
 
 - (IBAction)displayText:(id)sender
@@ -351,7 +351,7 @@
     NSString *str = [[NSString alloc] initWithBytes:data.bytes
                                              length:data.length
                                            encoding:[NSString defaultCStringEncoding]];
-    [textView setString:str];
+    textView.string = str;
 }
 
 - (IBAction)displayCatalog:(id)sender
