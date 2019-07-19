@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -89,6 +89,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		037F044922CFD4DA008AD5A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DOS3xWindow.xib; sourceTree = "<group>"; };
+		037F044A22CFD4DA008AD5A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProDOSWindow.xib; sourceTree = "<group>"; };
+		037F044B22CFD4DA008AD5A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NewDiskImage.xib; sourceTree = "<group>"; };
+		037F044C22CFD4DA008AD5A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
+		037F044D22CFD4DA008AD5A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FileBrowse.xib; sourceTree = "<group>"; };
+		037F044E22CFD4DA008AD5A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProDOSInfoWindow.xib; sourceTree = "<group>"; };
+		037F044F22CFD4DB008AD5A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DOS3xInfoWindow.xib; sourceTree = "<group>"; };
+		037F045022CFD4DB008AD5A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GraphicsBrowse.xib; sourceTree = "<group>"; };
+		037F045122CFD4DB008AD5A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		63582A871334A581008AF599 /* ExLibris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExLibris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63582A8B1334A581008AF599 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		63582A8E1334A581008AF599 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -202,15 +211,6 @@
 		636A548D1334BB31009C4AE1 /* DOS3xImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOS3xImage.m; sourceTree = "<group>"; };
 		636A548E1334BB31009C4AE1 /* ProDOSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProDOSImage.h; sourceTree = "<group>"; };
 		636A548F1334BB31009C4AE1 /* ProDOSImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProDOSImage.m; sourceTree = "<group>"; };
-		636A54991334BE16009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DOS3xWindow.xib; sourceTree = "<group>"; };
-		636A549C1334BE34009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ProDOSWindow.xib; sourceTree = "<group>"; };
-		636A549F1334BE4A009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewDiskImage.xib; sourceTree = "<group>"; };
-		636A54A21334BE68009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
-		636A54A51334BE71009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FileBrowse.xib; sourceTree = "<group>"; };
-		636A54A81334BE7E009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ProDOSInfoWindow.xib; sourceTree = "<group>"; };
-		636A54AB1334BE86009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DOS3xInfoWindow.xib; sourceTree = "<group>"; };
-		636A54AE1334BE8F009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GraphicsBrowse.xib; sourceTree = "<group>"; };
-		636A54B11334BE97009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		636A54B41334BEA8009C4AE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		636A54C11334C566009C4AE1 /* Ex Libris Help */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Ex Libris Help"; sourceTree = "<group>"; };
 		6394DDEB180E1A010068953E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -488,15 +488,16 @@
 		63582A7E1334A581008AF599 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "David Schweinsberg";
 			};
 			buildConfigurationList = 63582A811334A581008AF599 /* Build configuration list for PBXProject "ExLibris" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			compatibilityVersion = "Xcode 10.0";
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 63582A7C1334A581008AF599;
 			productRefGroup = 63582A881334A581008AF599 /* Products */;
@@ -637,7 +638,7 @@
 		636A549A1334BE16009C4AE1 /* DOS3xWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				636A54991334BE16009C4AE1 /* en */,
+				037F044922CFD4DA008AD5A5 /* Base */,
 			);
 			name = DOS3xWindow.xib;
 			sourceTree = "<group>";
@@ -645,7 +646,7 @@
 		636A549D1334BE34009C4AE1 /* ProDOSWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				636A549C1334BE34009C4AE1 /* en */,
+				037F044A22CFD4DA008AD5A5 /* Base */,
 			);
 			name = ProDOSWindow.xib;
 			sourceTree = "<group>";
@@ -653,7 +654,7 @@
 		636A54A01334BE4A009C4AE1 /* NewDiskImage.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				636A549F1334BE4A009C4AE1 /* en */,
+				037F044B22CFD4DA008AD5A5 /* Base */,
 			);
 			name = NewDiskImage.xib;
 			sourceTree = "<group>";
@@ -661,7 +662,7 @@
 		636A54A31334BE68009C4AE1 /* PreferencesWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				636A54A21334BE68009C4AE1 /* en */,
+				037F044C22CFD4DA008AD5A5 /* Base */,
 			);
 			name = PreferencesWindow.xib;
 			sourceTree = "<group>";
@@ -669,7 +670,7 @@
 		636A54A61334BE71009C4AE1 /* FileBrowse.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				636A54A51334BE71009C4AE1 /* en */,
+				037F044D22CFD4DA008AD5A5 /* Base */,
 			);
 			name = FileBrowse.xib;
 			sourceTree = "<group>";
@@ -677,7 +678,7 @@
 		636A54A91334BE7E009C4AE1 /* ProDOSInfoWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				636A54A81334BE7E009C4AE1 /* en */,
+				037F044E22CFD4DA008AD5A5 /* Base */,
 			);
 			name = ProDOSInfoWindow.xib;
 			sourceTree = "<group>";
@@ -685,7 +686,7 @@
 		636A54AC1334BE86009C4AE1 /* DOS3xInfoWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				636A54AB1334BE86009C4AE1 /* en */,
+				037F044F22CFD4DB008AD5A5 /* Base */,
 			);
 			name = DOS3xInfoWindow.xib;
 			sourceTree = "<group>";
@@ -693,7 +694,7 @@
 		636A54AF1334BE8F009C4AE1 /* GraphicsBrowse.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				636A54AE1334BE8F009C4AE1 /* en */,
+				037F045022CFD4DB008AD5A5 /* Base */,
 			);
 			name = GraphicsBrowse.xib;
 			sourceTree = "<group>";
@@ -701,7 +702,7 @@
 		636A54B21334BE97009C4AE1 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				636A54B11334BE97009C4AE1 /* en */,
+				037F045122CFD4DB008AD5A5 /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -720,13 +721,27 @@
 		63582ABA1334A582008AF599 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -737,7 +752,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -746,13 +761,26 @@
 		63582ABB1334A582008AF599 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -760,7 +788,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -778,6 +806,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExLibris/ExLibris-Prefix.pch";
 				INFOPLIST_FILE = "ExLibris/ExLibris-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.synchroma.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -796,6 +825,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExLibris/ExLibris-Prefix.pch";
 				INFOPLIST_FILE = "ExLibris/ExLibris-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.synchroma.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -814,6 +844,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExLibrisTests/ExLibrisTests-Prefix.pch";
 				INFOPLIST_FILE = "ExLibrisTests/ExLibrisTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.synchroma.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -832,6 +863,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExLibrisTests/ExLibrisTests-Prefix.pch";
 				INFOPLIST_FILE = "ExLibrisTests/ExLibrisTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.synchroma.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
