@@ -8,12 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface GraphicsBrowseController : NSWindowController
-{
-    IBOutlet NSImageView *imageView;
-    NSImage *image;
-    NSString *name;
+@interface GraphicsBrowseController : NSWindowController {
+  IBOutlet NSImageView *imageView;
+  NSImage *image;
+  NSString *name;
 }
 
 - (instancetype)initWithData:(NSData *)data

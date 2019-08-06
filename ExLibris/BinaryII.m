@@ -8,12 +8,10 @@
 
 #import "BinaryII.h"
 
-
 @implementation BinaryII
 
-+ (NSData *)encodeForFileEntry:(PDFileEntry *)fileEntry data:(NSData *)data
-{
-    return nil;
++ (NSData *)encodeForFileEntry:(PDFileEntry *)fileEntry data:(NSData *)data {
+  return nil;
 }
 
 @end

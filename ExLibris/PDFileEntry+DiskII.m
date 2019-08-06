@@ -11,13 +11,12 @@
 
 @implementation PDFileEntry (DiskII)
 
-- (NSColor *)textColor
-{
-    if (self.storageType == 0)
-        return [NSColor grayColor];
+- (NSColor *)textColor {
+  if (self.storageType == 0)
+    return [NSColor grayColor];
 
-    // Use the default text colour for file entries
-    return nil;
+  // Use the default text colour for file entries
+  return nil;
 }
 
 @end

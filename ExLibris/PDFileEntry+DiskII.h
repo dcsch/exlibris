@@ -6,8 +6,8 @@
 //  Copyright 2008 David Schweinsberg. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
 #import "PDFileEntry.h"
+#import <Cocoa/Cocoa.h>
 
 @interface PDFileEntry (DiskII)
 

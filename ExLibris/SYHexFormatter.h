@@ -8,10 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface SYHexFormatter : NSFormatter
-{
-    NSCharacterSet *hexDigitCharSet;
+@interface SYHexFormatter : NSFormatter {
+  NSCharacterSet *hexDigitCharSet;
 }
 
 @end

@@ -8,11 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-typedef enum _ELDiskImageExtension
-{
-    ELUnknownExtension,
-    EL2imgExtension,
-    ELDskExtension
+typedef enum _ELDiskImageExtension {
+  ELUnknownExtension,
+  EL2imgExtension,
+  ELDskExtension
 } ELDiskImageExtension;
 
 @interface DiskImageController : NSDocumentController

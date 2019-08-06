@@ -8,10 +8,8 @@
 
 #import <XCTest/XCTest.h>
 
-
 @interface ExLibrisTests : XCTestCase {
 @private
-    
 }
 
 @end

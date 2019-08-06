@@ -11,29 +11,28 @@
 
 @implementation Error
 
-- (instancetype)initWithCode:(NSInteger)code
-{
-    NSString *descrip = nil;
-    switch (code)
-    {
-        case ELVolumeDirectoryEntryLimitError:
-            descrip = NSLocalizedString(@"Volume directory has reached its maximum number of entries.", @"");
-            break;
+- (instancetype)initWithCode:(NSInteger)code {
+  NSString *descrip = nil;
+  switch (code) {
+  case ELVolumeDirectoryEntryLimitError:
+    descrip = NSLocalizedString(
+        @"Volume directory has reached its maximum number of entries.", @"");
+    break;
 
-        case ELVolumeSpaceLimitError:
-            descrip = NSLocalizedString(@"There is not enough space on the volume.", @"");
-            break;
+  case ELVolumeSpaceLimitError:
+    descrip =
+        NSLocalizedString(@"There is not enough space on the volume.", @"");
+    break;
 
-        default:
-            descrip = @"";
-    }
-    NSDictionary *errDict = @{NSLocalizedDescriptionKey: descrip};
-    return [super initWithDomain:ELErrorDomain code:code userInfo:errDict];
+  default:
+    descrip = @"";
+  }
+  NSDictionary *errDict = @{NSLocalizedDescriptionKey : descrip};
+  return [super initWithDomain:ELErrorDomain code:code userInfo:errDict];
 }
 
-+ (instancetype)errorWithCode:(NSInteger)code
-{
-    return [[Error alloc] initWithCode:code];
++ (instancetype)errorWithCode:(NSInteger)code {
+  return [[Error alloc] initWithCode:code];
 }
 
 @end

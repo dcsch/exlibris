@@ -12,30 +12,26 @@
 @implementation Volume
 
 - (instancetype)initWithContainer:(NSObject *)aContainer
-           blockStorage:(BlockStorage *)aBlockStorage
-{
-    self = [super init];
-    if (self)
-    {
-        container = aContainer;
-        blockStorage = aBlockStorage;
-    }
-    return self;
+                     blockStorage:(BlockStorage *)aBlockStorage {
+  self = [super init];
+  if (self) {
+    container = aContainer;
+    blockStorage = aBlockStorage;
+  }
+  return self;
 }
 
-
-- (NSScriptObjectSpecifier *)objectSpecifier
-{
-    NSScriptObjectSpecifier *containerSpec = container.objectSpecifier;
-    return [[NSNameSpecifier alloc] initWithContainerClassDescription:containerSpec.keyClassDescription
-                                                   containerSpecifier:containerSpec
-                                                                  key:@"volume"
-                                                                 name:self.name];
+- (NSScriptObjectSpecifier *)objectSpecifier {
+  NSScriptObjectSpecifier *containerSpec = container.objectSpecifier;
+  return [[NSNameSpecifier alloc]
+      initWithContainerClassDescription:containerSpec.keyClassDescription
+                     containerSpecifier:containerSpec
+                                    key:@"volume"
+                                   name:self.name];
 }
 
-- (NSString *)name
-{
-    return nil;
+- (NSString *)name {
+  return nil;
 }
 
 @synthesize blockStorage;

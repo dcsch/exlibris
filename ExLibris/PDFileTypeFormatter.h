@@ -8,10 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface PDFileTypeFormatter : NSFormatter
-{
-
+@interface PDFileTypeFormatter : NSFormatter {
 }
 
 @end

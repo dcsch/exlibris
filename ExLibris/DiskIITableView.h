@@ -8,9 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface DiskIITableView : NSTableView
-{
+@interface DiskIITableView : NSTableView {
 }
 
 @end

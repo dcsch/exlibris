@@ -11,10 +11,9 @@ extern NSString *ELErrorDomain;
 
 // Error codes
 
-enum
-{
-    ELBadProDOSImageError = 1,
-    ELBadDOS3xImageError,
-    ELVolumeDirectoryEntryLimitError,
-    ELVolumeSpaceLimitError
+enum {
+  ELBadProDOSImageError = 1,
+  ELBadDOS3xImageError,
+  ELVolumeDirectoryEntryLimitError,
+  ELVolumeSpaceLimitError
 };

@@ -21,16 +21,17 @@
 @property(nonatomic) BOOL allEntriesVisible;
 
 - (instancetype)initWithVolume:(PDVolume *)aVolume
-         blockNumber:(NSUInteger)aBlockNumber NS_DESIGNATED_INITIALIZER;
+                   blockNumber:(NSUInteger)aBlockNumber
+    NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithFileEntry:(PDFileEntry *)aFileEntry;
 
 - (instancetype)init __attribute__((unavailable));
 
-- (BOOL)createFileWithEntry:(PDFileEntry *)aFileEntry
-                       data:(NSData *)aData;
+- (BOOL)createFileWithEntry:(PDFileEntry *)aFileEntry data:(NSData *)aData;
 
-- (PDFileEntry *)createDirectoryWithName:(NSString *)name error:(NSError **)outError;
+- (PDFileEntry *)createDirectoryWithName:(NSString *)name
+                                   error:(NSError **)outError;
 
 - (void)deleteFileEntryWithName:(NSString *)name;
 

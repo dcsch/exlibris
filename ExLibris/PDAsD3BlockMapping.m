@@ -8,7 +8,6 @@
 
 #import "PDAsD3BlockMapping.h"
 
-
 @implementation PDAsD3BlockMapping
 
 @end

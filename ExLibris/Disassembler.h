@@ -8,10 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface Disassembler : NSObject
-{
-
+@interface Disassembler : NSObject {
 }
 
 + (NSString *)disassembleData:(NSData *)data

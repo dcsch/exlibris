@@ -8,10 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface D3FileTypeFormatter : NSFormatter
-{
-
+@interface D3FileTypeFormatter : NSFormatter {
 }
 
 @end

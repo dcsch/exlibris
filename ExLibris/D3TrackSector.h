@@ -8,11 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface D3TrackSector : NSObject
-{
-    NSUInteger track;
-    NSUInteger sector;
+@interface D3TrackSector : NSObject {
+  NSUInteger track;
+  NSUInteger sector;
 }
 
 @property(readonly) NSUInteger track;
@@ -21,7 +19,8 @@
 
 + (id)track:(NSUInteger)aTrack sector:(NSUInteger)aSector;
 
-- (instancetype)initWithTrack:(NSUInteger)aTrack sector:(NSUInteger)aSector NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTrack:(NSUInteger)aTrack
+                       sector:(NSUInteger)aSector NS_DESIGNATED_INITIALIZER;
 - (instancetype)init __attribute__((unavailable));
 
 @end

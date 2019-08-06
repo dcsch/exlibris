@@ -8,23 +8,19 @@
 
 #import "D3TrackSector.h"
 
-
 @implementation D3TrackSector
 
-+ (id)track:(NSUInteger)aTrack sector:(NSUInteger)aSector
-{
-    return [[D3TrackSector alloc] initWithTrack:aTrack sector:aSector];
++ (id)track:(NSUInteger)aTrack sector:(NSUInteger)aSector {
+  return [[D3TrackSector alloc] initWithTrack:aTrack sector:aSector];
 }
 
-- (instancetype)initWithTrack:(NSUInteger)aTrack sector:(NSUInteger)aSector
-{
-    self = [super init];
-    if (self)
-    {
-        track = aTrack;
-        sector = aSector;
-    }
-    return self;
+- (instancetype)initWithTrack:(NSUInteger)aTrack sector:(NSUInteger)aSector {
+  self = [super init];
+  if (self) {
+    track = aTrack;
+    sector = aSector;
+  }
+  return self;
 }
 
 @synthesize track;

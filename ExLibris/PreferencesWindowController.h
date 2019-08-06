@@ -8,8 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PreferencesWindowController : NSWindowController
-{
+@interface PreferencesWindowController : NSWindowController {
 }
 
 @property BOOL showAllDirectoryEntries;

@@ -6,15 +6,15 @@
 //  Copyright 2008 David Schweinsberg. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
 #import "Volume.h"
+#import <Cocoa/Cocoa.h>
 
-#define SEEDLING_FILE                1
-#define SAPLING_FILE                 2
-#define TREE_FILE                    3
-#define PASCAL_AREA                  4
-#define SUBDIRECTORY               0xD
-#define SUBDIRECTORY_KEY_BLOCK     0xE
+#define SEEDLING_FILE 1
+#define SAPLING_FILE 2
+#define TREE_FILE 3
+#define PASCAL_AREA 4
+#define SUBDIRECTORY 0xD
+#define SUBDIRECTORY_KEY_BLOCK 0xE
 #define VOLUME_DIRECTORY_KEY_BLOCK 0xF
 
 @class PDBlock;
@@ -23,11 +23,10 @@
 @class PDFileEntry;
 @class PDDirectoryHeader;
 
-@interface PDVolume : Volume
-{
-    PDDirectory *directory;
-    NSMutableArray *volumeBitmapBlocks;
-    NSUInteger volumeBitmapPointer;
+@interface PDVolume : Volume {
+  PDDirectory *directory;
+  NSMutableArray *volumeBitmapBlocks;
+  NSUInteger volumeBitmapPointer;
 }
 
 @property(strong, readonly) PDDirectory *directory;
@@ -41,7 +40,8 @@
 + (void)formatBlockStorage:(BlockStorage *)blockStorage;
 
 - (instancetype)initWithContainer:(NSObject *)aContainer
-           blockStorage:(BlockStorage *)aBlockStorage NS_DESIGNATED_INITIALIZER;
+                     blockStorage:(BlockStorage *)aBlockStorage
+    NS_DESIGNATED_INITIALIZER;
 
 - (NSData *)dataForEntry:(PDEntry *)entry appendMetadata:(BOOL)appendMetadata;
 

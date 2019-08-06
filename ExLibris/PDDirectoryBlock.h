@@ -12,15 +12,14 @@
 @class PDDirectory;
 @class PDFileEntry;
 
-@interface PDDirectoryBlock : NSObject
-{
-    PDVolume *volume;
-    PDDirectory *directory;
-    NSMutableData *blockData;
-    NSUInteger blockNumber;
-    NSUInteger entriesPerBlock;
-    NSUInteger entryLength;
-    NSMutableArray *entries;
+@interface PDDirectoryBlock : NSObject {
+  PDVolume *volume;
+  PDDirectory *directory;
+  NSMutableData *blockData;
+  NSUInteger blockNumber;
+  NSUInteger entriesPerBlock;
+  NSUInteger entryLength;
+  NSMutableArray *entries;
 }
 
 //@property(readonly) PDDirectory *directory;
@@ -33,27 +32,28 @@
 @property(strong, readonly) NSData *data;
 
 - (instancetype)initWithVolume:(PDVolume *)aVolume
-           directory:(PDDirectory *)aDirectory
-         blockNumber:(NSUInteger)aBlockNumber NS_DESIGNATED_INITIALIZER;
+                     directory:(PDDirectory *)aDirectory
+                   blockNumber:(NSUInteger)aBlockNumber
+    NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithVolume:(PDVolume *)aVolume
-           directory:(PDDirectory *)aDirectory
-         blockNumber:(NSUInteger)aBlockNumber
-     entriesPerBlock:(NSUInteger)count
-         entryLength:(NSUInteger)length;
+                     directory:(PDDirectory *)aDirectory
+                   blockNumber:(NSUInteger)aBlockNumber
+               entriesPerBlock:(NSUInteger)count
+                   entryLength:(NSUInteger)length;
 
 - (instancetype)initWithVolume:(PDVolume *)aVolume
-           directory:(PDDirectory *)aDirectory
-         blockNumber:(NSUInteger)aBlockNumber
-     nextBlockNumber:(NSUInteger)aNextBlockNumber
- previousBlockNumber:(NSUInteger)aPreviousBlockNumber
-       directoryName:(NSString *)directoryName
-       parentPointer:(NSUInteger)parentPointer
-   parentEntryNumber:(NSUInteger)parentEntryNumber
-   parentEntryLength:(NSUInteger)parentEntryLength;
+                     directory:(PDDirectory *)aDirectory
+                   blockNumber:(NSUInteger)aBlockNumber
+               nextBlockNumber:(NSUInteger)aNextBlockNumber
+           previousBlockNumber:(NSUInteger)aPreviousBlockNumber
+                 directoryName:(NSString *)directoryName
+                 parentPointer:(NSUInteger)parentPointer
+             parentEntryNumber:(NSUInteger)parentEntryNumber
+             parentEntryLength:(NSUInteger)parentEntryLength;
 
 - (instancetype)init __attribute__((unavailable));
 
-@property (readonly) NSInteger findInactiveEntryIndex;
+@property(readonly) NSInteger findInactiveEntryIndex;
 
 @end

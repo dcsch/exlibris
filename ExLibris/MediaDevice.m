@@ -13,22 +13,19 @@
 
 @implementation MediaDevice
 
-- (instancetype)initWithDevicePath:(NSString *)aPath size:(NSUInteger)aSize
-{
-    self = [super init];
-    if (self)
-    {
-        path = [aPath copy];
-        size = aSize;
+- (instancetype)initWithDevicePath:(NSString *)aPath size:(NSUInteger)aSize {
+  self = [super init];
+  if (self) {
+    path = [aPath copy];
+    size = aSize;
 
-        // Calculate the number of partitions
-        partitionCount = size / kMaxProDOSVolumeSize;
-        if (size % kMaxProDOSVolumeSize > 0)
-            ++partitionCount;
-    }
-    return self;
+    // Calculate the number of partitions
+    partitionCount = size / kMaxProDOSVolumeSize;
+    if (size % kMaxProDOSVolumeSize > 0)
+      ++partitionCount;
+  }
+  return self;
 }
-
 
 //- (NSData *)partitionAtIndex:(NSUInteger)index
 //{
@@ -51,50 +48,57 @@
 //        close(fd);
 //
 //        NSLog(@"Read %d bytes from %@ @ %d", bytesRead, path, pos);
-//        
+//
 //        return data;
 //    }
 //    return nil;
 //}
 
-+ (NSArray *)devices
-{
-    NSMutableArray *mediaDevices = [NSMutableArray arrayWithCapacity:1];
-    
-    // Create a matching dictionary for an IOMedia class, which is a 'whole' volume
-    // (rather than a virtual, or partition), is a 'leaf' (that is, at the end of the
-    // heirarchy) and in removable.
-    CFMutableDictionaryRef mediaMatchDictionary = IOServiceMatching(kIOMediaClass);
-    CFDictionaryAddValue(mediaMatchDictionary,  CFSTR(kIOMediaWholeKey), kCFBooleanTrue);
-    CFDictionaryAddValue(mediaMatchDictionary,  CFSTR(kIOMediaLeafKey), kCFBooleanTrue);
-    CFDictionaryAddValue(mediaMatchDictionary,  CFSTR(kIOMediaRemovableKey), kCFBooleanTrue);
-    
-    io_iterator_t iterator;
-    IOServiceGetMatchingServices(kIOMasterPortDefault,
-                                 mediaMatchDictionary,
-                                 &iterator);
-    
-    io_object_t obj;
-    while ((obj = IOIteratorNext(iterator)))
-    {
-        CFStringRef nameRef =
-        IORegistryEntryCreateCFProperty(obj, CFSTR("BSD Name"), kCFAllocatorDefault, 0);
-        CFNumberRef sizeRef =
-        IORegistryEntryCreateCFProperty(obj, CFSTR("Size"), kCFAllocatorDefault, 0);
-        NSString *path = [NSString stringWithFormat:@"/dev/%@", (__bridge NSString *)nameRef];
-        [mediaDevices addObject:[[MediaDevice alloc] initWithDevicePath:path
-                                                                   size:((__bridge NSNumber *)sizeRef).unsignedIntegerValue]];
-        NSLog(@"Found: %@", (__bridge NSString *)nameRef);
-        CFRelease(nameRef);
-        CFRelease(sizeRef);
-        
-        IOObjectRelease(obj);
-    }
-    IOObjectRelease(iterator);
-    
-    NSLog(@"Done searching for media");
-    
-    return mediaDevices;
++ (NSArray *)devices {
+  NSMutableArray *mediaDevices = [NSMutableArray arrayWithCapacity:1];
+
+  // Create a matching dictionary for an IOMedia class, which is a 'whole'
+  // volume
+  // (rather than a virtual, or partition), is a 'leaf' (that is, at the end of
+  // the
+  // heirarchy) and in removable.
+  CFMutableDictionaryRef mediaMatchDictionary =
+      IOServiceMatching(kIOMediaClass);
+  CFDictionaryAddValue(mediaMatchDictionary, CFSTR(kIOMediaWholeKey),
+                       kCFBooleanTrue);
+  CFDictionaryAddValue(mediaMatchDictionary, CFSTR(kIOMediaLeafKey),
+                       kCFBooleanTrue);
+  CFDictionaryAddValue(mediaMatchDictionary, CFSTR(kIOMediaRemovableKey),
+                       kCFBooleanTrue);
+
+  io_iterator_t iterator;
+  IOServiceGetMatchingServices(kIOMasterPortDefault, mediaMatchDictionary,
+                               &iterator);
+
+  io_object_t obj;
+  while ((obj = IOIteratorNext(iterator))) {
+    CFStringRef nameRef = IORegistryEntryCreateCFProperty(
+        obj, CFSTR("BSD Name"), kCFAllocatorDefault, 0);
+    CFNumberRef sizeRef = IORegistryEntryCreateCFProperty(
+        obj, CFSTR("Size"), kCFAllocatorDefault, 0);
+    NSString *path =
+        [NSString stringWithFormat:@"/dev/%@", (__bridge NSString *)nameRef];
+    [mediaDevices
+        addObject:[[MediaDevice alloc]
+                      initWithDevicePath:path
+                                    size:((__bridge NSNumber *)sizeRef)
+                                             .unsignedIntegerValue]];
+    NSLog(@"Found: %@", (__bridge NSString *)nameRef);
+    CFRelease(nameRef);
+    CFRelease(sizeRef);
+
+    IOObjectRelease(obj);
+  }
+  IOObjectRelease(iterator);
+
+  NSLog(@"Done searching for media");
+
+  return mediaDevices;
 }
 
 @synthesize path;
@@ -102,5 +106,5 @@
 @synthesize size;
 
 @synthesize partitionCount;
-         
+
 @end

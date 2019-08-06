@@ -8,11 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface D3FileNameFormatter : NSFormatter
-{
-    NSCharacterSet *lettersCharSet;
-    NSCharacterSet *legalCharSet;
+@interface D3FileNameFormatter : NSFormatter {
+  NSCharacterSet *lettersCharSet;
+  NSCharacterSet *legalCharSet;
 }
 
 @end

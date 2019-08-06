@@ -11,10 +11,9 @@
 @class PreferencesWindowController;
 @class DiskImageController;
 
-@interface AppDelegate : NSObject
-{
-    PreferencesWindowController *preferenceController;
-    DiskImageController *diskImageController;
+@interface AppDelegate : NSObject {
+  PreferencesWindowController *preferenceController;
+  DiskImageController *diskImageController;
 }
 
 - (IBAction)showPreferencePanel:(id)sender;

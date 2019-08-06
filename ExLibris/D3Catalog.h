@@ -10,10 +10,9 @@
 
 @class D3Volume;
 
-@interface D3Catalog : NSObject
-{
-    NSMutableArray *sectors;
-    NSMutableArray *entries;
+@interface D3Catalog : NSObject {
+  NSMutableArray *sectors;
+  NSMutableArray *entries;
 }
 
 @property(strong, readonly) NSArray *entries;

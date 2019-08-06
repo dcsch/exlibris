@@ -10,13 +10,13 @@
 
 @class MediaDevice;
 
-@interface MediaPartitionMenuDelegate : NSObject <NSMenuDelegate>
-{
-    MediaDevice *mediaDevice;
-    NSUInteger partitionIndex;
+@interface MediaPartitionMenuDelegate : NSObject <NSMenuDelegate> {
+  MediaDevice *mediaDevice;
+  NSUInteger partitionIndex;
 }
 
-- (instancetype)initWithMediaDevice:(MediaDevice *)aMediaDevice NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithMediaDevice:(MediaDevice *)aMediaDevice
+    NS_DESIGNATED_INITIALIZER;
 - (instancetype)init __attribute__((unavailable));
 
 - (IBAction)openPartition:(id)sender;

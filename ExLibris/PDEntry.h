@@ -8,27 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
-BOOL unpackDateAndTime(const unsigned char *data,
-                       NSInteger *year,
-                       NSInteger *month,
-                       NSInteger *day,
-                       NSInteger *hour,
+BOOL unpackDateAndTime(const unsigned char *data, NSInteger *year,
+                       NSInteger *month, NSInteger *day, NSInteger *hour,
                        NSInteger *minute);
 
-BOOL packDateAndTime(unsigned char *data,
-                     NSInteger year,
-                     NSInteger month,
-                     NSInteger day,
-                     NSInteger hour,
-                     NSInteger minute);
+BOOL packDateAndTime(unsigned char *data, NSInteger year, NSInteger month,
+                     NSInteger day, NSInteger hour, NSInteger minute);
 
 @class PDVolume;
 @class PDDirectory;
 
-@interface PDEntry : NSObject
-{
-    unsigned char *entryBytes;
-    NSUInteger entryLength;
+@interface PDEntry : NSObject {
+  unsigned char *entryBytes;
+  NSUInteger entryLength;
 }
 
 @property(weak, readonly) PDVolume *volume;
@@ -45,10 +37,11 @@ BOOL packDateAndTime(unsigned char *data,
 @property(weak, readonly) NSData *entryData;
 
 - (instancetype)initWithVolume:(PDVolume *)aVolume
-     parentDirectory:(PDDirectory *)aDirectory
-         parentEntry:(PDEntry *)aParentEntry
-               bytes:(void *)anEntryBytes
-              length:(NSUInteger)anEntryLength NS_DESIGNATED_INITIALIZER;
+               parentDirectory:(PDDirectory *)aDirectory
+                   parentEntry:(PDEntry *)aParentEntry
+                         bytes:(void *)anEntryBytes
+                        length:(NSUInteger)anEntryLength
+    NS_DESIGNATED_INITIALIZER;
 - (instancetype)init __attribute__((unavailable));
 
 - (void)clear;

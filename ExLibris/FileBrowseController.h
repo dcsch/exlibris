@@ -8,22 +8,21 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface FileBrowseController : NSWindowController
-{
-    IBOutlet NSPopUpButton *popUpButton;
-    IBOutlet NSTextView *textView;
-    NSData *data;
-    NSUInteger startAddress;
-    NSString *name;
-    NSUInteger typeId;
-    BOOL header;
+@interface FileBrowseController : NSWindowController {
+  IBOutlet NSPopUpButton *popUpButton;
+  IBOutlet NSTextView *textView;
+  NSData *data;
+  NSUInteger startAddress;
+  NSString *name;
+  NSUInteger typeId;
+  BOOL header;
 }
 
 - (instancetype)initWithData:(NSData *)aData
-      startAddress:(NSUInteger)aStartAddress
-              name:(NSString *)aName
-            typeId:(NSUInteger)aTypeId
-         hasHeader:(BOOL)aHeader;
+                startAddress:(NSUInteger)aStartAddress
+                        name:(NSString *)aName
+                      typeId:(NSUInteger)aTypeId
+                   hasHeader:(BOOL)aHeader;
 
 - (void)hexDump;
 

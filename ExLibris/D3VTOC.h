@@ -10,19 +10,18 @@
 
 @class D3Volume;
 
-@interface D3VTOC : NSObject
-{
-    NSData *sectorData;
-    NSUInteger catalogFirstTrackNumber;
-    NSUInteger catalogFirstSectorNumber;
-    NSUInteger dosRelease;
-    NSUInteger volumeNumber;
-    NSUInteger maxTrackSectorPairs;
-    NSUInteger lastAllocatedTrack;
-    NSInteger trackAllocationDirection;
-    NSUInteger trackCount;
-    NSUInteger sectorsPerTrackCount;
-    NSUInteger bytesPerSectorCount;
+@interface D3VTOC : NSObject {
+  NSData *sectorData;
+  NSUInteger catalogFirstTrackNumber;
+  NSUInteger catalogFirstSectorNumber;
+  NSUInteger dosRelease;
+  NSUInteger volumeNumber;
+  NSUInteger maxTrackSectorPairs;
+  NSUInteger lastAllocatedTrack;
+  NSInteger trackAllocationDirection;
+  NSUInteger trackCount;
+  NSUInteger sectorsPerTrackCount;
+  NSUInteger bytesPerSectorCount;
 }
 
 @property(readonly) NSUInteger catalogFirstTrackNumber;

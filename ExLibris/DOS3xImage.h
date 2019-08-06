@@ -6,9 +6,8 @@
 //  Copyright David Schweinsberg 2008 . All rights reserved.
 //
 
-
-#import <Cocoa/Cocoa.h>
 #import "DiskImage.h"
+#import <Cocoa/Cocoa.h>
 
 @class D3Volume;
 

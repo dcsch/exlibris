@@ -6,8 +6,8 @@
 //  Copyright 2008 David Schweinsberg. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
 #import "PDEntry.h"
+#import <Cocoa/Cocoa.h>
 
 @class PDFileType;
 @class PDDirectory;

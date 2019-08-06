@@ -10,10 +10,9 @@
 
 @class BlockStorage;
 
-@interface Volume : NSObject
-{
-    NSObject *container;
-    BlockStorage *blockStorage;
+@interface Volume : NSObject {
+  NSObject *container;
+  BlockStorage *blockStorage;
 }
 
 @property(strong, readonly) BlockStorage *blockStorage;
@@ -21,7 +20,8 @@
 @property(copy, readonly) NSString *name;
 
 - (instancetype)initWithContainer:(NSObject *)aContainer
-           blockStorage:(BlockStorage *)aBlockStorage NS_DESIGNATED_INITIALIZER;
+                     blockStorage:(BlockStorage *)aBlockStorage
+    NS_DESIGNATED_INITIALIZER;
 - (instancetype)init __attribute__((unavailable));
 
 @end

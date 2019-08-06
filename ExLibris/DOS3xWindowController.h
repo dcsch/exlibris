@@ -10,12 +10,11 @@
 
 @class D3FileEntry;
 
-@interface DOS3xWindowController : NSWindowController
-{
-    IBOutlet NSTableView *catalogTableView;
-    IBOutlet NSArrayController *catalogArrayController;
-    
-    NSMutableDictionary *windowControllers;
+@interface DOS3xWindowController : NSWindowController {
+  IBOutlet NSTableView *catalogTableView;
+  IBOutlet NSArrayController *catalogArrayController;
+
+  NSMutableDictionary *windowControllers;
 }
 
 - (IBAction)openGraphics:(id)sender;

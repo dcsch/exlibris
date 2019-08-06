@@ -24,9 +24,11 @@
 
 - (instancetype)initWithURL:(NSURL *)absoluteURL;
 
-- (instancetype)initWithBlockSize:(NSUInteger)aBlockSize capacity:(NSUInteger)blockCount;
+- (instancetype)initWithBlockSize:(NSUInteger)aBlockSize
+                         capacity:(NSUInteger)blockCount;
 
-//- (id)initWithURL:(NSURL *)absoluteURL blockStorage:(BlockStorage *)aBlockStorage;
+//- (id)initWithURL:(NSURL *)absoluteURL blockStorage:(BlockStorage
+//*)aBlockStorage;
 
 - (void)open;
 
@@ -48,6 +50,6 @@
 - (void)markModifiedBlockAtIndex:(NSUInteger)blockIndex;
 - (void)markModifiedBlocksInRange:(NSRange)range;
 
-@property (readonly) BOOL commitModifiedBlocks;
+@property(readonly) BOOL commitModifiedBlocks;
 
 @end

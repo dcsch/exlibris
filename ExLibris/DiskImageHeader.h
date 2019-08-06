@@ -8,19 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface DiskImageHeader : NSObject
-{
-    unsigned int imageFormat;
-    unsigned int imageDataOffset;
-    unsigned int imageDataLength;
+@interface DiskImageHeader : NSObject {
+  unsigned int imageFormat;
+  unsigned int imageDataOffset;
+  unsigned int imageDataLength;
 }
 
 - (instancetype)initWithData:(NSData *)data NS_DESIGNATED_INITIALIZER;
 - (instancetype)init __attribute__((unavailable));
-@property (readonly) unsigned int imageFormat;
-@property (readonly) unsigned int imageDataOffset;
-@property (readonly) unsigned int imageDataLength;
+@property(readonly) unsigned int imageFormat;
+@property(readonly) unsigned int imageDataOffset;
+@property(readonly) unsigned int imageDataLength;
 
 //@property (getter=imageDataLength) unsigned int imageDataLength;
 //@property (getter=imageDataOffset) unsigned int imageDataOffset;

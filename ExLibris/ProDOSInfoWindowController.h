@@ -10,12 +10,11 @@
 
 @class PDEntry;
 
-@interface ProDOSInfoWindowController : NSWindowController
-{
-    IBOutlet NSTextField *fileNameTextField;
-    IBOutlet NSPopUpButton *typePopUpButton;
-    IBOutlet NSTextField *auxTextField;
-    PDEntry *entry;
+@interface ProDOSInfoWindowController : NSWindowController {
+  IBOutlet NSTextField *fileNameTextField;
+  IBOutlet NSPopUpButton *typePopUpButton;
+  IBOutlet NSTextField *auxTextField;
+  PDEntry *entry;
 }
 
 @property(strong, readonly) PDEntry *entry;

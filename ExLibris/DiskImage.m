@@ -10,18 +10,15 @@
 
 @implementation DiskImage
 
-+ (BOOL)autosavesInPlace
-{
-    return YES;
++ (BOOL)autosavesInPlace {
+  return YES;
 }
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self)
-    {
-    }
-    return self;
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+  }
+  return self;
 }
 
 @end

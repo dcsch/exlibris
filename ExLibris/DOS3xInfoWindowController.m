@@ -12,29 +12,24 @@
 
 @implementation DOS3xInfoWindowController
 
-- (instancetype)initWithEntry:(D3FileEntry *)anEntry
-{
-    self = [super initWithWindowNibName:@"DOS3xInfoWindow"];
-    if (self)
-    {
-        entry = anEntry;
-    }
-    return self;
+- (instancetype)initWithEntry:(D3FileEntry *)anEntry {
+  self = [super initWithWindowNibName:@"DOS3xInfoWindow"];
+  if (self) {
+    entry = anEntry;
+  }
+  return self;
 }
 
-
-- (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName
-{
-    NSMutableString *ms = [[NSMutableString alloc] init];
-    [ms appendFormat:@"%@ Info", entry.fileName];
-    return ms;
+- (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName {
+  NSMutableString *ms = [[NSMutableString alloc] init];
+  [ms appendFormat:@"%@ Info", entry.fileName];
+  return ms;
 }
 
-- (void)windowDidLoad
-{
-    fileNameTextField.formatter = [[D3FileNameFormatter alloc] init];
-//    auxTextField.formatter = [[[SYHexFormatter alloc] init] autorelease];
-//    auxTextField.needsDisplay = YES;
+- (void)windowDidLoad {
+  fileNameTextField.formatter = [[D3FileNameFormatter alloc] init];
+  //    auxTextField.formatter = [[[SYHexFormatter alloc] init] autorelease];
+  //    auxTextField.needsDisplay = YES;
 }
 
 @end

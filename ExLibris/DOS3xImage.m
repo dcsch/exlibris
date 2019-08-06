@@ -7,98 +7,90 @@
 //
 
 #import "DOS3xImage.h"
-#import "DOS3xWindowController.h"
-#import "DiskImageHeader.h"
-#import "D3Volume.h"
 #import "BlockStorage.h"
-#import "DiskImageController.h"
+#import "D3Volume.h"
+#import "DOS3xWindowController.h"
 #import "DiskII.h"
+#import "DiskImageController.h"
+#import "DiskImageHeader.h"
 #import "ExLibrisErrors.h"
 
-@interface DOS3xImage ()
-{
-    D3Volume *_volume;
-    BlockStorage *_blockStorage;
+@interface DOS3xImage () {
+  D3Volume *_volume;
+  BlockStorage *_blockStorage;
 }
 
 @end
 
-
 @implementation DOS3xImage
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self)
-    {
-    }
-    return self;
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+  }
+  return self;
 }
 
-
-- (void)makeWindowControllers
-{
-    NSWindowController *controller = [[DOS3xWindowController alloc] init];
-    [self addWindowController:controller];
+- (void)makeWindowControllers {
+  NSWindowController *controller = [[DOS3xWindowController alloc] init];
+  [self addWindowController:controller];
 }
 
 - (BOOL)saveToURL:(NSURL *)absoluteURL
-           ofType:(NSString *)typeName
- forSaveOperation:(NSSaveOperationType)saveOperation
-            error:(NSError **)outError
-{
-    NSLog(@"Saving %@", absoluteURL);
-    
-    if (saveOperation == NSSaveAsOperation)
-    {
-//        // Copy the current block storage to a new block storage
-//        BlockStorage *blockStorage2 = [[BlockStorage alloc] initWithURL:absoluteURL
-//                                                           blockStorage:volume.blockStorage];
-//        [blockStorage2 release];
-    }
-    
-    if ([_blockStorage commitModifiedBlocks])
-        return YES;
+              ofType:(NSString *)typeName
+    forSaveOperation:(NSSaveOperationType)saveOperation
+               error:(NSError **)outError {
+  NSLog(@"Saving %@", absoluteURL);
 
-    if (outError)
-        *outError = [NSError errorWithDomain:NSOSStatusErrorDomain
-                                        code:unimpErr
-                                    userInfo:NULL];
-    
-    return NO;
+  if (saveOperation == NSSaveAsOperation) {
+    //        // Copy the current block storage to a new block storage
+    //        BlockStorage *blockStorage2 = [[BlockStorage alloc]
+    //        initWithURL:absoluteURL
+    //                                                           blockStorage:volume.blockStorage];
+    //        [blockStorage2 release];
+  }
+
+  if ([_blockStorage commitModifiedBlocks])
+    return YES;
+
+  if (outError)
+    *outError = [NSError errorWithDomain:NSOSStatusErrorDomain
+                                    code:unimpErr
+                                userInfo:NULL];
+
+  return NO;
 }
 
 - (BOOL)readFromURL:(NSURL *)absoluteURL
              ofType:(NSString *)typeName
-              error:(NSError **)outError
-{
-    _blockStorage = [[BlockStorage alloc] initWithURL:absoluteURL];
-    if (!_blockStorage)
-        return NO;
-    
-    if ([DiskImageController extensionForUrl:absoluteURL] == EL2imgExtension)
-    {
-        NSData *headerData = [_blockStorage headerDataWithLength:256];
-        DiskImageHeader *header = [[DiskImageHeader alloc] initWithData:headerData];
-        if (header)
-            _blockStorage.partitionOffset = header.imageDataOffset;
-    }
-    
-    // Try handling this as a DOS 3.x image
-    _volume = [[D3Volume alloc] initWithContainer:self blockStorage:_blockStorage];
-    if (_volume)
-        return YES;
-    
-    // TODO Work out why this information doesn't appear in the error alert
-    if (outError)
-    {
-        NSMutableDictionary *errDict = [NSMutableDictionary dictionary];
-        errDict[NSLocalizedDescriptionKey] = NSLocalizedString(@"UnrecognisedDiskImage", @"");
-        *outError = [NSError errorWithDomain:ELErrorDomain
-                                        code:ELBadDOS3xImageError
-                                    userInfo:errDict];
-    }
+              error:(NSError **)outError {
+  _blockStorage = [[BlockStorage alloc] initWithURL:absoluteURL];
+  if (!_blockStorage)
     return NO;
+
+  if ([DiskImageController extensionForUrl:absoluteURL] == EL2imgExtension) {
+    NSData *headerData = [_blockStorage headerDataWithLength:256];
+    DiskImageHeader *header = [[DiskImageHeader alloc] initWithData:headerData];
+    if (header)
+      _blockStorage.partitionOffset = header.imageDataOffset;
+  }
+
+  // Try handling this as a DOS 3.x image
+  _volume =
+      [[D3Volume alloc] initWithContainer:self blockStorage:_blockStorage];
+  if (_volume)
+    return YES;
+
+  // TODO Work out why this information doesn't appear in the error alert
+  if (outError) {
+    NSMutableDictionary *errDict = [NSMutableDictionary dictionary];
+    errDict[NSLocalizedDescriptionKey] =
+        NSLocalizedString(@"UnrecognisedDiskImage", @"");
+    *outError = [NSError errorWithDomain:ELErrorDomain
+                                    code:ELBadDOS3xImageError
+                                userInfo:errDict];
+  }
+  return NO;
 }
 
 //- (void)insertEntry:(PDEntry *)entry
@@ -125,7 +117,7 @@
 //                                entry.fileName];
 //        [undo setActionName:actionName];
 //    }
-//    
+//
 //    // Do the actual deletion
 //}
 //
@@ -146,7 +138,7 @@
 //                                aFileName];
 //        [undo setActionName:actionName];
 //    }
-//    
+//
 //    // Set the new name
 //    anEntry.fileName = aFileName;
 //}
@@ -170,7 +162,7 @@
 ////
 ////    // Set the new file type
 ////    fileEntry.fileType = aTypeId;
-//    
+//
 //    //[self updateViews];
 //}
 

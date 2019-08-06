@@ -12,36 +12,33 @@
 
 @implementation MediaMenuDelegate
 
-
-- (NSInteger)numberOfItemsInMenu:(NSMenu *)menu
-{
-    mediaDeviceArray = [MediaDevice devices];
-    return (mediaDeviceArray.count > 0) ? mediaDeviceArray.count : 1;
+- (NSInteger)numberOfItemsInMenu:(NSMenu *)menu {
+  mediaDeviceArray = [MediaDevice devices];
+  return (mediaDeviceArray.count > 0) ? mediaDeviceArray.count : 1;
 }
 
 - (BOOL)menu:(NSMenu *)menu
-  updateItem:(NSMenuItem *)item
-     atIndex:(int)x
-shouldCancel:(BOOL)shouldCancel
-{
-    if (mediaDeviceArray.count == 0)
-    {
-        item.title = @"No media found";
-        return NO;
-    }
+      updateItem:(NSMenuItem *)item
+         atIndex:(int)x
+    shouldCancel:(BOOL)shouldCancel {
+  if (mediaDeviceArray.count == 0) {
+    item.title = @"No media found";
+    return NO;
+  }
 
-    MediaDevice *md = mediaDeviceArray[x];
-    
-    // Set up the menu item
-    item.title = md.path;
+  MediaDevice *md = mediaDeviceArray[x];
 
-    // Add a submenu listing the partitions
-    NSMenu *submenu = [[NSMenu alloc] initWithTitle:item.title];
-    MediaPartitionMenuDelegate *delegate = [[MediaPartitionMenuDelegate alloc] initWithMediaDevice:md];
-    submenu.delegate = delegate;
-    item.submenu = submenu;
-    
-    return YES;
+  // Set up the menu item
+  item.title = md.path;
+
+  // Add a submenu listing the partitions
+  NSMenu *submenu = [[NSMenu alloc] initWithTitle:item.title];
+  MediaPartitionMenuDelegate *delegate =
+      [[MediaPartitionMenuDelegate alloc] initWithMediaDevice:md];
+  submenu.delegate = delegate;
+  item.submenu = submenu;
+
+  return YES;
 }
 
 @end

@@ -271,9 +271,9 @@
 				63582A8A1334A581008AF599 /* Frameworks */,
 				63582A881334A581008AF599 /* Products */,
 			);
-			indentWidth = 4;
+			indentWidth = 2;
 			sourceTree = "<group>";
-			tabWidth = 4;
+			tabWidth = 2;
 		};
 		63582A881334A581008AF599 /* Products */ = {
 			isa = PBXGroup;

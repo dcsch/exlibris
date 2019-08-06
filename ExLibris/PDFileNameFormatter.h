@@ -8,11 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface PDFileNameFormatter : NSFormatter
-{
-    NSCharacterSet *lettersCharSet;
-    NSCharacterSet *legalCharSet;
+@interface PDFileNameFormatter : NSFormatter {
+  NSCharacterSet *lettersCharSet;
+  NSCharacterSet *legalCharSet;
 }
 
 @end

@@ -11,26 +11,22 @@
 
 @implementation PreferencesWindowController
 
-- (instancetype)init
-{
-    self = [super initWithWindowNibName:@"PreferencesWindow"];
-    return self;
+- (instancetype)init {
+  self = [super initWithWindowNibName:@"PreferencesWindow"];
+  return self;
 }
 
-- (BOOL)showAllDirectoryEntries
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    return [defaults boolForKey:ShowAllDirectoryEntriesKey];
+- (BOOL)showAllDirectoryEntries {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  return [defaults boolForKey:ShowAllDirectoryEntriesKey];
 }
 
-- (void)setShowAllDirectoryEntries:(BOOL)flag
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@(flag)
-                 forKey:ShowAllDirectoryEntriesKey];
-    
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc postNotificationName:ShowAllDirectoryEntriesChanged object:self];
+- (void)setShowAllDirectoryEntries:(BOOL)flag {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  [defaults setObject:@(flag) forKey:ShowAllDirectoryEntriesKey];
+
+  NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+  [nc postNotificationName:ShowAllDirectoryEntriesChanged object:self];
 }
 
 @end

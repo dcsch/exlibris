@@ -8,10 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface MediaMenuDelegate : NSObject
-{
-    NSArray *mediaDeviceArray;
+@interface MediaMenuDelegate : NSObject {
+  NSArray *mediaDeviceArray;
 }
 
 @end

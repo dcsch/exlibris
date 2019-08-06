@@ -10,11 +10,10 @@
 
 #define kMaxProDOSVolumeSize 0x2000000
 
-@interface MediaDevice : NSObject
-{
-    NSString *path;
-    NSUInteger size;
-    NSUInteger partitionCount;
+@interface MediaDevice : NSObject {
+  NSString *path;
+  NSUInteger size;
+  NSUInteger partitionCount;
 }
 
 @property(copy, readonly) NSString *path;
@@ -25,7 +24,8 @@
 
 + (NSArray *)devices;
 
-- (instancetype)initWithDevicePath:(NSString *)aPath size:(NSUInteger)aSize NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDevicePath:(NSString *)aPath
+                              size:(NSUInteger)aSize NS_DESIGNATED_INITIALIZER;
 - (instancetype)init __attribute__((unavailable));
 
 //- (NSData *)partitionAtIndex:(NSUInteger)index;

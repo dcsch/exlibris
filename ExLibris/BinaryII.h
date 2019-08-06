@@ -10,9 +10,7 @@
 
 @class PDFileEntry;
 
-@interface BinaryII : NSObject
-{
-
+@interface BinaryII : NSObject {
 }
 
 + (NSData *)encodeForFileEntry:(PDFileEntry *)fileEntry data:(NSData *)data;

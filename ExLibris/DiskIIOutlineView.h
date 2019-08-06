@@ -8,9 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface DiskIIOutlineView : NSOutlineView
-{
+@interface DiskIIOutlineView : NSOutlineView {
 }
 
 @end

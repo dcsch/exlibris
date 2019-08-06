@@ -10,10 +10,9 @@
 
 @class D3FileEntry;
 
-@interface DOS3xInfoWindowController : NSWindowController
-{
-    IBOutlet NSTextField *fileNameTextField;
-    D3FileEntry *entry;
+@interface DOS3xInfoWindowController : NSWindowController {
+  IBOutlet NSTextField *fileNameTextField;
+  D3FileEntry *entry;
 }
 
 - (instancetype)initWithEntry:(D3FileEntry *)anEntry;

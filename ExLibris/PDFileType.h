@@ -8,14 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-enum FileType
-{
-    TEXT_FILE_TYPE_ID = 0x04U,
-    BINARY_FILE_TYPE_ID = 0x06U,
-    DIRECTORY_FILE_TYPE_ID = 0x0fU,
-    INTEGER_BASIC_FILE_TYPE_ID = 0xfaU,
-    APPLESOFT_BASIC_FILE_TYPE_ID = 0xfcU,
-    SYSTEM_FILE_TYPE_ID = 0xffU
+enum FileType {
+  TEXT_FILE_TYPE_ID = 0x04U,
+  BINARY_FILE_TYPE_ID = 0x06U,
+  DIRECTORY_FILE_TYPE_ID = 0x0fU,
+  INTEGER_BASIC_FILE_TYPE_ID = 0xfaU,
+  APPLESOFT_BASIC_FILE_TYPE_ID = 0xfcU,
+  SYSTEM_FILE_TYPE_ID = 0xffU
 };
 
 //#define TEXT_FILE_TYPE_ID               (NSUInteger)0x04
@@ -25,11 +24,10 @@ enum FileType
 //#define APPLESOFT_BASIC_FILE_TYPE_ID    (NSUInteger)0xfc
 //#define SYSTEM_FILE_TYPE_ID             (NSUInteger)0xff
 
-@interface PDFileType : NSObject <NSCopying>
-{
-    NSUInteger typeId;
-    NSString *name;
-    NSString *detail;
+@interface PDFileType : NSObject <NSCopying> {
+  NSUInteger typeId;
+  NSString *name;
+  NSString *detail;
 }
 
 @property(readonly) NSUInteger typeId;
@@ -51,11 +49,10 @@ enum FileType
                         detail:(NSString *)aDescription;
 
 - (instancetype)initWithId:(NSUInteger)aTypeId
-            name:(NSString *)aName
-          detail:(NSString *)aDescription NS_DESIGNATED_INITIALIZER;
+                      name:(NSString *)aName
+                    detail:(NSString *)aDescription NS_DESIGNATED_INITIALIZER;
 
-- (instancetype)initWithId:(NSUInteger)aTypeId
-          detail:(NSString *)aDescription;
+- (instancetype)initWithId:(NSUInteger)aTypeId detail:(NSString *)aDescription;
 
 - (instancetype)init __attribute__((unavailable));
 

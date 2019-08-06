@@ -8,10 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@interface Applesoft : NSObject
-{
-
+@interface Applesoft : NSObject {
 }
 
 + (NSString *)keywordForToken:(unsigned int)token;

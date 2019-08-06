@@ -6,7 +6,6 @@
 //  Copyright David Schweinsberg 2008 . All rights reserved.
 //
 
-
 #import <Cocoa/Cocoa.h>
 
 @interface DiskImage : NSDocument
