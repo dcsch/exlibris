@@ -11,10 +11,10 @@
 
 const NSUInteger kProDOSBlockSize = 512;
 
-NSString *ELErrorDomain = @"org.synchroma.exlibris.ErrorDomain";
+NSString *ELErrorDomain = @"com.huntleygrange.exlibris.ErrorDomain";
 
-NSString *ProDOSFilePboardType = @"org.synchroma.ProDOSFileContentWithMetadata";
-NSString *DOS33FilePboardType = @"org.synchroma.DOS33FileContentWithMetadata";
+NSString *ProDOSFilePboardType = @"com.huntleygrange.ProDOSFileContentWithMetadata";
+NSString *DOS33FilePboardType = @"com.huntleygrange.DOS33FileContentWithMetadata";
 
 NSString *ELAppleProDOSDiskImageDocumentType = @"Apple II Disk Image (ProDOS)";
 NSString *ELAppleDOS33DiskImageDocumentType = @"Apple II Disk Image (DOS)";
