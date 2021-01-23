@@ -64,8 +64,8 @@
 
     int i;
     for (i = 0x0c; (i < 0xff) && ptr[i]; i += 2) {
-      [trackSectorArray
-          addObject:[D3TrackSector track:ptr[i] sector:ptr[i + 1]]];
+      [trackSectorArray addObject:[D3TrackSector track:ptr[i]
+                                                sector:ptr[i + 1]]];
     }
   } while (nextTrack);
 

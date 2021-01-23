@@ -290,8 +290,8 @@ static void bitPos(NSUInteger blockNumber, NSUInteger *byteIndex,
     if (storageType == SUBDIRECTORY_KEY_BLOCK) {
       NSLog(@"Subdirectory key block");
 
-      return
-          [self dataForEntry:entry.parentEntry appendMetadata:appendMetadata];
+      return [self dataForEntry:entry.parentEntry
+                 appendMetadata:appendMetadata];
     } else if (storageType == VOLUME_DIRECTORY_KEY_BLOCK) {
       NSLog(@"Volume directory key block");
 

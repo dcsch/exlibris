@@ -99,8 +99,8 @@
   }
 
   // Try handling this as a ProDOS image
-  _volume =
-      [[PDVolume alloc] initWithContainer:self blockStorage:_blockStorage];
+  _volume = [[PDVolume alloc] initWithContainer:self
+                                   blockStorage:_blockStorage];
   if (_volume)
     return YES;
 
@@ -127,8 +127,8 @@
     _blockStorage = [[BlockStorage alloc] initWithBlockSize:kProDOSBlockSize
                                                    capacity:self.blockCount];
     [PDVolume formatBlockStorage:_blockStorage];
-    _volume =
-        [[PDVolume alloc] initWithContainer:self blockStorage:_blockStorage];
+    _volume = [[PDVolume alloc] initWithContainer:self
+                                     blockStorage:_blockStorage];
   }
   return _volume;
 }

@@ -36,10 +36,10 @@
   [self addWindowController:controller];
 }
 
-- (BOOL)saveToURL:(NSURL *)absoluteURL
-              ofType:(NSString *)typeName
-    forSaveOperation:(NSSaveOperationType)saveOperation
-               error:(NSError **)outError {
+- (void)saveToURL:(NSURL *)absoluteURL
+               ofType:(NSString *)typeName
+     forSaveOperation:(NSSaveOperationType)saveOperation
+    completionHandler:(nonnull void (^)(NSError *_Nullable))completionHandler {
   NSLog(@"Saving %@", absoluteURL);
 
   if (saveOperation == NSSaveAsOperation) {
@@ -50,15 +50,12 @@
     //        [blockStorage2 release];
   }
 
-  if ([_blockStorage commitModifiedBlocks])
-    return YES;
+  [_blockStorage commitModifiedBlocks];
 
-  if (outError)
-    *outError = [NSError errorWithDomain:NSOSStatusErrorDomain
-                                    code:unimpErr
-                                userInfo:NULL];
-
-  return NO;
+  NSError *error = [NSError errorWithDomain:NSOSStatusErrorDomain
+                                       code:unimpErr
+                                   userInfo:NULL];
+  completionHandler(error);
 }
 
 - (BOOL)readFromURL:(NSURL *)absoluteURL
@@ -76,8 +73,8 @@
   }
 
   // Try handling this as a DOS 3.x image
-  _volume =
-      [[D3Volume alloc] initWithContainer:self blockStorage:_blockStorage];
+  _volume = [[D3Volume alloc] initWithContainer:self
+                                   blockStorage:_blockStorage];
   if (_volume)
     return YES;
 

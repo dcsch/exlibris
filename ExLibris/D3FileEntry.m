@@ -31,8 +31,8 @@
       track = entryBytes[0x20];
     else
       track = entryBytes[0];
-    firstTrackSectorList =
-        [[D3TrackSector alloc] initWithTrack:track sector:entryBytes[1]];
+    firstTrackSectorList = [[D3TrackSector alloc] initWithTrack:track
+                                                         sector:entryBytes[1]];
   }
   return firstTrackSectorList;
 }

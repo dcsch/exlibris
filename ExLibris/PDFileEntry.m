@@ -120,8 +120,8 @@
 - (void)setLastMod:(NSDate *)date {
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDateComponents *dateComponents = [calendar
-      components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |
-                 NSHourCalendarUnit | NSMinuteCalendarUnit
+      components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |
+                 NSCalendarUnitHour | NSCalendarUnitMinute
         fromDate:date];
   packDateAndTime(entryBytes + 0x18, dateComponents.year, dateComponents.month,
                   dateComponents.day, dateComponents.hour,

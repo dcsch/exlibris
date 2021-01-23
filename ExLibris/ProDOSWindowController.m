@@ -36,7 +36,7 @@
 
 - (IBAction)paste:(id)sender;
 
-- (IBAction) delete:(id)sender;
+- (IBAction)delete:(id)sender;
 
 - (IBAction)openGraphics:(id)sender;
 
@@ -106,7 +106,9 @@
   [column.dataCell setFormatter:[[PDAccessFormatter alloc] init]];
 
   // Arrange the ability to drag files around
-  [catalogOutlineView registerForDraggedTypes:@[ NSFilesPromisePboardType ]];
+  [catalogOutlineView registerForDraggedTypes:@[
+    (NSPasteboardType)kPasteboardTypeFileURLPromise
+  ]];
   [catalogOutlineView setDraggingSourceOperationMask:NSDragOperationCopy
                                             forLocal:NO];
 }
@@ -150,8 +152,10 @@
        toPasteboard:(NSPasteboard *)pboard {
   // What file type can we specify here?
   NSArray *fileTypeList = @[ @"" ];
-  [pboard declareTypes:@[ NSFilesPromisePboardType ] owner:self];
-  [pboard setPropertyList:fileTypeList forType:NSFilesPromisePboardType];
+  [pboard declareTypes:@[ (NSPasteboardType)kPasteboardTypeFileURLPromise ]
+                 owner:self];
+  [pboard setPropertyList:fileTypeList
+                  forType:(NSPasteboardType)kPasteboardTypeFileURLPromise];
 
   NSLog(@"Dragging");
 
@@ -292,7 +296,7 @@
   }
 }
 
-- (IBAction) delete:(id)sender {
+- (IBAction)delete:(id)sender {
   PDEntry *entry = self.selectedEntry;
   if (!entry)
     return;
@@ -394,8 +398,8 @@
   if (directory) {
     NSString *name = [directory uniqueNameFromString:@"NEW.DIR"];
     NSError *error;
-    PDFileEntry *dirEntry =
-        [directory createDirectoryWithName:name error:&error];
+    PDFileEntry *dirEntry = [directory createDirectoryWithName:name
+                                                         error:&error];
     if (dirEntry) {
       NSUndoManager *undoManager = [self.document undoManager];
       [undoManager registerUndoWithTarget:self
@@ -405,11 +409,8 @@
     } else {
       NSAlert *alert = [NSAlert alertWithError:error];
       [alert beginSheetModalForWindow:self.window
-                        modalDelegate:self
-                       didEndSelector:@selector(alertDidEnd:
-                                                 returnCode:
-                                                contextInfo:)
-                          contextInfo:nil];
+                    completionHandler:^(NSModalResponse returnCode){
+                    }];
     }
   }
 }
@@ -491,11 +492,6 @@
   if (selectedObjects.count > 0)
     return selectedObjects[0];
   return nil;
-}
-
-- (void)alertDidEnd:(NSAlert *)alert
-         returnCode:(int)returnCode
-        contextInfo:(void *)contextInfo {
 }
 
 @end

@@ -6,8 +6,8 @@
 //  Copyright 2008 David Schweinsberg. All rights reserved.
 //
 
-#import "PDFileEntry+DiskII.h"
 #import "PDDirectory.h"
+#import "PDFileEntry+DiskII.h"
 
 @implementation PDFileEntry (DiskII)
 

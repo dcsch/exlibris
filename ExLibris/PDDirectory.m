@@ -82,8 +82,8 @@
 
 - (instancetype)initWithFileEntry:(PDFileEntry *)aFileEntry {
   _fileEntry = aFileEntry;
-  return
-      [self initWithVolume:_fileEntry.volume blockNumber:_fileEntry.keyPointer];
+  return [self initWithVolume:_fileEntry.volume
+                  blockNumber:_fileEntry.keyPointer];
 }
 
 - (NSString *)name {
@@ -299,8 +299,8 @@
   NSArray *blockIndicies = [volume allocateBlocks:blocksNeeded];
   NSLog(@"blockIndicies: %@", blockIndicies);
 
-  NSDictionary *fileInBlocks =
-      [PDDirectory createBlocks:blockIndicies forData:aData];
+  NSDictionary *fileInBlocks = [PDDirectory createBlocks:blockIndicies
+                                                 forData:aData];
 
   // Write the data to the volume's block storage
   for (NSNumber *index in blockIndicies) {

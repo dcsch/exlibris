@@ -54,14 +54,14 @@
         blockStorage.partitionOffset = offset;
 
       // Try handling this as a ProDOS image
-      Volume *volume =
-          [[PDVolume alloc] initWithContainer:self blockStorage:blockStorage];
+      Volume *volume = [[PDVolume alloc] initWithContainer:self
+                                              blockStorage:blockStorage];
       if (volume) {
         docType = ELAppleProDOSDiskImageDocumentType;
       } else {
         // Try handling this as a DOS 3.x image
-        volume =
-            [[D3Volume alloc] initWithContainer:self blockStorage:blockStorage];
+        volume = [[D3Volume alloc] initWithContainer:self
+                                        blockStorage:blockStorage];
         if (volume)
           docType = ELAppleDOS33DiskImageDocumentType;
       }

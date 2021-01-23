@@ -85,8 +85,8 @@
   }
 
   // Create the requested disk image
-  NSDocument *document =
-      [documentController makeUntitledDocumentOfType:docType error:&error];
+  NSDocument *document = [documentController makeUntitledDocumentOfType:docType
+                                                                  error:&error];
   if (document) {
     DiskImage *diskImage = (DiskImage *)document;
     diskImage.blockCount = blockCount;
